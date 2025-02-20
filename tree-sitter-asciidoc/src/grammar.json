@@ -54,6 +54,27 @@
           {
             "type": "SYMBOL",
             "name": "line"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "list_continuation"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "block_element"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
           }
         ]
       }
@@ -200,6 +221,27 @@
           {
             "type": "SYMBOL",
             "name": "line"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "list_continuation"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "block_element"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
           }
         ]
       }
@@ -226,28 +268,57 @@
       ]
     },
     "callout_list": {
-      "type": "REPEAT1",
+      "type": "PREC_LEFT",
+      "value": 0,
       "content": {
-        "type": "SYMBOL",
-        "name": "callout_list_item"
+        "type": "REPEAT1",
+        "content": {
+          "type": "SYMBOL",
+          "name": "callout_list_item"
+        }
       }
     },
     "callout_list_item": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "callout_list_marker"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_WHITE_SPACE"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "line"
-        }
-      ]
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "callout_list_marker"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_WHITE_SPACE"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "line"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "list_continuation"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "block_element"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
     },
     "document_title": {
       "type": "SEQ",
@@ -1497,138 +1568,146 @@
       ]
     },
     "listing_block": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "listing_block_start_marker"
-        },
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "REPEAT1",
-                      "content": {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "PATTERN",
-                            "value": "[^\\r\\n]"
-                          },
-                          {
-                            "type": "SYMBOL",
-                            "name": "callout_marker"
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "_block_end"
-                    }
-                  ]
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "block_macro"
-                }
-              ]
-            }
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "listing_block_start_marker"
           },
-          "named": true,
-          "value": "listing_block_body"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "listing_block_end_marker"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "callout_list"
+          {
+            "type": "ALIAS",
+            "content": {
+              "type": "REPEAT",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "REPEAT1",
+                        "content": {
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "PATTERN",
+                              "value": "[^\\r\\n]"
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "callout_marker"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "_block_end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "block_macro"
+                  }
+                ]
+              }
             },
-            {
-              "type": "BLANK"
-            }
-          ]
-        }
-      ]
+            "named": true,
+            "value": "listing_block_body"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "listing_block_end_marker"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "callout_list"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
     },
     "literal_block": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "literal_block_marker"
-        },
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "REPEAT1",
-                      "content": {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "PATTERN",
-                            "value": "[^\\r\\n]"
-                          },
-                          {
-                            "type": "SYMBOL",
-                            "name": "callout_marker"
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "_block_end"
-                    }
-                  ]
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "block_macro"
-                }
-              ]
-            }
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "literal_block_marker"
           },
-          "named": true,
-          "value": "literal_block_body"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "literal_block_marker"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "callout_list"
+          {
+            "type": "ALIAS",
+            "content": {
+              "type": "REPEAT",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "REPEAT1",
+                        "content": {
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "PATTERN",
+                              "value": "[^\\r\\n]"
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "callout_marker"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "_block_end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "block_macro"
+                  }
+                ]
+              }
             },
-            {
-              "type": "BLANK"
-            }
-          ]
-        }
-      ]
+            "named": true,
+            "value": "literal_block_body"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "literal_block_marker"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "callout_list"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
     },
     "ident_block": {
       "type": "PREC_LEFT",

@@ -124,34 +124,38 @@ module.exports = grammar({
         $.passthrough_block_marker,
       ),
     listing_block: $ =>
-      seq(
-        $.listing_block_start_marker,
-        alias(
-          repeat(
-            choice(
-              seq(repeat1(choice(/[^\r\n]/, $.callout_marker)), $._block_end),
-              $.block_macro,
+      prec.left(
+        seq(
+          $.listing_block_start_marker,
+          alias(
+            repeat(
+              choice(
+                seq(repeat1(choice(/[^\r\n]/, $.callout_marker)), $._block_end),
+                $.block_macro,
+              ),
             ),
+            $.listing_block_body,
           ),
-          $.listing_block_body,
+          $.listing_block_end_marker,
+          optional($.callout_list),
         ),
-        $.listing_block_end_marker,
-        optional($.callout_list),
       ),
     literal_block: $ =>
-      seq(
-        $.literal_block_marker,
-        alias(
-          repeat(
-            choice(
-              seq(repeat1(choice(/[^\r\n]/, $.callout_marker)), $._block_end),
-              $.block_macro,
+      prec.left(
+        seq(
+          $.literal_block_marker,
+          alias(
+            repeat(
+              choice(
+                seq(repeat1(choice(/[^\r\n]/, $.callout_marker)), $._block_end),
+                $.block_macro,
+              ),
             ),
+            $.literal_block_body,
           ),
-          $.literal_block_body,
+          $.literal_block_marker,
+          optional($.callout_list),
         ),
-        $.literal_block_marker,
-        optional($.callout_list),
       ),
     ident_block: $ =>
       prec.left(seq(repeat1($.ident_block_line), optional($.callout_list))),

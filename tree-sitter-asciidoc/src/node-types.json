@@ -246,11 +246,19 @@
       "required": true,
       "types": [
         {
+          "type": "block_element",
+          "named": true
+        },
+        {
           "type": "callout_list_marker",
           "named": true
         },
         {
           "type": "line",
+          "named": true
+        },
+        {
+          "type": "list_continuation",
           "named": true
         }
       ]
@@ -280,11 +288,19 @@
       "required": true,
       "types": [
         {
+          "type": "block_element",
+          "named": true
+        },
+        {
           "type": "checked_list_marker",
           "named": true
         },
         {
           "type": "line",
+          "named": true
+        },
+        {
+          "type": "list_continuation",
           "named": true
         }
       ]
@@ -712,7 +728,15 @@
       "required": true,
       "types": [
         {
+          "type": "block_element",
+          "named": true
+        },
+        {
           "type": "line",
+          "named": true
+        },
+        {
+          "type": "list_continuation",
           "named": true
         },
         {
