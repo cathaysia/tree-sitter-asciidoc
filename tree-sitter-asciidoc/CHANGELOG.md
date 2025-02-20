@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.4.0](https://github.com/cathaysia/tree-sitter-asciidoc/compare/v0.3.0...v0.4.0) (2025-02-20)
+
+
+### Features
+
+* **adoc:** stricter admination checks ([21b2289](https://github.com/cathaysia/tree-sitter-asciidoc/commit/21b22895e125cf4c9edf3693718be231f4ade499))
+
+
+### Bug Fixes
+
+* **adoc:** fix build problem ([12b6a28](https://github.com/cathaysia/tree-sitter-asciidoc/commit/12b6a28ce1171601820672c4e0c401c2e9eee1d9))
+
 ## [0.3.0](https://github.com/cathaysia/tree-sitter-asciidoc/compare/v0.2.0...v0.3.0) (2025-01-22)
 
 
