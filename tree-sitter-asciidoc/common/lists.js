@@ -49,12 +49,14 @@ exports.rules = {
       $.list_marker_dot,
     ),
 
-  callout_list: $ => repeat1($.callout_list_item),
+  callout_list: $ => prec.left(repeat1($.callout_list_item)),
   callout_list_item: $ =>
-    seq(
-      $.callout_list_marker,
-      $._WHITE_SPACE,
-      $.line,
-      optional(seq($.list_continuation, $.block_element)),
+    prec.left(
+      seq(
+        $.callout_list_marker,
+        $._WHITE_SPACE,
+        $.line,
+        optional(seq($.list_continuation, $.block_element)),
+      ),
     ),
 };

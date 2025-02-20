@@ -230,32 +230,22 @@ print("one")
           (ordered_list_item
             (ordered_list_marker
               (list_marker_dot))
-            (line))))))
-  (block_element
-    (section_block
-      (paragraph
-        (line))))
-  (block_element
-    (section_block
-      (listing_block
-        (listing_block_start_marker)
-        (listing_block_body)
-        (listing_block_end_marker))))
-  (block_element
-    (section_block
-      (list
-        (ordered_list
+            (line)
+            (list_continuation)
+            (block_element
+              (section_block
+                (listing_block
+                  (listing_block_start_marker)
+                  (listing_block_body)
+                  (listing_block_end_marker)))))
           (ordered_list_item
             (ordered_list_marker
               (list_marker_dot))
-            (line))))))
-  (block_element
-    (section_block
-      (paragraph
-        (line))))
-  (block_element
-    (section_block
-      (listing_block
-        (listing_block_start_marker)
-        (listing_block_body)
-        (listing_block_end_marker)))))
+            (line)
+            (list_continuation)
+            (block_element
+              (section_block
+                (listing_block
+                  (listing_block_start_marker)
+                  (listing_block_body)
+                  (listing_block_end_marker))))))))))
