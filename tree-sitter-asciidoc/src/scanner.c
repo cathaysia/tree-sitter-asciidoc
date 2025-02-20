@@ -75,7 +75,10 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
 
                 lexer->mark_end(lexer);
                 if(lexer->lookahead == ':') {
-                    return true;
+                    lexer->advance(lexer, true);
+                    if(lexer->lookahead == ' ') {
+                        return true;
+                    }
                 }
             } while(0);
         }
