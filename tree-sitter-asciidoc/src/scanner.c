@@ -123,13 +123,9 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
                     if(!scanner_is_matching_raw_block(s)) {
                         usize counter = lexer->get_column(lexer);
                         if(counter >= 4 && is_new_line(lexer->lookahead)) {
-                            if(!scanner_is_expect_block_start(s) && scanner_is_matching(s, BLOCK_KIND_DELIMITED, counter)) {
+                            if(scanner_is_matching(s, BLOCK_KIND_DELIMITED, counter)) {
                                 lexer->result_symbol = TOKEN_DELIMITED_BLOCK_END_MARKER;
                                 scanner_pop(s);
-                                while(scanner_pop_kind(s, BLOCK_KIND_TITLE, 1) ||
-                                      scanner_pop_kind(s, BLOCK_KIND_ATTR, 1)
-                                ) {
-                                }
                             } else {
                                 scanner_push(s, BLOCK_KIND_DELIMITED, counter);
                                 lexer->result_symbol = TOKEN_DELIMITED_BLOCK_START_MARKER;
@@ -267,7 +263,6 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
                         if(lexer->get_column(lexer) == 1) {
                             lexer->mark_end(lexer);
                             lexer->result_symbol = TOKEN_BLOCK_TITLE_MARKER;
-                            scanner_push(s, BLOCK_KIND_ATTR, 1);
                             return true;
                         }
                     }
@@ -291,7 +286,6 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
                         }
                         lexer->mark_end(lexer);
                         lexer->result_symbol = TOKEN_ELEMENT_ATTR_MARKER;
-                        scanner_push(s, BLOCK_KIND_ATTR, 1);
                         return true;
                     }
                     break;
@@ -686,11 +680,6 @@ static inline bool parse_table_attr(TSLexer *lexer) {
     }
 
     return false;
-}
-
-static inline bool scanner_is_expect_block_start(Scanner const *self) {
-    return scanner_is_matching(self, BLOCK_KIND_ATTR, 0) ||
-           scanner_is_matching(self, BLOCK_KIND_TITLE, 0);
 }
 
 static inline bool scanner_is_matching(Scanner const *self, BlockKind kind, usize counter) {
