@@ -48,12 +48,6 @@ let a = 10;
 |===
 
 
-|=====
-|=====
-
-|=====
-|====
-|=====
 -----
 
 (document
@@ -160,27 +154,7 @@ let a = 10;
               (listing_block_start_marker)
               (listing_block_body)
               (listing_block_end_marker))))
-        (table_block_marker))))
-  (block_element
-    (section_block
-      (paragraph
-        (line))))
-  (block_element
-    (section_block
-      (paragraph
-        (line))))
-  (block_element
-    (section_block
-      (paragraph
-        (line))))
-  (block_element
-    (section_block
-      (paragraph
-        (line))))
-  (block_element
-    (section_block
-      (paragraph
-        (line)))))
+        (table_block_marker)))))
 
 =================
 list continuation
@@ -252,4 +226,20 @@ a|
         (table_cell)
         (table_cell
           (table_cell_content))
+        (table_block_marker)))))
+
+===========
+long table
+===========
+
+|========
+|========
+
+---
+
+(document
+  (block_element
+    (section_block
+      (table_block
+        (table_block_marker)
         (table_block_marker)))))

@@ -1,6 +1,6 @@
-================|||
+================
 delimited_block
-================|||
+================
 
 ====
 ====
@@ -27,20 +27,6 @@ block
 ====
 
 ====
-
-.title
-====
-iblock
-====
-====
-
-====
-[NOTE]
-====
-====
-====
-
-====
 =====
 =====
 ====
@@ -50,7 +36,7 @@ iblock
 ====
 =====
 
--------------------|||
+-------------------
 
 (document
   (block_element
@@ -89,34 +75,6 @@ iblock
         (section_block
           (paragraph
             (line)))
-        (delimited_block_end_marker))))
-  (block_element
-    (section_block
-      (delimited_block
-        (delimited_block_start_marker)
-        (section_block
-          (block_title
-            (block_title_marker)
-            (line))
-          (delimited_block
-            (delimited_block_start_marker)
-            (section_block
-              (paragraph
-                (line)))
-            (delimited_block_end_marker)))
-        (delimited_block_end_marker))))
-  (block_element
-    (section_block
-      (delimited_block
-        (delimited_block_start_marker)
-        (section_block
-          (element_attr
-            (element_attr_marker)
-            (attr_value)
-            (element_attr_marker))
-          (delimited_block
-            (delimited_block_start_marker)
-            (delimited_block_end_marker)))
         (delimited_block_end_marker))))
   (block_element
     (section_block
