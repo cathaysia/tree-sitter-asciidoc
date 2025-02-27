@@ -180,9 +180,9 @@ module.exports = grammar({
       ),
     block_comment: $ =>
       seq(
-        $.block_comment_marker,
+        $.block_comment_start_marker,
         alias(repeat(seq(/[^\r\n]+/, $._NEWLINE)), $.body),
-        $.block_comment_marker,
+        $.block_comment_end_marker,
       ),
 
     quoted_block: $ =>
@@ -237,7 +237,8 @@ module.exports = grammar({
     $.callout_marker,
     $.callout_list_marker,
     $.line_comment_marker,
-    $.block_comment_marker,
+    $.block_comment_start_marker,
+    $.block_comment_end_marker,
     $.admonition_note,
     $.admonition_tip,
     $.admonition_important,
