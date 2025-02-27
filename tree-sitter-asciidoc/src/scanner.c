@@ -56,6 +56,21 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
     }
 
     usize start_pos = lexer->get_column(lexer);
+
+    if(valid_symbols[TOKEN_BLOCK_COMMENT_END_MARKER]) {
+        if(start_pos != 0) {
+            return false;
+        }
+        if(parse_sequence(lexer, "////")) {
+            if(is_newline(lexer->lookahead)) {
+                lexer->result_symbol = TOKEN_BLOCK_COMMENT_END_MARKER;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     if(start_pos == 0) {
         if(valid_symbols[TOKEN_ADMONITION_NOTE]) {
             do {
@@ -366,13 +381,13 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
                 }
                 case '/': {
                     if(valid_symbols[TOKEN_LINE_COMMENT_MARKER] ||
-                       valid_symbols[TOKEN_BLOCK_COMMENT_MARKER]) {
+                       valid_symbols[TOKEN_BLOCK_COMMENT_START_MARKER]) {
                         if(parse_sequence(lexer, "//")) {
                             lexer->mark_end(lexer);
-                            if(valid_symbols[TOKEN_BLOCK_COMMENT_MARKER]) {
+                            if(valid_symbols[TOKEN_BLOCK_COMMENT_START_MARKER]) {
                                 if(parse_sequence(lexer, "//")) {
                                     if(is_newline(lexer->lookahead)) {
-                                        lexer->result_symbol = TOKEN_BLOCK_COMMENT_MARKER;
+                                        lexer->result_symbol = TOKEN_BLOCK_COMMENT_START_MARKER;
                                         lexer->mark_end(lexer);
                                         return true;
                                     }

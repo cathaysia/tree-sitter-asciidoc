@@ -1866,7 +1866,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "block_comment_marker"
+          "name": "block_comment_start_marker"
         },
         {
           "type": "ALIAS",
@@ -1891,7 +1891,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "block_comment_marker"
+          "name": "block_comment_end_marker"
         }
       ]
     },
@@ -2134,7 +2134,11 @@
     },
     {
       "type": "SYMBOL",
-      "name": "block_comment_marker"
+      "name": "block_comment_start_marker"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "block_comment_end_marker"
     },
     {
       "type": "SYMBOL",

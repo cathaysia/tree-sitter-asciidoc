@@ -100,7 +100,11 @@
       "required": true,
       "types": [
         {
-          "type": "block_comment_marker",
+          "type": "block_comment_end_marker",
+          "named": true
+        },
+        {
+          "type": "block_comment_start_marker",
           "named": true
         },
         {
@@ -1322,7 +1326,11 @@
     "named": true
   },
   {
-    "type": "block_comment_marker",
+    "type": "block_comment_end_marker",
+    "named": true
+  },
+  {
+    "type": "block_comment_start_marker",
     "named": true
   },
   {
