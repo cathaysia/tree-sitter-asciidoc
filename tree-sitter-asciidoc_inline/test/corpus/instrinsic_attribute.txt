@@ -1,0 +1,20 @@
+=======================
+intrinsic_attributes
+=======================
+
+this is a replacement {cpp}
+
+---
+
+(inline
+  (inline_element
+    (word))
+  (inline_element
+    (word))
+  (inline_element
+    (word))
+  (inline_element
+    (word))
+  (inline_element
+    (intrinsic_attributes_pair
+      (intrinsic_attributes))))

@@ -2,10 +2,6 @@
 replacement
 ===========
 
-this is a replacement {cpp}
-
-{cpp\} 😀}
-
 (R)
 
 (C)
@@ -15,20 +11,6 @@ this is a replacement {cpp}
 -----
 
 (inline
-  (inline_element
-    (word))
-  (inline_element
-    (word))
-  (inline_element
-    (word))
-  (inline_element
-    (word))
-  (inline_element
-    (replacement
-      (intrinsic_attributes)))
-  (inline_element
-    (replacement
-      (intrinsic_attributes)))
   (inline_element
     (replacement))
   (inline_element

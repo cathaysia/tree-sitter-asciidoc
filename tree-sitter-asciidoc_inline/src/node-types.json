@@ -203,6 +203,10 @@
           "named": true
         },
         {
+          "type": "intrinsic_attributes_pair",
+          "named": true
+        },
+        {
           "type": "ltalic",
           "named": true
         },
@@ -255,6 +259,21 @@
         },
         {
           "type": "target",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "intrinsic_attributes_pair",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "intrinsic_attributes",
           "named": true
         }
       ]
@@ -349,21 +368,6 @@
     "type": "reftext",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "replacement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "intrinsic_attributes",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "stem_macro",
@@ -999,6 +1003,10 @@
   {
     "type": "plantuml",
     "named": false
+  },
+  {
+    "type": "replacement",
+    "named": true
   },
   {
     "type": "shaape",

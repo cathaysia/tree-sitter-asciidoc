@@ -66,6 +66,7 @@ module.exports = grammar({
         $.index_term,
         $.index_term2,
         $.id_assignment,
+        $.intrinsic_attributes_pair,
       ),
     ...autolink.rules,
     id_assignment: $ => choice(seq('[#', $.id, ']'), seq('[[', $.id, ']]')),
@@ -185,9 +186,7 @@ module.exports = grammar({
         optional(alias($._stem_attr, $.attr)),
         ']',
       ),
-    replacement: $ =>
-      choice(seq('{', $.intrinsic_attributes, '}'), $._replacement),
-    _replacement: _ =>
+    replacement: _ =>
       token(
         choice(
           '(C)',
@@ -201,7 +200,42 @@ module.exports = grammar({
           '&lt;=',
         ),
       ),
-    intrinsic_attributes: $ => token(repeat1(escaped_ch('}'))),
+    intrinsic_attributes_pair: $ => seq('{', $.intrinsic_attributes, '}'),
+    intrinsic_attributes: $ =>
+      token(
+        choice(
+          'startsb',
+          'endsb',
+          'vbar',
+          'caret',
+          'asterisk',
+          'tilde',
+          'plus',
+          'backslash',
+          'backtick',
+          'blank',
+          'empty',
+          'sp',
+          'two-colons',
+          'two-semicolons',
+          'nbsp',
+          'deg',
+          'zwsp',
+          'quot',
+          'apos',
+          'lsquo',
+          'rsquo',
+          'ldquo',
+          'rdquo',
+          'wj',
+          'brvbar',
+          'pp',
+          'cpp',
+          'amp',
+          'lt',
+          'gt',
+        ),
+      ),
     word: $ =>
       choice(
         $.super_escape,
