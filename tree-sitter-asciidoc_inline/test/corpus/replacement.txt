@@ -6,6 +6,12 @@ this is a replacement {cpp}
 
 {cpp\} 😀}
 
+(R)
+
+(C)
+
+-&gt;
+
 -----
 
 (inline
@@ -22,4 +28,10 @@ this is a replacement {cpp}
       (intrinsic_attributes)))
   (inline_element
     (replacement
-      (intrinsic_attributes))))
+      (intrinsic_attributes)))
+  (inline_element
+    (replacement))
+  (inline_element
+    (replacement))
+  (inline_element
+    (replacement)))

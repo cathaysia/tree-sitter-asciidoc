@@ -1,5 +1,4 @@
 {
-  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "asciidoc_inline",
   "rules": {
     "inline": {
@@ -850,21 +849,74 @@
       ]
     },
     "replacement": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
-          "type": "STRING",
-          "value": "{"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "{"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "intrinsic_attributes"
+            },
+            {
+              "type": "STRING",
+              "value": "}"
+            }
+          ]
         },
         {
           "type": "SYMBOL",
-          "name": "intrinsic_attributes"
-        },
-        {
-          "type": "STRING",
-          "value": "}"
+          "name": "_replacement"
         }
       ]
+    },
+    "_replacement": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "(C)"
+          },
+          {
+            "type": "STRING",
+            "value": "(R)"
+          },
+          {
+            "type": "STRING",
+            "value": "(TM)"
+          },
+          {
+            "type": "STRING",
+            "value": "..."
+          },
+          {
+            "type": "STRING",
+            "value": "`'"
+          },
+          {
+            "type": "STRING",
+            "value": "-&gt;"
+          },
+          {
+            "type": "STRING",
+            "value": "=&gr;"
+          },
+          {
+            "type": "STRING",
+            "value": "&lt;-"
+          },
+          {
+            "type": "STRING",
+            "value": "&lt;="
+          }
+        ]
+      }
     },
     "intrinsic_attributes": {
       "type": "TOKEN",
