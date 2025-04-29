@@ -78,6 +78,10 @@
         {
           "type": "SYMBOL",
           "name": "id_assignment"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "intrinsic_attributes_pair"
         }
       ]
     },
@@ -849,32 +853,6 @@
       ]
     },
     "replacement": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "{"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "intrinsic_attributes"
-            },
-            {
-              "type": "STRING",
-              "value": "}"
-            }
-          ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_replacement"
-        }
-      ]
-    },
-    "_replacement": {
       "type": "TOKEN",
       "content": {
         "type": "CHOICE",
@@ -918,23 +896,149 @@
         ]
       }
     },
+    "intrinsic_attributes_pair": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "intrinsic_attributes"
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
     "intrinsic_attributes": {
       "type": "TOKEN",
       "content": {
-        "type": "REPEAT1",
-        "content": {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": "[^}]"
-            },
-            {
-              "type": "STRING",
-              "value": "\\}"
-            }
-          ]
-        }
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "startsb"
+          },
+          {
+            "type": "STRING",
+            "value": "endsb"
+          },
+          {
+            "type": "STRING",
+            "value": "vbar"
+          },
+          {
+            "type": "STRING",
+            "value": "caret"
+          },
+          {
+            "type": "STRING",
+            "value": "asterisk"
+          },
+          {
+            "type": "STRING",
+            "value": "tilde"
+          },
+          {
+            "type": "STRING",
+            "value": "plus"
+          },
+          {
+            "type": "STRING",
+            "value": "backslash"
+          },
+          {
+            "type": "STRING",
+            "value": "backtick"
+          },
+          {
+            "type": "STRING",
+            "value": "blank"
+          },
+          {
+            "type": "STRING",
+            "value": "empty"
+          },
+          {
+            "type": "STRING",
+            "value": "sp"
+          },
+          {
+            "type": "STRING",
+            "value": "two-colons"
+          },
+          {
+            "type": "STRING",
+            "value": "two-semicolons"
+          },
+          {
+            "type": "STRING",
+            "value": "nbsp"
+          },
+          {
+            "type": "STRING",
+            "value": "deg"
+          },
+          {
+            "type": "STRING",
+            "value": "zwsp"
+          },
+          {
+            "type": "STRING",
+            "value": "quot"
+          },
+          {
+            "type": "STRING",
+            "value": "apos"
+          },
+          {
+            "type": "STRING",
+            "value": "lsquo"
+          },
+          {
+            "type": "STRING",
+            "value": "rsquo"
+          },
+          {
+            "type": "STRING",
+            "value": "ldquo"
+          },
+          {
+            "type": "STRING",
+            "value": "rdquo"
+          },
+          {
+            "type": "STRING",
+            "value": "wj"
+          },
+          {
+            "type": "STRING",
+            "value": "brvbar"
+          },
+          {
+            "type": "STRING",
+            "value": "pp"
+          },
+          {
+            "type": "STRING",
+            "value": "cpp"
+          },
+          {
+            "type": "STRING",
+            "value": "amp"
+          },
+          {
+            "type": "STRING",
+            "value": "lt"
+          },
+          {
+            "type": "STRING",
+            "value": "gt"
+          }
+        ]
       }
     },
     "word": {

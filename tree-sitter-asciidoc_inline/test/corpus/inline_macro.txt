@@ -54,9 +54,7 @@ this is kbd:{cpp}[F3] or kbd:[Ctrl+Shift+T] or kbd:[Ctrl+\]] or kbd:[Ctrl,T] or 
   (inline_element
     (inline_macro
       (macro_name)
-      (target
-        (replacement
-          (intrinsic_attributes)))
+      (target)
       (attr)))
   (inline_element
     (word))
