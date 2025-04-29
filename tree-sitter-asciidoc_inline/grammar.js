@@ -185,7 +185,22 @@ module.exports = grammar({
         optional(alias($._stem_attr, $.attr)),
         ']',
       ),
-    replacement: $ => seq('{', $.intrinsic_attributes, '}'),
+    replacement: $ =>
+      choice(seq('{', $.intrinsic_attributes, '}'), $._replacement),
+    _replacement: _ =>
+      token(
+        choice(
+          '(C)',
+          '(R)',
+          '(TM)',
+          '...',
+          "`'",
+          '-&gt;',
+          '=&gr;',
+          '&lt;-',
+          '&lt;=',
+        ),
+      ),
     intrinsic_attributes: $ => token(repeat1(escaped_ch('}'))),
     word: $ =>
       choice(

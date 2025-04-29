@@ -150,7 +150,6 @@
   {
     "type": "inline",
     "named": true,
-    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -357,7 +356,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "intrinsic_attributes",
