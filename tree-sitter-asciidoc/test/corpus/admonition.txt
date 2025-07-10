@@ -9,6 +9,9 @@ IMPORTANT: aaaa
 CAUTION: aaaa
 WARNING: aaaa
 
+NOTE: Line 1
+    Line 2
+
 -----
 
 (document
@@ -36,4 +39,10 @@ WARNING: aaaa
     (section_block
       (admonition
         (admonition_warning)
+        (line)))))
+  (block_element
+    (section_block
+      (admonition
+        (admonition_note)
+        (line)
         (line)))))
