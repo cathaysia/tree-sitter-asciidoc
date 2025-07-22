@@ -1,4 +1,18 @@
 {
+  "name": "tree-sitter-asciidoc",
+  "version": "0.5.0",
+  "description": "asciidoc grammar for tree-sitter",
+  "repository": "github:cathaysia/tree-sitter-asciidoc",
+  "license": "Apache-2.0",
+  "author": "Loongtao Zhang <loongtao.zhang@outlook.com>",
+  "main": "bindings/node",
+  "types": "bindings/node",
+  "keywords": [
+    "incremental",
+    "parsing",
+    "tree-sitter",
+    "c++"
+  ],
   "scripts": {
     "install": "node-gyp-build",
     "prebuildify": "prebuildify --napi --strip",
@@ -20,7 +34,6 @@
   "devDependencies": {
     "prebuildify": "^6.0.1"
   },
-  "types": "bindings/node",
   "files": [
     "grammar.js",
     "binding.gyp",
