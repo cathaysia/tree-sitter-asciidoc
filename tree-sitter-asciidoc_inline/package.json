@@ -1,4 +1,18 @@
 {
+  "name": "tree-sitter-asciidoc_inline",
+  "version": "0.5.0",
+  "description": "asciidoc_inline grammar for tree-sitter",
+  "repository": "github:cathaysia/tree-sitter-asciidoc_inline",
+  "license": "Apache-2.0",
+  "author": "Loongtao Zhang <loongtao.zhang@outlook.com>",
+  "main": "bindings/node",
+  "types": "bindings/node",
+  "keywords": [
+    "incremental",
+    "parsing",
+    "tree-sitter",
+    "c++"
+  ],
   "scripts": {
     "install": "node-gyp-build",
     "prebuildify": "prebuildify --napi --strip",
@@ -20,7 +34,6 @@
   "devDependencies": {
     "prebuildify": "^6.0.1"
   },
-  "types": "bindings/node",
   "files": [
     "grammar.js",
     "binding.gyp",
@@ -31,8 +44,8 @@
   ],
   "tree-sitter": [
     {
-      "scope": "source.asciidoc",
-      "injection-regex": "^asciidoc$"
+      "scope": "source.asciidoc_inline",
+      "injection-regex": "^asciidoc_inline$"
     }
   ]
 }

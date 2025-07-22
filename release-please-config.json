@@ -22,11 +22,6 @@
           "jsonpath": "$.version"
         },
         {
-          "path": "tree-sitter-asciidoc/package-lock.json",
-          "type": "json",
-          "jsonpath": "$.version"
-        },
-        {
           "path": "tree-sitter-asciidoc_inline/Cargo.toml",
           "type": "toml",
           "jsonpath": "$.package.version"
@@ -38,11 +33,6 @@
         },
         {
           "path": "tree-sitter-asciidoc_inline/package.json",
-          "type": "json",
-          "jsonpath": "$.version"
-        },
-        {
-          "path": "tree-sitter-asciidoc_inline/package-lock.json",
           "type": "json",
           "jsonpath": "$.version"
         }
