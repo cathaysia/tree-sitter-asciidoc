@@ -94,7 +94,7 @@ module.exports = grammar({
     attribute_value: $ => repeat1(escaped_ch(']')),
 
     escaped_line: $ =>
-      repeat1(choice(/[^\/\n]/, /\/[^*]/, /\\\r?\n/, seq($.hard_wrap))),
+      repeat1(choice(/[^/\n]/, /\/[^*]/, /\\\r?\n/, seq($.hard_wrap))),
     hard_wrap: $ => ' +',
     element_attr: $ =>
       seq(

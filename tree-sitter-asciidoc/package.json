@@ -2,12 +2,8 @@
   "scripts": {
     "install": "node-gyp-build",
     "prebuildify": "prebuildify --napi --strip",
-    "build": "tree-sitter generate",
-    "test": "pnpm build && tree-sitter test",
-    "pbuild": "pnpm build && pnpm precommit",
-    "ptest": "pnpm pbuild && tree-sitter test",
-    "precommit": "pre-commit run -a 2>&1 >> /dev/null || true",
-    "compile": "gcc -shared -fPIC src/parser.c src/scanner.c -o build/asciidoc.so"
+    "generate": "tree-sitter generate",
+    "test": "pnpm generate && tree-sitter test"
   },
   "dependencies": {
     "node-addon-api": "^8.3.0",
