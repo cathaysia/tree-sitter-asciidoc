@@ -34,11 +34,3 @@ jobs:
       - name: run test
         run: |
           pnpm test
-
-  release_please:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: googleapis/release-please-action@v4
-        with:
-          token: ${{ secrets.GH_TOKEN }}
-          config-file: release-please-config.json
