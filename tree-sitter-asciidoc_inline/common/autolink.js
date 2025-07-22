@@ -17,7 +17,8 @@ exports.rules = {
       choice(seq(/\w[\w\d+.-][\w\d+.-]*:\/\//), /www\./i),
       prec.right(anySep1($._uri_segment, '.')),
     ),
-  _uri_segment: $ => /[^.\s["]+/,
+  // biome-ignore lint/complexity/noUselessEscapeInRegex: xxx
+  _uri_segment: $ => /[^\.\s\[\"]+/,
 
   email: $ =>
     // biome-ignore lint/suspicious/noControlCharactersInRegex: xxx

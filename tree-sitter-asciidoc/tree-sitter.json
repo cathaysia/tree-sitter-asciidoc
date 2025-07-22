@@ -1,0 +1,34 @@
+{
+  "grammars": [
+    {
+      "name": "asciidoc",
+      "camelcase": "asciidoc",
+      "scope": "source.j2",
+      "path": ".",
+      "file-types": ["asciidoc", "asciidoc"],
+      "highlights": "queries/highlights.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.6.0",
+    "license": "Apache-2.0",
+    "description": "asciidoc grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Loongtao Zhang",
+        "email": "loongtao.zhang@outlook.com"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/cathaysia/tree-sitter-asciidoc"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}
