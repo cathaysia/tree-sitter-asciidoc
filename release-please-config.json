@@ -4,40 +4,45 @@
   "include-component-in-tag": false,
   "packages": {
     "tree-sitter-asciidoc": {
-      "release-type": "rust",
+      "release-type": "simple",
       "extra-files": [
         {
-          "path": "pyproject.toml",
+          "path": "tree-sitter-asciidoc/Cargo.toml",
+          "type": "toml",
+          "jsonpath": "$.package.version"
+        },
+        {
+          "path": "tree-sitter-asciidoc/pyproject.toml",
           "type": "toml",
           "jsonpath": "$.project.version"
         },
         {
-          "path": "package.json",
+          "path": "tree-sitter-asciidoc/package.json",
           "type": "json",
           "jsonpath": "$.version"
         },
         {
-          "path": "package-lock.json",
+          "path": "tree-sitter-asciidoc/package-lock.json",
           "type": "json",
           "jsonpath": "$.version"
-        }
-      ]
-    },
-    "tree-sitter-asciidoc_inline": {
-      "release-type": "rust",
-      "extra-files": [
+        },
         {
-          "path": "pyproject.toml",
+          "path": "tree-sitter-asciidoc_inline/Cargo.toml",
+          "type": "toml",
+          "jsonpath": "$.package.version"
+        },
+        {
+          "path": "tree-sitter-asciidoc_inline/pyproject.toml",
           "type": "toml",
           "jsonpath": "$.project.version"
         },
         {
-          "path": "package.json",
+          "path": "tree-sitter-asciidoc_inline/package.json",
           "type": "json",
           "jsonpath": "$.version"
         },
         {
-          "path": "package-lock.json",
+          "path": "tree-sitter-asciidoc_inline/package-lock.json",
           "type": "json",
           "jsonpath": "$.version"
         }
