@@ -12,6 +12,11 @@
           "jsonpath": "$.package.version"
         },
         {
+          "path": "tree-sitter-asciidoc/tree-sitter.json",
+          "type": "json",
+          "jsonpath": "$.metadata.version"
+        },
+        {
           "path": "tree-sitter-asciidoc/pyproject.toml",
           "type": "toml",
           "jsonpath": "$.project.version"
@@ -25,6 +30,11 @@
           "path": "tree-sitter-asciidoc_inline/Cargo.toml",
           "type": "toml",
           "jsonpath": "$.package.version"
+        },
+        {
+          "path": "tree-sitter-asciidoc_inline/tree-sitter.json",
+          "type": "json",
+          "jsonpath": "$.metadata.version"
         },
         {
           "path": "tree-sitter-asciidoc_inline/pyproject.toml",
