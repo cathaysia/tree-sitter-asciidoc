@@ -5,7 +5,8 @@
     "checkJs": true,
     "allowJs": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noEmit": true
   },
-  "include": ["grammar.js", "../node_modules/tree-sitter-cli/dsl.d.ts"]
+  "include": ["**/*.js", "./node_modules/tree-sitter-cli/dsl.d.ts"]
 }

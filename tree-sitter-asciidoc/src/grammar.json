@@ -822,7 +822,7 @@
         "members": [
           {
             "type": "PATTERN",
-            "value": "[^\\|]"
+            "value": "[^|]"
           },
           {
             "type": "STRING",
@@ -1400,7 +1400,7 @@
         "members": [
           {
             "type": "PATTERN",
-            "value": "[^\\/\\n]"
+            "value": "[^/\\n]"
           },
           {
             "type": "PATTERN",
@@ -2170,5 +2170,6 @@
     }
   ],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }

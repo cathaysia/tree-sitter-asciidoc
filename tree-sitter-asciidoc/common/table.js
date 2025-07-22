@@ -26,7 +26,7 @@ exports.rules = {
         ),
       ),
     ),
-  table_cell_content: $ => repeat1(choice(/[^\|]/, '\\|')),
+  table_cell_content: $ => repeat1(choice(/[^|]/, '\\|')),
 
   ntable_block: $ =>
     prec.left(

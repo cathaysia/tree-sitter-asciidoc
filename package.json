@@ -3,12 +3,23 @@
   "version": "0.0.1",
   "private": true,
   "license": "Apache-2.0",
-  "packageManager": "pnpm@8.15.5",
-  "workspaces": ["./tree-sitter-asciidoc", "./tree-sitter-asciidoc_inline"],
+  "packageManager": "pnpm@9.15.1",
+  "workspaces": [
+    "./tree-sitter-asciidoc",
+    "./tree-sitter-asciidoc_inline"
+  ],
   "engines": {
     "node": ">=v20.12.2"
   },
+  "scripts": {
+    "generate": "pnpm generate_asciidoc && pnpm generate_asciidoc_inline",
+    "generate_asciidoc": "cd tree-sitter-asciidoc && pnpm generate",
+    "generate_asciidoc_inline": "cd tree-sitter-asciidoc_inline && pnpm generate",
+    "test": "pnpm test_asciidoc && pnpm test_asciidoc_inline",
+    "test_asciidoc": "cd tree-sitter-asciidoc && pnpm test",
+    "test_asciidoc_inline": "cd tree-sitter-asciidoc_inline && pnpm test"
+  },
   "devDependencies": {
-    "tree-sitter-cli": "^0.22.6"
+    "tree-sitter-cli": "^0.25.8"
   }
 }
