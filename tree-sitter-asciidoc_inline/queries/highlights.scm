@@ -5,7 +5,7 @@
 
 (emphasis) @markup.strong
 
-(ltalic) @markup.italic
+(italic) @markup.italic
 
 (highlight) @markup.italic
 
