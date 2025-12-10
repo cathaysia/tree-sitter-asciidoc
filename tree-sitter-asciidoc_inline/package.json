@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-asciidoc_inline",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "asciidoc_inline grammar for tree-sitter",
   "repository": "github:cathaysia/tree-sitter-asciidoc_inline",
   "license": "Apache-2.0",

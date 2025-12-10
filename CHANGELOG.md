@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/cathaysia/tree-sitter-asciidoc/compare/v0.6.0...v0.6.1) (2025-12-10)
+
+
+### Bug Fixes
+
+* fix some problem ([e0ff5a3](https://github.com/cathaysia/tree-sitter-asciidoc/commit/e0ff5a3e1513563adff5988f8d1f1fea586625c3))
+
 ## [0.6.0](https://github.com/cathaysia/tree-sitter-asciidoc/compare/v0.5.0...v0.6.0) (2025-07-22)
 
 
