@@ -5,12 +5,15 @@
       "camelcase": "asciidoc_inline",
       "scope": "source.j2",
       "path": ".",
-      "file-types": ["asciidoc_inline", "asciidoc_inline"],
+      "file-types": [
+        "asciidoc_inline",
+        "asciidoc_inline"
+      ],
       "highlights": "queries/highlights.scm"
     }
   ],
   "metadata": {
-    "version": "0.6.0",
+    "version": "0.6.1",
     "license": "Apache-2.0",
     "description": "asciidoc_inline grammar for tree-sitter",
     "authors": [
