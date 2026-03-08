@@ -20,6 +20,6 @@
     "test_asciidoc_inline": "cd tree-sitter-asciidoc_inline && pnpm test"
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.25.8"
+    "tree-sitter-cli": "^0.25.10"
   }
 }
