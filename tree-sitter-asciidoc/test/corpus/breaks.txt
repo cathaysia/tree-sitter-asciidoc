@@ -34,3 +34,33 @@ breaks
         (element_attr_marker))
       (breaks
         (breaks_marker)))))
+
+=============================================
+page breaks with more than 3 characters
+=============================================
+
+<<<<
+
+<<<<<
+
+''''
+
+'''''
+
+(document
+  (block_element
+    (section_block
+      (breaks
+        (breaks_marker))))
+  (block_element
+    (section_block
+      (breaks
+        (breaks_marker))))
+  (block_element
+    (section_block
+      (breaks
+        (breaks_marker))))
+  (block_element
+    (section_block
+      (breaks
+        (breaks_marker)))))

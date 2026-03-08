@@ -569,14 +569,11 @@ static inline bool parse_breaks(char start, TSLexer *lexer) {
         lexer->advance(lexer, false);
         skip_white_space(lexer);
         ++counter;
-        if(counter > 3) {
-            return false;
-        }
     }
 
     lexer->mark_end(lexer);
 
-    return counter == 3 && is_newline(lexer->lookahead);
+    return counter >= 3 && is_newline(lexer->lookahead);
 }
 
 static inline bool skip_white_space(TSLexer *lexer) {
