@@ -828,7 +828,15 @@
           "named": true
         },
         {
-          "type": "quoted_block_marker",
+          "type": "quoted_block",
+          "named": true
+        },
+        {
+          "type": "quoted_block_end_marker",
+          "named": true
+        },
+        {
+          "type": "quoted_block_start_marker",
           "named": true
         }
       ]
@@ -1473,11 +1481,15 @@
     "named": true
   },
   {
-    "type": "quoted_block_marker",
+    "type": "quoted_block_end_marker",
     "named": true
   },
   {
     "type": "quoted_block_md_marker",
+    "named": true
+  },
+  {
+    "type": "quoted_block_start_marker",
     "named": true
   },
   {

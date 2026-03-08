@@ -416,13 +416,19 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
                     break;
                 }
                 case '_': {
-                    if(valid_symbols[TOKEN_QUOTED_BLOCK_MARKER]) {
-                        if(parse_sequence(lexer, "____")) {
-                            lexer->mark_end(lexer);
-                            lexer->result_symbol = TOKEN_QUOTED_BLOCK_MARKER;
-                            if(is_newline(lexer->lookahead) || is_eof(lexer)) {
-                                return true;
+                    if(valid_symbols[TOKEN_QUOTED_BLOCK_START_MARKER] || valid_symbols[TOKEN_QUOTED_BLOCK_END_MARKER]) {
+                        consume('_', lexer, false, NULL, USIZE_MAX);
+                        lexer->mark_end(lexer);
+                        usize counter = lexer->get_column(lexer);
+                        if(counter >= 4 && (is_newline(lexer->lookahead) || is_eof(lexer))) {
+                            if(scanner_is_matching(s, BLOCK_KIND_QUOTED, counter)) {
+                                scanner_pop(s);
+                                lexer->result_symbol = TOKEN_QUOTED_BLOCK_END_MARKER;
+                            } else {
+                                scanner_push(s, BLOCK_KIND_QUOTED, counter);
+                                lexer->result_symbol = TOKEN_QUOTED_BLOCK_START_MARKER;
                             }
+                            return true;
                         }
                     }
                     break;

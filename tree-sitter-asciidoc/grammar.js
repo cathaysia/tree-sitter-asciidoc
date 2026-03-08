@@ -195,7 +195,13 @@ module.exports = grammar({
       ),
 
     quoted_block: $ =>
-      choice(seq($.quoted_block_marker, repeat($.line), $.quoted_block_marker)),
+      prec.left(
+        seq(
+          $.quoted_block_start_marker,
+          repeat(choice($.line, $.quoted_block)),
+          $.quoted_block_end_marker,
+        ),
+      ),
     quoted_md_block: $ =>
       prec.right(
         repeat1(
@@ -237,7 +243,8 @@ module.exports = grammar({
     $.listing_block_start_marker,
     $.listing_block_end_marker,
     $.literal_block_marker,
-    $.quoted_block_marker,
+    $.quoted_block_start_marker,
+    $.quoted_block_end_marker,
     $.quoted_block_md_marker,
     $.quoted_paragraph_marker,
     $.open_block_marker,
