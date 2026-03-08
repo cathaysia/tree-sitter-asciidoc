@@ -14,7 +14,7 @@
 #endif  // ifndef LIST_GROW_SIZE
 
 void *tree_sitter_asciidoc_external_scanner_create() {
-    Scanner *scanner = (Scanner *)malloc(sizeof(Scanner));
+    Scanner *scanner = (Scanner *)ts_malloc(sizeof(Scanner));
     scanner_init(scanner);
     return scanner;
 }
