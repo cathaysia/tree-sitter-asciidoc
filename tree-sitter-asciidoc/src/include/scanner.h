@@ -7,7 +7,8 @@ typedef enum BlockKind {
     BLOCK_KIND_DELIMITED,
     BLOCK_KIND_TABLE,
     BLOCK_KIND_LISTING,
-    BLOCK_KIND_LITERAL
+    BLOCK_KIND_LITERAL,
+    BLOCK_KIND_SIDEBAR
 } BlockKind;
 
 typedef struct Node {

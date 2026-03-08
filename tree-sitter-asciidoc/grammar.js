@@ -55,6 +55,7 @@ module.exports = grammar({
           $.quoted_block,
           $.quoted_md_block,
           $.passthrough_block,
+          $.sidebar_block,
           $.block_macro,
         ),
       ),
@@ -116,6 +117,14 @@ module.exports = grammar({
     open_block: $ =>
       prec.left(
         seq($.open_block_marker, repeat($.section_block), $.open_block_marker),
+      ),
+    sidebar_block: $ =>
+      prec.left(
+        seq(
+          $.sidebar_block_start_marker,
+          repeat($.section_block),
+          $.sidebar_block_end_marker,
+        ),
       ),
     passthrough_block: $ =>
       seq(
@@ -246,5 +255,7 @@ module.exports = grammar({
     $.admonition_warning,
     $.ident_marker,
     $.list_continuation,
+    $.sidebar_block_start_marker,
+    $.sidebar_block_end_marker,
   ],
 });

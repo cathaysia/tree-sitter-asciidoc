@@ -979,6 +979,10 @@
           "named": true
         },
         {
+          "type": "sidebar_block",
+          "named": true
+        },
+        {
           "type": "table_block",
           "named": true
         },
@@ -1000,6 +1004,29 @@
         },
         {
           "type": "title5",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sidebar_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "section_block",
+          "named": true
+        },
+        {
+          "type": "sidebar_block_end_marker",
+          "named": true
+        },
+        {
+          "type": "sidebar_block_start_marker",
           "named": true
         }
       ]
@@ -1455,6 +1482,14 @@
   },
   {
     "type": "quoted_paragraph_marker",
+    "named": true
+  },
+  {
+    "type": "sidebar_block_end_marker",
+    "named": true
+  },
+  {
+    "type": "sidebar_block_start_marker",
     "named": true
   },
   {
