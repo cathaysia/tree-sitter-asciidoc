@@ -166,7 +166,7 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
 
                     if(valid_symbols[TOKEN_SIDEBAR_BLOCK_START_MARKER] || valid_symbols[TOKEN_SIDEBAR_BLOCK_END_MARKER]) {
                         usize col = lexer->get_column(lexer);
-                        if(col >= 4 && is_new_line(lexer->lookahead)) {
+                        if(col >= 4 && (is_new_line(lexer->lookahead) || is_eof(lexer))) {
                             if(scanner_is_matching(s, BLOCK_KIND_SIDEBAR, col)) {
                                 scanner_pop(s);
                                 lexer->result_symbol = TOKEN_SIDEBAR_BLOCK_END_MARKER;
