@@ -43,11 +43,11 @@ and as necessary in the political world as storms in the physical."
         (attr_value)
         (element_attr_marker))
       (quoted_block
-        (quoted_block_marker)
+        (quoted_block_start_marker)
         (line)
         (line)
         (line)
-        (quoted_block_marker))))
+        (quoted_block_end_marker))))
   (block_element
     (section_block
       (quoted_md_block
@@ -89,3 +89,60 @@ and as necessary in the political world as storms in the physical."
         (quoted_line
           (quoted_paragraph_marker)
           (line))))))
+
+=================================
+quoted_block_variable_length
+=================================
+
+_____
+A quoted block with five underscores.
+_____
+
+________
+A quoted block with eight underscores.
+________
+
+-----
+
+(document
+  (block_element
+    (section_block
+      (quoted_block
+        (quoted_block_start_marker)
+        (line)
+        (quoted_block_end_marker))))
+  (block_element
+    (section_block
+      (quoted_block
+        (quoted_block_start_marker)
+        (line)
+        (quoted_block_end_marker)))))
+
+===================================
+quoted_block_nested_variable_length
+===================================
+
+______
+Outer quoted block.
+
+____
+Inner quoted block.
+____
+
+Back to outer.
+______
+
+-----
+
+(document
+  (block_element
+    (section_block
+      (quoted_block
+        (quoted_block_start_marker)
+        (line)
+        (quoted_block
+          (quoted_block_start_marker)
+          (line)
+          (quoted_block_end_marker))
+        (line)
+        (quoted_block_end_marker)))))

@@ -1924,29 +1924,37 @@
       ]
     },
     "quoted_block": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "quoted_block_marker"
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "line"
-              }
-            },
-            {
-              "type": "SYMBOL",
-              "name": "quoted_block_marker"
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "quoted_block_start_marker"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "line"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "quoted_block"
+                }
+              ]
             }
-          ]
-        }
-      ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "quoted_block_end_marker"
+          }
+        ]
+      }
     },
     "quoted_md_block": {
       "type": "PREC_RIGHT",
@@ -2126,7 +2134,11 @@
     },
     {
       "type": "SYMBOL",
-      "name": "quoted_block_marker"
+      "name": "quoted_block_start_marker"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "quoted_block_end_marker"
     },
     {
       "type": "SYMBOL",
