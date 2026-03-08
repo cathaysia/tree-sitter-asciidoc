@@ -248,25 +248,24 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
                     break;
                 }
                 case '.': {
-                    lexer->advance(lexer, false);
+                    consume('.', lexer, false, NULL, USIZE_MAX);
                     lexer->mark_end(lexer);
                     if(valid_symbols[TOKEN_LITERAL_BLOCK_MARKER]) {
-                        if(parse_sequence(lexer, "...")) {
-                            if(is_newline(lexer->lookahead)) {
-                                lexer->mark_end(lexer);
+                        usize counter = lexer->get_column(lexer);
+                        if(counter >= 4 && is_newline(lexer->lookahead)) {
+                            if(scanner_is_matching(s, BLOCK_KIND_LITERAL, counter)) {
+                                scanner_pop(s);
                                 lexer->result_symbol = TOKEN_LITERAL_BLOCK_MARKER;
-                                if(scanner_is_matching(s, BLOCK_KIND_LITERAL, 0)) {
-                                    scanner_pop(s);
-                                } else {
-                                    scanner_push(s, BLOCK_KIND_LITERAL, 4);
-                                }
+                                return true;
+                            } else if(!scanner_is_matching_raw_block(s)) {
+                                scanner_push(s, BLOCK_KIND_LITERAL, counter);
+                                lexer->result_symbol = TOKEN_LITERAL_BLOCK_MARKER;
                                 return true;
                             }
                         }
                     }
 
                     if(valid_symbols[TOKEN_LIST_MARKER_DOT]) {
-                        consume('.', lexer, false, NULL, USIZE_MAX);
                         if(is_white_space(lexer->lookahead)) {
                             lexer->mark_end(lexer);
                             lexer->result_symbol = TOKEN_LIST_MARKER_DOT;
