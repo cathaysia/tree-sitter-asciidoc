@@ -1103,6 +1103,10 @@
             },
             {
               "type": "SYMBOL",
+              "name": "sidebar_block"
+            },
+            {
+              "type": "SYMBOL",
               "name": "block_macro"
             }
           ]
@@ -1529,6 +1533,30 @@
           {
             "type": "SYMBOL",
             "name": "open_block_marker"
+          }
+        ]
+      }
+    },
+    "sidebar_block": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "sidebar_block_start_marker"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "section_block"
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "sidebar_block_end_marker"
           }
         ]
       }
@@ -2167,6 +2195,14 @@
     {
       "type": "SYMBOL",
       "name": "list_continuation"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "sidebar_block_start_marker"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "sidebar_block_end_marker"
     }
   ],
   "inline": [],

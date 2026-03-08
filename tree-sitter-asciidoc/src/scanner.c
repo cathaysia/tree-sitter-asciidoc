@@ -164,6 +164,23 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
                     lexer->mark_end(lexer);
                     bool is_unordered_marker = is_white_space(lexer->lookahead);
 
+                    if(valid_symbols[TOKEN_SIDEBAR_BLOCK_START_MARKER] || valid_symbols[TOKEN_SIDEBAR_BLOCK_END_MARKER]) {
+                        usize col = lexer->get_column(lexer);
+                        if(col >= 4 && is_new_line(lexer->lookahead)) {
+                            if(scanner_is_matching(s, BLOCK_KIND_SIDEBAR, col)) {
+                                scanner_pop(s);
+                                lexer->result_symbol = TOKEN_SIDEBAR_BLOCK_END_MARKER;
+                                return true;
+                            } else {
+                                if(!scanner_is_matching_raw_block(s)) {
+                                    scanner_push(s, BLOCK_KIND_SIDEBAR, col);
+                                    lexer->result_symbol = TOKEN_SIDEBAR_BLOCK_START_MARKER;
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+
                     if(valid_symbols[TOKEN_BREAKS_MARKS]) {
                         skip_white_space(lexer);
                         while(lexer->lookahead == '*') {
