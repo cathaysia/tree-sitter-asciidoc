@@ -104,3 +104,51 @@ rawblock
           (callout_list_item
             (callout_list_marker)
             (line)))))))
+
+================
+variable length literal blocks
+================
+
+....
+standard block
+....
+
+.....
+five dot block
+.....
+
+........
+eight dot block
+........
+
+....
+........
+....
+
+-------------------
+
+(document
+  (block_element
+    (section_block
+      (literal_block
+        (literal_block_marker)
+        (literal_block_body)
+        (literal_block_marker))))
+  (block_element
+    (section_block
+      (literal_block
+        (literal_block_marker)
+        (literal_block_body)
+        (literal_block_marker))))
+  (block_element
+    (section_block
+      (literal_block
+        (literal_block_marker)
+        (literal_block_body)
+        (literal_block_marker))))
+  (block_element
+    (section_block
+      (literal_block
+        (literal_block_marker)
+        (literal_block_body)
+        (literal_block_marker)))))
