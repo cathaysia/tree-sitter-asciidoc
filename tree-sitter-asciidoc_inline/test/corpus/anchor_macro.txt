@@ -20,7 +20,8 @@ this is a [[idname]] or [[idname,Reference Text]] or anchor:idname[] or anchor:i
     (word))
   (inline_element
     (id_assignment
-      (id)))
+      (id)
+      (reftext)))
   (inline_element
     (word))
   (inline_element

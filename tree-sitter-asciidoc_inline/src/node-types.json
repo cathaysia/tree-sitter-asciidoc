@@ -107,11 +107,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "id",
+          "named": true
+        },
+        {
+          "type": "reftext",
           "named": true
         }
       ]
