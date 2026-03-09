@@ -52,12 +52,7 @@ function escaped_ch(ch, exclude_newline, ...args) {
     return `\\${v}`;
   });
 
-  if (ch === ']') {
-    escaped = '\\]';
-  }
-  if (ch === '[') {
-    escaped = '\\[';
-  }
+  escaped = escaped.replace(/\]/g, '\\]').replace(/\[/g, '\\[');
   if (exclude_newline) {
     escaped += '\r\n';
   }

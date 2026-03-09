@@ -69,8 +69,12 @@ module.exports = grammar({
         $.intrinsic_attributes_pair,
       ),
     ...autolink.rules,
-    id_assignment: $ => choice(seq('[#', $.id, ']'), seq('[[', $.id, ']]')),
-    id: $ => repeat1(escaped_ch(']')),
+    id_assignment: $ => choice(
+      seq('[#', $.id, ']'),
+      seq('[[', $.id, optional(seq(',', $.reftext)), ']]'),
+    ),
+    id: $ => repeat1(escaped_ch(',]')),
+    reftext: $ => repeat1(escaped_ch(']')),
     macro_name: $ =>
       choice(
         'kbd',
