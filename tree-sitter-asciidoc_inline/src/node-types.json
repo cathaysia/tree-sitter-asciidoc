@@ -93,6 +93,11 @@
     }
   },
   {
+    "type": "hard_wrap",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "highlight",
     "named": true,
     "fields": {}
@@ -185,6 +190,10 @@
         },
         {
           "type": "footnote",
+          "named": true
+        },
+        {
+          "type": "hard_wrap",
           "named": true
         },
         {

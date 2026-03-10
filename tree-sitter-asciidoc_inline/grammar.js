@@ -39,7 +39,7 @@ const PUNCTUATION_CHARACTERS_ARRAY = [
 
 module.exports = grammar({
   name: 'asciidoc_inline',
-  externals: $ => [$._eof],
+  externals: $ => [$._eof, $._hard_wrap_plus],
   precedences: $ => [
     [$.autolink, $._punctuation],
     [$.passthrough, $._punctuation],
@@ -67,6 +67,7 @@ module.exports = grammar({
         $.index_term2,
         $.id_assignment,
         $.intrinsic_attributes_pair,
+        $.hard_wrap,
       ),
     ...autolink.rules,
     id_assignment: $ => choice(
@@ -333,6 +334,7 @@ module.exports = grammar({
         ')))',
       ),
     term: $ => repeat1(escaped_ch(',)')),
+    hard_wrap: $ => $._hard_wrap_plus,
   },
 });
 

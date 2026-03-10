@@ -1,0 +1,40 @@
+====================
+hard line break
+====================
+
+text +
+
+-----
+
+(inline
+  (inline_element
+    (word))
+  (inline_element
+    (hard_wrap)))
+
+====================
+plus in passthrough is not hard line break
+====================
+
++text+
+
+-----
+
+(inline
+  (inline_element
+    (passthrough)))
+
+====================
+plus without leading space is not hard line break
+====================
+
+text+
+
+-----
+
+(inline
+  (inline_element
+    (word))
+  (inline_element
+    (passthrough
+      (MISSING "+"))))

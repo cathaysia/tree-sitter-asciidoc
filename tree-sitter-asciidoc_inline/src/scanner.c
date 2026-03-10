@@ -3,6 +3,7 @@
 
 typedef enum TokenType {
     TOKEN_TYPE_EOF,
+    TOKEN_HARD_WRAP_PLUS,
 } TokenType;
 
 void *tree_sitter_asciidoc_inline_external_scanner_create() {
@@ -22,6 +23,23 @@ void tree_sitter_asciidoc_inline_external_scanner_deserialize(void *payload, con
 }
 
 bool tree_sitter_asciidoc_inline_external_scanner_scan(void *payload, TSLexer *lexer, const bool *valid_symbols) {
+    if (valid_symbols[TOKEN_HARD_WRAP_PLUS]) {
+        if (lexer->lookahead == ' ') {
+            while (lexer->lookahead == ' ') {
+                lexer->advance(lexer, false);
+            }
+            if (lexer->lookahead == '+') {
+                lexer->advance(lexer, false);
+                if (lexer->eof(lexer) || lexer->lookahead == '\n' || lexer->lookahead == '\r') {
+                    lexer->mark_end(lexer);
+                    lexer->result_symbol = TOKEN_HARD_WRAP_PLUS;
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
     if(lexer->eof(lexer)) {
         if(valid_symbols[TOKEN_TYPE_EOF]) {
             lexer->result_symbol = TOKEN_TYPE_EOF;
