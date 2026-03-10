@@ -72,3 +72,5 @@
 (id_assignment) @label
 
 (super_escape) @string.special
+
+(hard_wrap) @punctuation.special

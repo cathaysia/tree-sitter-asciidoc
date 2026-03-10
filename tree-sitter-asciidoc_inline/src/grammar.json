@@ -83,6 +83,10 @@
         {
           "type": "SYMBOL",
           "name": "intrinsic_attributes_pair"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hard_wrap"
         }
       ]
     },
@@ -2155,6 +2159,10 @@
           }
         ]
       }
+    },
+    "hard_wrap": {
+      "type": "SYMBOL",
+      "name": "_hard_wrap_plus"
     }
   },
   "extras": [
@@ -2190,6 +2198,10 @@
     {
       "type": "SYMBOL",
       "name": "_eof"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_hard_wrap_plus"
     }
   ],
   "inline": [],
