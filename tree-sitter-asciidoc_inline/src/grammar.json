@@ -1500,79 +1500,96 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "TOKEN",
-                  "content": {
-                    "type": "PREC",
-                    "value": 1,
-                    "content": {
-                      "type": "STRING",
-                      "value": "+"
-                    }
-                  }
-                },
-                {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "PATTERN",
-                        "value": "[^+\\r\\n]"
-                      },
-                      {
-                        "type": "STRING",
-                        "value": "\\+"
-                      }
-                    ]
-                  }
-                },
-                {
+          "type": "TOKEN",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "PREC",
+                "value": 1,
+                "content": {
                   "type": "STRING",
                   "value": "+"
                 }
-              ]
-            },
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "TOKEN",
-                  "content": {
-                    "type": "PREC",
-                    "value": 1,
-                    "content": {
-                      "type": "STRING",
-                      "value": "++"
-                    }
-                  }
-                },
-                {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "CHOICE",
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[^+ \\t\\r\\n]"
+                  },
+                  {
+                    "type": "SEQ",
                     "members": [
                       {
                         "type": "PATTERN",
-                        "value": "[^+\\r\\n]"
+                        "value": "[^+ \\t\\r\\n]"
                       },
                       {
-                        "type": "STRING",
-                        "value": "\\+"
+                        "type": "REPEAT",
+                        "content": {
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "PATTERN",
+                              "value": "[^+\\r\\n]"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\+"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "PATTERN",
+                        "value": "[^+ \\t\\r\\n]"
                       }
                     ]
                   }
-                },
-                {
+                ]
+              },
+              {
+                "type": "STRING",
+                "value": "+"
+              }
+            ]
+          }
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": 1,
+                "content": {
                   "type": "STRING",
                   "value": "++"
                 }
-              ]
+              }
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[^+\\r\\n]"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "\\+"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "STRING",
+              "value": "++"
             }
           ]
         },

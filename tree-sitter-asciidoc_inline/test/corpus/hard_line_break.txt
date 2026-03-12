@@ -25,6 +25,21 @@ plus in passthrough is not hard line break
     (passthrough)))
 
 ====================
+constrained passthrough with trailing space is not passthrough
+====================
+
++some +
+
+-----
+
+(inline
+  (inline_element)
+  (inline_element
+    (word))
+  (inline_element
+    (hard_wrap)))
+
+====================
 plus without leading space is not hard line break
 ====================
 
@@ -35,6 +50,4 @@ text+
 (inline
   (inline_element
     (word))
-  (inline_element
-    (passthrough
-      (MISSING "+"))))
+  (inline_element))

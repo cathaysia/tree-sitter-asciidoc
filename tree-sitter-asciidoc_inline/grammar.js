@@ -306,7 +306,27 @@ module.exports = grammar({
     _punctuation: _ => choice(...PUNCTUATION_CHARACTERS_ARRAY),
     passthrough: $ =>
       choice(
-        create_text_formatting('+'),
+        // constrained: word-boundary enforced (content starts+ends non-ws)
+        token(
+          seq(
+            prec(1, '+'),
+            choice(
+              /[^+ \t\r\n]/,
+              seq(
+                /[^+ \t\r\n]/,
+                repeat(choice(/[^+\r\n]/, '\\+')),
+                /[^+ \t\r\n]/,
+              ),
+            ),
+            '+',
+          ),
+        ),
+        // unconstrained
+        seq(
+          token(prec(1, '++')),
+          repeat(escaped_ch('+', true)),
+          '++',
+        ),
         seq('$$', repeat1(escaped_ch('$', true, '\\$$')), '$$'),
       ),
     xref: $ =>
