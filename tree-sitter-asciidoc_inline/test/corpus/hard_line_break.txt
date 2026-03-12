@@ -40,6 +40,28 @@ constrained passthrough with trailing space is not passthrough
     (hard_wrap)))
 
 ====================
+bare plus is punctuation
+====================
+
++
+
+-----
+
+(inline
+  (inline_element))
+
+====================
+whitespace plus bare plus is punctuation
+====================
+
+    +
+
+-----
+
+(inline
+  (inline_element))
+
+====================
 plus without leading space is not hard line break
 ====================
 
