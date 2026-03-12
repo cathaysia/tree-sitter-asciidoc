@@ -2199,16 +2199,6 @@
         "type": "SYMBOL",
         "name": "_punctuation"
       }
-    ],
-    [
-      {
-        "type": "SYMBOL",
-        "name": "passthrough"
-      },
-      {
-        "type": "SYMBOL",
-        "name": "_punctuation"
-      }
     ]
   ],
   "externals": [
