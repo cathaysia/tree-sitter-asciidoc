@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.7.0](https://github.com/cathaysia/tree-sitter-asciidoc/compare/v0.6.0...v0.7.0) (2026-03-14)
+
+
+### Features
+
+* **inline:** add hard line break recognition ([15e47d9](https://github.com/cathaysia/tree-sitter-asciidoc/commit/15e47d915655e05b408841c1106480291d768046))
+* **inline:** parse reftext in id_assignment [[id,reftext]] ([3caad60](https://github.com/cathaysia/tree-sitter-asciidoc/commit/3caad607af97077ef570f21a72803e28cf359867))
+* **scanner:** add sidebar block support ([54720ad](https://github.com/cathaysia/tree-sitter-asciidoc/commit/54720ad58300ac89ac21c909bfb8f9638d3ff089))
+
+
+### Bug Fixes
+
+* **ci:** update tree-sitter-cli lockfile to v0.25.10 ([c59e5bf](https://github.com/cathaysia/tree-sitter-asciidoc/commit/c59e5bfd09743ede5feffa00c5732c3c66496770))
+* fix some problem ([e0ff5a3](https://github.com/cathaysia/tree-sitter-asciidoc/commit/e0ff5a3e1513563adff5988f8d1f1fea586625c3))
+* **inline:** enforce word-boundary for constrained passthrough ([7f92efd](https://github.com/cathaysia/tree-sitter-asciidoc/commit/7f92efd47378babd8aac5e0d37eb0e75c64c5acc))
+* **inline:** remove passthrough precedence over punctuation ([12ea38e](https://github.com/cathaysia/tree-sitter-asciidoc/commit/12ea38e6cf4b2b041f3fd493ea3592aa439a46f5))
+* **scanner:** add eof check and highlights for sidebar block ([c6a78de](https://github.com/cathaysia/tree-sitter-asciidoc/commit/c6a78de81f2c45127fe4d9564dae3715d4f339fd))
+* **scanner:** allow 3+ page/thematic break chars ([14e660b](https://github.com/cathaysia/tree-sitter-asciidoc/commit/14e660bacac69a905e71ab1041eb64eb266a6112))
+* **scanner:** allow variable-length literal blocks ([9cda3b0](https://github.com/cathaysia/tree-sitter-asciidoc/commit/9cda3b02fdc8e5fa516ceacb1e94cfeea4ed389b))
+* **scanner:** allow variable-length quoted blocks ([1193fb9](https://github.com/cathaysia/tree-sitter-asciidoc/commit/1193fb9e6c8d52ac243d832009c42062694338b8))
+* **scanner:** use ts_malloc in _create() ([441240a](https://github.com/cathaysia/tree-sitter-asciidoc/commit/441240a510a9a5345cfe6ea91e33f7fd75fcc828))
+
 ## [0.6.0](https://github.com/cathaysia/tree-sitter-asciidoc/compare/v0.5.0...v0.6.0) (2025-07-22)
 
 
