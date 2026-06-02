@@ -12,8 +12,12 @@ id
   (inline_element
     (id_assignment
       (id)))
+  (inline_element)
   (inline_element
-    (emphasis))
+    (word))
+  (inline_element
+    (word))
+  (inline_element)
   (inline_element
     (word))
   (inline_element
@@ -33,8 +37,12 @@ id 2
   (inline_element
     (id_assignment
       (id)))
+  (inline_element)
   (inline_element
-    (emphasis))
+    (word))
+  (inline_element
+    (word))
+  (inline_element)
   (inline_element
     (word))
   (inline_element
