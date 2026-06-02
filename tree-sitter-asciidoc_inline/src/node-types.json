@@ -245,6 +245,14 @@
           "named": true
         },
         {
+          "type": "subscript",
+          "named": true
+        },
+        {
+          "type": "superscript",
+          "named": true
+        },
+        {
           "type": "word",
           "named": true
         },
@@ -405,6 +413,16 @@
         }
       ]
     }
+  },
+  {
+    "type": "subscript",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "superscript",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "target",
@@ -723,6 +741,10 @@
     "named": false
   },
   {
+    "type": "\\^",
+    "named": false
+  },
+  {
     "type": "\\_",
     "named": false
   },
@@ -820,6 +842,10 @@
   },
   {
     "type": "\\xref",
+    "named": false
+  },
+  {
+    "type": "\\~",
     "named": false
   },
   {

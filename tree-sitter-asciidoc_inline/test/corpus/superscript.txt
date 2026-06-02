@@ -1,0 +1,66 @@
+====================
+superscript
+====================
+
+E=mc^2^
+
+-----
+
+(inline
+  (inline_element
+    (word))
+  (inline_element)
+  (inline_element
+    (word))
+  (inline_element
+    (superscript)))
+
+====================
+subscript
+====================
+
+H~2~O
+
+-----
+
+(inline
+  (inline_element
+    (word))
+  (inline_element
+    (subscript))
+  (inline_element
+    (word)))
+
+====================
+superscript and subscript on one line
+====================
+
+O~2~ and m^2^
+
+-----
+
+(inline
+  (inline_element
+    (word))
+  (inline_element
+    (subscript))
+  (inline_element
+    (word))
+  (inline_element
+    (word))
+  (inline_element
+    (superscript)))
+
+====================
+escaped delimiter inside superscript
+====================
+
+x^a\^b^
+
+-----
+
+(inline
+  (inline_element
+    (word))
+  (inline_element
+    (superscript)))

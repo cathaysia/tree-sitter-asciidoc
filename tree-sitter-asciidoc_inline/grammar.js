@@ -57,6 +57,8 @@ module.exports = grammar({
         $.ltalic,
         $.monospace,
         $.highlight,
+        $.superscript,
+        $.subscript,
         $.inline_macro,
         $.stem_macro,
         $.footnote,
@@ -340,6 +342,20 @@ module.exports = grammar({
       create_text_formatting('_', $.emphasis, $.monospace, $.highlight),
     monospace: $ => create_text_formatting('`'),
     highlight: $ => create_text_formatting('#'),
+
+    // Superscript (^x^) and subscript (~x~) are unconstrained but their
+    // content is a single run with no unescaped spaces, so they can't reuse
+    // `escaped_ch` (which permits whitespace) like the formatting above.
+    superscript: $ => seq(
+      token(prec(1, '^')),
+      repeat1(choice(/[^\s^]/, '\\^')),
+      '^',
+    ),
+    subscript: $ => seq(
+      token(prec(1, '~')),
+      repeat1(choice(/[^\s~]/, '\\~')),
+      '~',
+    ),
 
     index_term2: $ => seq('((', $.term, optional(seq(',', $.term)), '))'),
     index_term: $ =>
