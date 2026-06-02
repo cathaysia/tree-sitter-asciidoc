@@ -39,7 +39,19 @@ const PUNCTUATION_CHARACTERS_ARRAY = [
 
 module.exports = grammar({
   name: 'asciidoc_inline',
-  externals: $ => [$._eof, $._hard_wrap_plus],
+  externals: $ => [
+    $._eof,
+    $._hard_wrap_plus,
+    // Opening delimiters for constrained formatting.  The external
+    // scanner emits one of these only when a valid matching close exists
+    // on the line, so an unpaired delimiter (e.g. the `#' in "issue #2",
+    // a lone `*', or the `_' in "do_something_useful") stays punctuation
+    // instead of error-recovering into a formatting node.
+    $._emphasis_begin,
+    $._italic_begin,
+    $._monospace_begin,
+    $._highlight_begin,
+  ],
   precedences: $ => [[$.autolink, $._punctuation]],
 
   rules: {
@@ -337,11 +349,11 @@ module.exports = grammar({
       ),
 
     emphasis: $ =>
-      create_text_formatting('*', $.ltalic, $.monospace, $.highlight),
+      create_text_formatting('*', $._emphasis_begin, [$.ltalic, $.monospace, $.highlight]),
     ltalic: $ =>
-      create_text_formatting('_', $.emphasis, $.monospace, $.highlight),
-    monospace: $ => create_text_formatting('`'),
-    highlight: $ => create_text_formatting('#'),
+      create_text_formatting('_', $._italic_begin, [$.emphasis, $.monospace, $.highlight]),
+    monospace: $ => create_text_formatting('`', $._monospace_begin, []),
+    highlight: $ => create_text_formatting('#', $._highlight_begin, []),
 
     // Superscript (^x^) and subscript (~x~) are unconstrained but their
     // content is a single run with no unescaped spaces, so they can't reuse
@@ -371,9 +383,12 @@ module.exports = grammar({
   },
 });
 
-function create_text_formatting(ch, ...args) {
+function create_text_formatting(ch, begin, args) {
   return choice(
-    seq(token(prec(1, ch)), repeat(escaped_ch(ch, true, ...args)), ch),
+    // Constrained: the opening delimiter is supplied by the external
+    // scanner (BEGIN), which only fires when the span actually closes.
+    seq(begin, repeat(escaped_ch(ch, true, ...args)), ch),
+    // Unconstrained: a literal double delimiter.
     seq(
       token(prec(1, ch + ch)),
       repeat(escaped_ch(ch, true, ...args)),

@@ -1719,15 +1719,8 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "TOKEN",
-              "content": {
-                "type": "PREC",
-                "value": 1,
-                "content": {
-                  "type": "STRING",
-                  "value": "*"
-                }
-              }
+              "type": "SYMBOL",
+              "name": "_emphasis_begin"
             },
             {
               "type": "REPEAT",
@@ -1820,15 +1813,8 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "TOKEN",
-              "content": {
-                "type": "PREC",
-                "value": 1,
-                "content": {
-                  "type": "STRING",
-                  "value": "_"
-                }
-              }
+              "type": "SYMBOL",
+              "name": "_italic_begin"
             },
             {
               "type": "REPEAT",
@@ -1921,15 +1907,8 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "TOKEN",
-              "content": {
-                "type": "PREC",
-                "value": 1,
-                "content": {
-                  "type": "STRING",
-                  "value": "`"
-                }
-              }
+              "type": "SYMBOL",
+              "name": "_monospace_begin"
             },
             {
               "type": "REPEAT",
@@ -1998,15 +1977,8 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "TOKEN",
-              "content": {
-                "type": "PREC",
-                "value": 1,
-                "content": {
-                  "type": "STRING",
-                  "value": "#"
-                }
-              }
+              "type": "SYMBOL",
+              "name": "_highlight_begin"
             },
             {
               "type": "REPEAT",
@@ -2289,6 +2261,22 @@
     {
       "type": "SYMBOL",
       "name": "_hard_wrap_plus"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_emphasis_begin"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_italic_begin"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_monospace_begin"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_highlight_begin"
     }
   ],
   "inline": [],

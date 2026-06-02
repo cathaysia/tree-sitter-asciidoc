@@ -1,0 +1,57 @@
+==================================================
+unpaired hash is not highlight
+==================================================
+
+issue #2 ok
+
+--------------------------------------------------
+
+(inline
+  (inline_element
+    (word))
+  (inline_element)
+  (inline_element
+    (word))
+  (inline_element
+    (word)))
+
+==================================================
+underscores in an identifier are not italic
+==================================================
+
+do_something_useful x
+
+--------------------------------------------------
+
+(inline
+  (inline_element
+    (word))
+  (inline_element)
+  (inline_element
+    (word))
+  (inline_element)
+  (inline_element
+    (word))
+  (inline_element
+    (word))
+  (inline_element
+    (word))
+  (inline_element
+    (word)))
+
+==================================================
+lone asterisk is not emphasis
+==================================================
+
+a lone * star
+
+--------------------------------------------------
+
+(inline
+  (inline_element
+    (word))
+  (inline_element
+    (word))
+  (inline_element)
+  (inline_element
+    (word)))
