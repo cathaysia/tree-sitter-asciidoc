@@ -9,6 +9,10 @@
 
 (highlight) @markup.italic
 
+(superscript) @markup.superscript
+
+(subscript) @markup.subscript
+
 [
   (link_url)
   (email)
