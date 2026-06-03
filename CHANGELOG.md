@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.1](https://github.com/cathaysia/tree-sitter-asciidoc/compare/v0.7.0...v0.7.1) (2026-06-03)
+
+
+### Bug Fixes
+
+* pin tree-sitter-cli version ([693145d](https://github.com/cathaysia/tree-sitter-asciidoc/commit/693145d1458485e6a134d4e4476211a6cadde57d))
+
 ## [0.7.0](https://github.com/cathaysia/tree-sitter-asciidoc/compare/v0.6.0...v0.7.0) (2026-03-14)
 
 
