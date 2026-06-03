@@ -1,3 +1,6 @@
 packages:
   - tree-sitter-asciidoc
   - tree-sitter-asciidoc_inline
+allowBuilds:
+  tree-sitter: true
+  tree-sitter-cli: true
