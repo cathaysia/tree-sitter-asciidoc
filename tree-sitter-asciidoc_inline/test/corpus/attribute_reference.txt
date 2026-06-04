@@ -1,0 +1,62 @@
+=======================
+attribute reference
+=======================
+
+See {productname} docs
+
+---
+
+(inline
+  (inline_element
+    (word))
+  (inline_element
+    (attribute_reference
+      (attribute_name)))
+  (inline_element
+    (word)))
+
+=======================
+hyphenated and numbered names
+=======================
+
+{my-attr-1}
+
+---
+
+(inline
+  (inline_element
+    (attribute_reference
+      (attribute_name))))
+
+=======================
+intrinsic names keep their own node
+=======================
+
+a {vbar} and {cpp}
+
+---
+
+(inline
+  (inline_element
+    (word))
+  (inline_element
+    (intrinsic_attributes_pair
+      (intrinsic_attributes)))
+  (inline_element
+    (word))
+  (inline_element
+    (intrinsic_attributes_pair
+      (intrinsic_attributes))))
+
+=======================
+a longer name sharing an intrinsic prefix is a user reference
+=======================
+
+{vbar2}
+
+---
+
+(inline
+  (inline_element
+    (attribute_reference
+      (attribute_name))))
