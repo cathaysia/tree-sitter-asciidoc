@@ -29,7 +29,7 @@ static QuickBuffer quick_buffer_new(void* buffer, usize capacity) {
 
 #define impl_write_for(ty)                                                      \
     static inline Result quick_buffer_write_##ty(QuickBuffer* self, ty value) { \
-        if(self->capacity - self->pos < sizeof(ty)) {                           \
+        if(self->pos > self->capacity || self->capacity - self->pos < sizeof(ty)) { \
             return RESULT_ERR;                                                  \
         }                                                                       \
                                                                                 \
@@ -47,7 +47,7 @@ impl_write_for(usize);
 
 #define impl_read_for(ty)                                                       \
     static inline Result quick_buffer_read_##ty(QuickBuffer* self, ty* value) { \
-        if(self->capacity - self->pos < sizeof(ty)) {                           \
+        if(self->pos > self->capacity || self->capacity - self->pos < sizeof(ty)) { \
             return RESULT_ERR;                                                  \
         }                                                                       \
                                                                                 \
