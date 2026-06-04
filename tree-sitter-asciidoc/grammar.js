@@ -45,6 +45,8 @@ module.exports = grammar({
           $.title5,
           $.list,
           $.table_block,
+          $.csv_table_block,
+          $.dsv_table_block,
           $.delimited_block,
           $.listing_block,
           $.literal_block,
@@ -264,5 +266,7 @@ module.exports = grammar({
     $.list_continuation,
     $.sidebar_block_start_marker,
     $.sidebar_block_end_marker,
+    $.csv_table_block_marker,
+    $.dsv_table_block_marker,
   ],
 });

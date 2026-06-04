@@ -300,10 +300,35 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
 
                     break;
                 }
-                case ':': {
+                case ':': {  // DSV table (:===) or document attribute (:name:)
+                    lexer->advance(lexer, false);
+                    lexer->mark_end(lexer);  // document-attr marker is just the colon
+                    if(valid_symbols[TOKEN_DSV_TABLE_BLOCK_MARKER] && lexer->lookahead == '=') {
+                        // Count the `=` run by hand rather than with consume(),
+                        // which would move mark_end past the colon and corrupt
+                        // the document-attr fallback below.
+                        usize counter = 0;
+                        while(lexer->lookahead == '=') {
+                            lexer->advance(lexer, false);
+                            ++counter;
+                        }
+                        if(counter >= 3 && is_newline(lexer->lookahead)) {
+                            if(scanner_is_matching(s, BLOCK_KIND_DSV_TABLE, 0)) {
+                                if(scanner_is_matching(s, BLOCK_KIND_DSV_TABLE, counter)) {
+                                    lexer->mark_end(lexer);
+                                    lexer->result_symbol = TOKEN_DSV_TABLE_BLOCK_MARKER;
+                                    scanner_pop(s);
+                                    return true;
+                                }
+                            } else {
+                                lexer->mark_end(lexer);
+                                lexer->result_symbol = TOKEN_DSV_TABLE_BLOCK_MARKER;
+                                scanner_push(s, BLOCK_KIND_DSV_TABLE, counter);
+                                return true;
+                            }
+                        }
+                    }
                     if(valid_symbols[TOKEN_DOCUMENT_ATTR_MARKER]) {
-                        lexer->advance(lexer, false);
-                        lexer->mark_end(lexer);
                         lexer->result_symbol = TOKEN_DOCUMENT_ATTR_MARKER;
                         return true;
                     }
@@ -355,6 +380,29 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
                                         return true;
                                     }
                                 }
+                            }
+                        }
+                    }
+                    break;
+                }
+                case ',': {  // CSV table
+                    if(valid_symbols[TOKEN_CSV_TABLE_BLOCK_MARKER]) {
+                        lexer->advance(lexer, false);
+                        usize counter = 0;
+                        consume('=', lexer, false, &counter, USIZE_MAX);
+                        if(counter >= 3 && is_newline(lexer->lookahead)) {
+                            if(scanner_is_matching(s, BLOCK_KIND_CSV_TABLE, 0)) {
+                                if(scanner_is_matching(s, BLOCK_KIND_CSV_TABLE, counter)) {
+                                    lexer->mark_end(lexer);
+                                    lexer->result_symbol = TOKEN_CSV_TABLE_BLOCK_MARKER;
+                                    scanner_pop(s);
+                                    return true;
+                                }
+                            } else {
+                                lexer->mark_end(lexer);
+                                lexer->result_symbol = TOKEN_CSV_TABLE_BLOCK_MARKER;
+                                scanner_push(s, BLOCK_KIND_CSV_TABLE, counter);
+                                return true;
                             }
                         }
                     }
