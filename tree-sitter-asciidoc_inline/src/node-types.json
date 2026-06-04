@@ -241,6 +241,10 @@
           "named": true
         },
         {
+          "type": "roled_text",
+          "named": true
+        },
+        {
           "type": "stem_macro",
           "named": true
         },
@@ -390,6 +394,25 @@
     "type": "reftext",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "roled_text",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "highlight",
+          "named": true
+        },
+        {
+          "type": "role",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "stem_macro",
@@ -1046,6 +1069,10 @@
   },
   {
     "type": "replacement",
+    "named": true
+  },
+  {
+    "type": "role",
     "named": true
   },
   {

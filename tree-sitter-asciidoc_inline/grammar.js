@@ -53,6 +53,7 @@ module.exports = grammar({
     $._highlight_begin,
   ],
   precedences: $ => [[$.autolink, $._punctuation]],
+  conflicts: $ => [[$.roled_text, $._punctuation]],
 
   rules: {
     inline: $ => repeat($.inline_element),
@@ -65,6 +66,7 @@ module.exports = grammar({
         $.macro_passthrough,
         $._punctuation,
         $.xref,
+        $.roled_text,
         $.emphasis,
         $.ltalic,
         $.monospace,
@@ -347,6 +349,17 @@ module.exports = grammar({
         optional(seq(',', alias(repeat1(escaped_ch('>')), $.reftext))),
         '>>',
       ),
+
+    // A custom inline style: a role shorthand on a text span, e.g.
+    // `[.underline]#text#` or `[.line-through]#gone#` (and the unconstrained
+    // `[.role]##text##`).  See
+    // https://docs.asciidoctor.org/asciidoc/latest/text/custom-inline-styles/
+    // and .../text/text-span-built-in-roles/.  The attribute list attaches
+    // directly to the span (no intervening space) so the `#` opener stays a
+    // valid constrained delimiter.
+    roled_text: $ =>
+      seq('[', repeat1(seq('.', $.role)), ']', $.highlight),
+    role: _ => token(/[A-Za-z0-9_][A-Za-z0-9_-]*/),
 
     emphasis: $ =>
       create_text_formatting('*', $._emphasis_begin, [$.ltalic, $.monospace, $.highlight]),
