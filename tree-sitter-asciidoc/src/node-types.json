@@ -391,6 +391,44 @@
     }
   },
   {
+    "type": "description_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "description_list_item",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "description_list_item",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "description_marker",
+          "named": true
+        },
+        {
+          "type": "line",
+          "named": true
+        },
+        {
+          "type": "term",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "document",
     "named": true,
     "root": true,
@@ -1019,6 +1057,10 @@
           "named": true
         },
         {
+          "type": "description_list",
+          "named": true
+        },
+        {
           "type": "dsv_table_block",
           "named": true
         },
@@ -1485,6 +1527,10 @@
     "named": true
   },
   {
+    "type": "description_marker",
+    "named": true
+  },
+  {
     "type": "document_attr_marker",
     "named": true
   },
@@ -1594,6 +1640,10 @@
   },
   {
     "type": "table_cell_attr",
+    "named": true
+  },
+  {
+    "type": "term",
     "named": true
   },
   {

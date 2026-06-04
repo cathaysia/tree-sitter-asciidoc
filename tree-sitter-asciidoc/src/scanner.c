@@ -118,14 +118,32 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
         }
 
         if(is_alpha_lower && !scanner_is_matching_raw_block(s)) {
-            if(valid_symbols[TOKEN_BLOCK_MACRO_NAME]) {
+            if(valid_symbols[TOKEN_BLOCK_MACRO_NAME] || valid_symbols[TOKEN_TERM]) {
                 while(is_ascii_alpha_lower(lexer->lookahead)) {
                     lexer->advance(lexer, false);
                 }
                 lexer->mark_end(lexer);
-                if(parse_sequence(lexer, "::")) {
-                    lexer->result_symbol = TOKEN_BLOCK_MACRO_NAME;
-                    return true;
+                i32 c = lexer->lookahead;
+                if(c == ':' || c == ';') {
+                    usize run = 0;
+                    while(lexer->lookahead == c) {
+                        lexer->advance(lexer, false);
+                        ++run;
+                    }
+                    bool followed_ws = is_white_space(lexer->lookahead) || is_newline(lexer->lookahead) || is_eof(lexer);
+                    bool desc_run = (c == ':' && run >= 2 && run <= 4) || (c == ';' && run == 2);
+                    // `name:: ` (delimiter followed by space/EOL) is a
+                    // description-list term, whereas `name::target[]` is a
+                    // block macro.  mark_end sits after the bare word, so the
+                    // delimiter run we just consumed is only lookahead.
+                    if(valid_symbols[TOKEN_TERM] && desc_run && followed_ws) {
+                        lexer->result_symbol = TOKEN_TERM;
+                        return true;
+                    }
+                    if(valid_symbols[TOKEN_BLOCK_MACRO_NAME] && c == ':' && run >= 2) {
+                        lexer->result_symbol = TOKEN_BLOCK_MACRO_NAME;
+                        return true;
+                    }
                 }
             }
         }
@@ -524,6 +542,62 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
                 return true;
             }
         }
+
+        // Description-list term: the run of text at the start of a line that
+        // is terminated by a description marker (`::`/`:::`/`::::`/`;;`
+        // followed by whitespace or a line break), e.g. the `CPU` in
+        // `CPU:: the brain`.  This is probed last, so every other line-start
+        // construct gets first refusal; the emitted token spans from column 0
+        // (where the scan began) to just before the delimiter run regardless
+        // of how far earlier probes advanced the cursor.  When no marker is
+        // found it returns false and the line stays an ordinary paragraph.
+        if(valid_symbols[TOKEN_TERM] && !scanner_is_matching_raw_block(s)) {
+            usize term_len = 0;
+            while(!is_newline(lexer->lookahead) && !is_eof(lexer)) {
+                i32 c = lexer->lookahead;
+                if((c == ':' || c == ';') && term_len > 0) {
+                    lexer->mark_end(lexer);
+                    usize run = 0;
+                    while(lexer->lookahead == c) {
+                        lexer->advance(lexer, false);
+                        ++run;
+                    }
+                    bool valid_run = (c == ':' && run >= 2 && run <= 4) || (c == ';' && run == 2);
+                    if(valid_run && (is_white_space(lexer->lookahead) || is_newline(lexer->lookahead) || is_eof(lexer))) {
+                        lexer->result_symbol = TOKEN_TERM;
+                        return true;
+                    }
+                    term_len += run;
+                    continue;
+                }
+                lexer->advance(lexer, false);
+                ++term_len;
+            }
+            return false;
+        }
+    }
+
+    // Description-list marker: `::`, `:::`, `::::` or `;;`, always followed
+    // by whitespace or a line break.  It is only valid once a term has been
+    // read, i.e. mid-line, so the column-0 block above is skipped and the
+    // lexer sits on the delimiter run.  A run that is not a valid marker
+    // (e.g. a lone `:` in a URL or `a::b` without trailing space) returns
+    // false so the delimiter falls back to ordinary term text.
+    if(valid_symbols[TOKEN_DESCRIPTION_MARKER] &&
+       (lexer->lookahead == ':' || lexer->lookahead == ';')) {
+        i32 delim = lexer->lookahead;
+        usize run = 0;
+        while(lexer->lookahead == delim) {
+            lexer->advance(lexer, false);
+            ++run;
+        }
+        bool valid_run = (delim == ':' && run >= 2 && run <= 4) || (delim == ';' && run == 2);
+        if(valid_run && (is_white_space(lexer->lookahead) || is_newline(lexer->lookahead) || is_eof(lexer))) {
+            lexer->mark_end(lexer);
+            lexer->result_symbol = TOKEN_DESCRIPTION_MARKER;
+            return true;
+        }
+        return false;
     }
 
     if(valid_symbols[TOKEN_CALLOUT_MARKER]) {

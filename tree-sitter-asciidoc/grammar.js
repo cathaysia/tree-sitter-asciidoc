@@ -44,6 +44,7 @@ module.exports = grammar({
           $.title4,
           $.title5,
           $.list,
+          $.description_list,
           $.table_block,
           $.csv_table_block,
           $.dsv_table_block,
@@ -61,6 +62,21 @@ module.exports = grammar({
           $.block_macro,
         ),
       ),
+    // Description (labeled) lists: `term:: definition`.  The marker
+    // (`::`/`:::`/`::::`/`;;`, always followed by whitespace or a line
+    // break) is supplied by the external scanner; the term is the run of
+    // text before it.  An item may carry its definition inline or leave it
+    // to the following block (term-only form).
+    description_list: $ => prec.right(repeat1($.description_list_item)),
+    description_list_item: $ =>
+      prec.right(
+        seq(
+          $.term,
+          $.description_marker,
+          optional($.line),
+        ),
+      ),
+
     title1: $ => seq($.title_h1_marker, $._WHITE_SPACE, $.line),
     title2: $ => seq($.title_h2_marker, $._WHITE_SPACE, $.line),
     title3: $ => seq($.title_h3_marker, $._WHITE_SPACE, $.line),
@@ -268,5 +284,7 @@ module.exports = grammar({
     $.sidebar_block_end_marker,
     $.csv_table_block_marker,
     $.dsv_table_block_marker,
+    $.term,
+    $.description_marker,
   ],
 });
