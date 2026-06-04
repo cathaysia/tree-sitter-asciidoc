@@ -36,6 +36,9 @@
 (roled_text
   (role) @attribute)
 
+(attribute_reference
+  (attribute_name) @constant)
+
 (xref
   (reftext) @markup.link @markup.link.url)
 

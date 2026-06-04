@@ -80,6 +80,7 @@ module.exports = grammar({
         $.index_term2,
         $.id_assignment,
         $.intrinsic_attributes_pair,
+        $.attribute_reference,
         $.hard_wrap,
       ),
     ...autolink.rules,
@@ -254,6 +255,12 @@ module.exports = grammar({
           'gt',
         ),
       ),
+    // A user-defined attribute reference, e.g. `{productname}`.  The
+    // intrinsic set above is defined first, so at an exact length tie a
+    // reserved name like `{vbar}` keeps its dedicated node; a longer name
+    // such as `{vbar2}` wins on match length and lands here instead.
+    attribute_reference: $ => seq('{', $.attribute_name, '}'),
+    attribute_name: _ => token(/[A-Za-z0-9_][A-Za-z0-9_-]*/),
     word: $ =>
       choice(
         $.super_escape,
