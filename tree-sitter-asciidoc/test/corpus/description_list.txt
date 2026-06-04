@@ -1,0 +1,78 @@
+=======================
+description list
+=======================
+
+CPU:: The brain.
+RAM:: Memory.
+
+---
+
+(document
+  (block_element
+    (section_block
+      (description_list
+        (description_list_item
+          (term)
+          (description_marker)
+          (line))
+        (description_list_item
+          (term)
+          (description_marker)
+          (line))))))
+
+=======================
+multi-word term with description on the next line
+=======================
+
+Operating System::
+The core software.
+
+---
+
+(document
+  (block_element
+    (section_block
+      (description_list
+        (description_list_item
+          (term)
+          (description_marker)
+          (line))))))
+
+=======================
+nested levels and qanda markers
+=======================
+
+Term::: deep
+Question;; answer
+
+---
+
+(document
+  (block_element
+    (section_block
+      (description_list
+        (description_list_item
+          (term)
+          (description_marker)
+          (line))
+        (description_list_item
+          (term)
+          (description_marker)
+          (line))))))
+
+=======================
+a block macro is not a description list
+=======================
+
+image::cat.png[Cat]
+
+---
+
+(document
+  (block_element
+    (section_block
+      (block_macro
+        (block_macro_name)
+        (target)
+        (block_macro_attr
+          (attribute_name))))))

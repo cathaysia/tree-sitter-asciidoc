@@ -52,7 +52,9 @@ typedef enum TokenType {
     TOKEN_SIDEBAR_BLOCK_START_MARKER,
     TOKEN_SIDEBAR_BLOCK_END_MARKER,
     TOKEN_CSV_TABLE_BLOCK_MARKER,
-    TOKEN_DSV_TABLE_BLOCK_MARKER
+    TOKEN_DSV_TABLE_BLOCK_MARKER,
+    TOKEN_TERM,
+    TOKEN_DESCRIPTION_MARKER
 } TokenType;
 
 static inline bool parse_table_attr(TSLexer *lexer);

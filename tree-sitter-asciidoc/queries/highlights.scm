@@ -84,6 +84,11 @@
   (list_marker_alpha)
 ] @markup.list
 
+(description_marker) @markup.list
+
+(description_list_item
+  (term) @markup.strong)
+
 [
   (line_comment)
   (block_comment)
