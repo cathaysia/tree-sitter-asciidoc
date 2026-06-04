@@ -9,7 +9,9 @@ typedef enum BlockKind {
     BLOCK_KIND_LISTING,
     BLOCK_KIND_LITERAL,
     BLOCK_KIND_SIDEBAR,
-    BLOCK_KIND_QUOTED
+    BLOCK_KIND_QUOTED,
+    BLOCK_KIND_CSV_TABLE,
+    BLOCK_KIND_DSV_TABLE
 } BlockKind;
 
 typedef struct Node {

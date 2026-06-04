@@ -1,0 +1,67 @@
+=======================
+CSV table
+=======================
+
+,===
+Name,Age
+Alice,30
+,===
+
+---
+
+(document
+  (block_element
+    (section_block
+      (csv_table_block
+        (csv_table_block_marker)
+        (csv_record
+          (table_cell_content)
+          (table_cell_content))
+        (csv_record
+          (table_cell_content)
+          (table_cell_content))
+        (csv_table_block_marker)))))
+
+=======================
+CSV table with empty fields
+=======================
+
+,===
+a,,c
+,b
+,===
+
+---
+
+(document
+  (block_element
+    (section_block
+      (csv_table_block
+        (csv_table_block_marker)
+        (csv_record
+          (table_cell_content)
+          (table_cell_content))
+        (csv_record
+          (table_cell_content))
+        (csv_table_block_marker)))))
+
+=======================
+DSV table
+=======================
+
+:===
+a:b:c
+:===
+
+---
+
+(document
+  (block_element
+    (section_block
+      (dsv_table_block
+        (dsv_table_block_marker)
+        (dsv_record
+          (table_cell_content)
+          (table_cell_content)
+          (table_cell_content))
+        (dsv_table_block_marker)))))

@@ -334,6 +334,40 @@
     }
   },
   {
+    "type": "csv_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "table_cell_content",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "csv_table_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "csv_record",
+          "named": true
+        },
+        {
+          "type": "csv_table_block_marker",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "delimited_block",
     "named": true,
     "fields": {},
@@ -425,6 +459,40 @@
         },
         {
           "type": "title_h0_marker",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "dsv_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "table_cell_content",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "dsv_table_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "dsv_record",
+          "named": true
+        },
+        {
+          "type": "dsv_table_block_marker",
           "named": true
         }
       ]
@@ -943,7 +1011,15 @@
           "named": true
         },
         {
+          "type": "csv_table_block",
+          "named": true
+        },
+        {
           "type": "delimited_block",
+          "named": true
+        },
+        {
+          "type": "dsv_table_block",
           "named": true
         },
         {
@@ -1397,6 +1473,10 @@
     "named": true
   },
   {
+    "type": "csv_table_block_marker",
+    "named": true
+  },
+  {
     "type": "delimited_block_end_marker",
     "named": true
   },
@@ -1406,6 +1486,10 @@
   },
   {
     "type": "document_attr_marker",
+    "named": true
+  },
+  {
+    "type": "dsv_table_block_marker",
     "named": true
   },
   {
