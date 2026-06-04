@@ -33,6 +33,9 @@
 
 (replacement) @string.special
 
+(roled_text
+  (role) @attribute)
+
 (xref
   (reftext) @markup.link @markup.link.url)
 

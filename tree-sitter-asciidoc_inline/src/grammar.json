@@ -42,6 +42,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "roled_text"
+        },
+        {
+          "type": "SYMBOL",
           "name": "emphasis"
         },
         {
@@ -1712,6 +1716,46 @@
         }
       ]
     },
+    "roled_text": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "."
+              },
+              {
+                "type": "SYMBOL",
+                "name": "role"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "highlight"
+        }
+      ]
+    },
+    "role": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[A-Za-z0-9_][A-Za-z0-9_-]*"
+      }
+    },
     "emphasis": {
       "type": "CHOICE",
       "members": [
@@ -2240,7 +2284,12 @@
       "value": "\\s"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "roled_text",
+      "_punctuation"
+    ]
+  ],
   "precedences": [
     [
       {

@@ -1,0 +1,46 @@
+=======================
+role on a custom span
+=======================
+
+This is [.underline]#text#
+
+---
+
+(inline
+  (inline_element
+    (word))
+  (inline_element
+    (word))
+  (inline_element
+    (roled_text
+      (role)
+      (highlight))))
+
+=======================
+role on an unconstrained span
+=======================
+
+[.big]##text##
+
+---
+
+(inline
+  (inline_element
+    (roled_text
+      (role)
+      (highlight))))
+
+=======================
+multiple roles
+=======================
+
+[.line-through.text-danger]#warn#
+
+---
+
+(inline
+  (inline_element
+    (roled_text
+      (role)
+      (role)
+      (highlight))))
