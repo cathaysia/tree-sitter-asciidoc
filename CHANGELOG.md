@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.8.0](https://github.com/cathaysia/tree-sitter-asciidoc/compare/v0.7.0...v0.8.0) (2026-06-04)
+
+
+### Features
+
+* **inline:** add superscript and subscript ([dafbe65](https://github.com/cathaysia/tree-sitter-asciidoc/commit/dafbe65482b1206b5fca364499c4ffa1cc8fe668))
+
+
+### Bug Fixes
+
+* **inline:** require a matching close for constrained formatting ([ceff52f](https://github.com/cathaysia/tree-sitter-asciidoc/commit/ceff52f238474d86d397a95f80921c273d68bc33))
+* pin tree-sitter-cli version ([693145d](https://github.com/cathaysia/tree-sitter-asciidoc/commit/693145d1458485e6a134d4e4476211a6cadde57d))
+
 ## [0.7.0](https://github.com/cathaysia/tree-sitter-asciidoc/compare/v0.6.0...v0.7.0) (2026-03-14)
 
 
