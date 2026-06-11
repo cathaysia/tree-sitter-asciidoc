@@ -51,6 +51,10 @@ module.exports = grammar({
     $._italic_begin,
     $._monospace_begin,
     $._highlight_begin,
+    // Two-char openers for typographic quotes ("` and '`); emitted only
+    // when a matching close (`" or `') exists on the line.
+    $._typographic_double_begin,
+    $._typographic_single_begin,
   ],
   precedences: $ => [[$.autolink, $._punctuation]],
   conflicts: $ => [[$.roled_text, $._punctuation]],
@@ -67,6 +71,7 @@ module.exports = grammar({
         $._punctuation,
         $.xref,
         $.roled_text,
+        $.typographic_quote,
         $.emphasis,
         $.ltalic,
         $.monospace,
@@ -374,6 +379,20 @@ module.exports = grammar({
       create_text_formatting('_', $._italic_begin, [$.emphasis, $.monospace, $.highlight]),
     monospace: $ => create_text_formatting('`', $._monospace_begin, []),
     highlight: $ => create_text_formatting('#', $._highlight_begin, []),
+
+    // Typographic (curved) quotes: "`double`" and '`single`'.  The inner
+    // backticks belong to the quote, so this must outrank `monospace`,
+    // which would otherwise claim "`...`" as a `"` plus a code span.  The
+    // 2-char opener is supplied by the external scanner, which only emits it
+    // when a matching close exists on the line -- so a stray "` stays
+    // punctuation rather than error-recovering into an unterminated node.
+    typographic_quote: $ =>
+      choice(
+        seq($._typographic_double_begin, repeat(escaped_ch('`', true)),
+            token('`"')),
+        seq($._typographic_single_begin, repeat(escaped_ch('`', true)),
+            token("`'")),
+      ),
 
     // Superscript (^x^) and subscript (~x~) are unconstrained but their
     // content is a single run with no unescaped spaces, so they can't reuse

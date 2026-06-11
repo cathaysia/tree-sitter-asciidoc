@@ -8,6 +8,8 @@ typedef enum TokenType {
     TOKEN_ITALIC_BEGIN,
     TOKEN_MONOSPACE_BEGIN,
     TOKEN_HIGHLIGHT_BEGIN,
+    TOKEN_TYPOGRAPHIC_DOUBLE_BEGIN,
+    TOKEN_TYPOGRAPHIC_SINGLE_BEGIN,
 } TokenType;
 
 static bool is_space(int32_t c) {
@@ -57,6 +59,46 @@ static bool scan_constrained_begin(TSLexer *lexer, int32_t d,
             continue;
         }
         prev = c;
+        lexer->advance(lexer, false);
+    }
+    return false;
+}
+
+// Scan a typographic-quote opener: a quote char (`"` for double, `'` for
+// single) immediately followed by a backtick.  The emitted token is the
+// 2-char opener.  Emit it only when the content starts immediately (no
+// space) and the first unescaped backtick after it is followed by the same
+// quote char -- i.e. a valid `<backtick><quote>` close on the same line.
+// Otherwise return false so the quote falls back to plain punctuation.
+static bool scan_typographic_begin(TSLexer *lexer, int32_t quote,
+                                   TokenType symbol) {
+    lexer->advance(lexer, false); // consume the quote char
+    if (lexer->lookahead != '`') {
+        return false;
+    }
+    lexer->advance(lexer, false); // consume the backtick
+    int32_t after = lexer->lookahead;
+    if (lexer->eof(lexer) || is_space(after) || after == '\n' ||
+        after == '\r' || after == '`') {
+        return false;
+    }
+    lexer->mark_end(lexer); // token is exactly the 2-char opener
+
+    int32_t prev = after;
+    lexer->advance(lexer, false);
+    while (!lexer->eof(lexer) && lexer->lookahead != '\n' &&
+           lexer->lookahead != '\r') {
+        if (lexer->lookahead == '`' && prev != '\\') {
+            lexer->advance(lexer, false);
+            if (lexer->lookahead == quote) {
+                lexer->result_symbol = symbol;
+                return true;
+            }
+            // First backtick is not a close; the content rule stops here, so
+            // there is no valid typographic quote.
+            return false;
+        }
+        prev = lexer->lookahead;
         lexer->advance(lexer, false);
     }
     return false;
@@ -132,6 +174,14 @@ bool tree_sitter_asciidoc_inline_external_scanner_scan(
     }
     if (valid_symbols[TOKEN_HIGHLIGHT_BEGIN] && la == '#') {
         return scan_constrained_begin(lexer, '#', TOKEN_HIGHLIGHT_BEGIN);
+    }
+    if (valid_symbols[TOKEN_TYPOGRAPHIC_DOUBLE_BEGIN] && la == '"') {
+        return scan_typographic_begin(lexer, '"',
+                                      TOKEN_TYPOGRAPHIC_DOUBLE_BEGIN);
+    }
+    if (valid_symbols[TOKEN_TYPOGRAPHIC_SINGLE_BEGIN] && la == '\'') {
+        return scan_typographic_begin(lexer, '\'',
+                                      TOKEN_TYPOGRAPHIC_SINGLE_BEGIN);
     }
 
     if (lexer->eof(lexer)) {

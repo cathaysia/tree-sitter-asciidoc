@@ -46,6 +46,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "typographic_quote"
+        },
+        {
+          "type": "SYMBOL",
           "name": "emphasis"
         },
         {
@@ -2112,6 +2116,75 @@
         }
       ]
     },
+    "typographic_quote": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_typographic_double_begin"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[^`\\r\\n]"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "\\`"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "STRING",
+                "value": "`\""
+              }
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_typographic_single_begin"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[^`\\r\\n]"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "\\`"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "STRING",
+                "value": "`'"
+              }
+            }
+          ]
+        }
+      ]
+    },
     "superscript": {
       "type": "SEQ",
       "members": [
@@ -2354,6 +2427,14 @@
     {
       "type": "SYMBOL",
       "name": "_highlight_begin"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_typographic_double_begin"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_typographic_single_begin"
     }
   ],
   "inline": [],
