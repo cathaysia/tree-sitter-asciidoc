@@ -88,9 +88,13 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
                     break;
                 }
 
+                // mark_end caps the token at the keyword word; the colon and
+                // space are only lookahead.  Advance them with skip=false: a
+                // skip=true advance after mark_end would collapse the token to
+                // a zero-width marker (the label would fall outside the tree).
                 lexer->mark_end(lexer);
                 if(lexer->lookahead == ':') {
-                    lexer->advance(lexer, true);
+                    lexer->advance(lexer, false);
                     if(lexer->lookahead == ' ') {
                         return true;
                     }
