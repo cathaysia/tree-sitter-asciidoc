@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.9.0](https://github.com/cathaysia/tree-sitter-asciidoc/compare/v0.8.0...v0.9.0) (2026-06-11)
+
+
+### Features
+
+* **inline:** parse role shorthand on text spans ([a153694](https://github.com/cathaysia/tree-sitter-asciidoc/commit/a153694f9783d8fa798ff4eff0994b93f52f0691))
+* **inline:** parse user attribute references ([d7ccd65](https://github.com/cathaysia/tree-sitter-asciidoc/commit/d7ccd651308d2f8f48b071a68a66d6fe6f010dfe))
+* **scanner:** parse CSV and DSV tables ([45145b9](https://github.com/cathaysia/tree-sitter-asciidoc/commit/45145b9f2eb269f9904dab80b99e4db4f37f4b43))
+* **scanner:** parse description (labeled) lists ([34c3c8d](https://github.com/cathaysia/tree-sitter-asciidoc/commit/34c3c8de2fcda373eb17b9967e9f53dddb533782))
+
 ## [0.8.0](https://github.com/cathaysia/tree-sitter-asciidoc/compare/v0.7.0...v0.8.0) (2026-06-04)
 
 
