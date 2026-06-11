@@ -1,0 +1,57 @@
+==================
+double curved quote
+==================
+
+"`double`"
+
+---
+
+(inline
+  (inline_element
+    (typographic_quote)))
+
+==================
+single curved quote
+==================
+
+'`single`'
+
+---
+
+(inline
+  (inline_element
+    (typographic_quote)))
+
+==================
+typographic quote alongside monospace
+==================
+
+"`x`" and `code`
+
+---
+
+(inline
+  (inline_element
+    (typographic_quote))
+  (inline_element
+    (word))
+  (inline_element
+    (monospace)))
+
+==================
+unterminated opener stays punctuation
+==================
+
+"`oops no close
+
+---
+
+(inline
+  (inline_element)
+  (inline_element)
+  (inline_element
+    (word))
+  (inline_element
+    (word))
+  (inline_element
+    (word)))

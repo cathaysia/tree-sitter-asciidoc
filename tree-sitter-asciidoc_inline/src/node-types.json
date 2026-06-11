@@ -281,6 +281,10 @@
           "named": true
         },
         {
+          "type": "typographic_quote",
+          "named": true
+        },
+        {
           "type": "word",
           "named": true
         },
@@ -505,6 +509,11 @@
   },
   {
     "type": "term",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "typographic_quote",
     "named": true,
     "fields": {}
   },
@@ -922,6 +931,14 @@
   },
   {
     "type": "`",
+    "named": false
+  },
+  {
+    "type": "`\"",
+    "named": false
+  },
+  {
+    "type": "`'",
     "named": false
   },
   {
