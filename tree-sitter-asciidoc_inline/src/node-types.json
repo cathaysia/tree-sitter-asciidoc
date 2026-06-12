@@ -8,6 +8,10 @@
       "required": false,
       "types": [
         {
+          "type": "attribute_reference",
+          "named": true
+        },
+        {
           "type": "autolink",
           "named": true
         },
@@ -488,6 +492,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "attribute_reference",
+          "named": true
+        },
         {
           "type": "escaped_sequence",
           "named": true

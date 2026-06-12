@@ -654,6 +654,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "attribute_reference"
+          },
+          {
+            "type": "SYMBOL",
             "name": "escaped_sequence"
           },
           {
@@ -683,6 +687,10 @@
           {
             "type": "SYMBOL",
             "name": "replacement"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "attribute_reference"
           },
           {
             "type": "SYMBOL",

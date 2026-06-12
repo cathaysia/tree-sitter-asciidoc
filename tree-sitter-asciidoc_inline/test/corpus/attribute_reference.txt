@@ -60,3 +60,22 @@ a longer name sharing an intrinsic prefix is a user reference
   (inline_element
     (attribute_reference
       (attribute_name))))
+
+==================
+attribute reference in a macro target and attribute list
+==================
+
+image:{repo}/x.svg[alt,link="{repo}/a"]
+
+---
+
+(inline
+  (inline_element
+    (inline_macro
+      (macro_name)
+      (target
+        (attribute_reference
+          (attribute_name)))
+      (attr
+        (attribute_reference
+          (attribute_name))))))
