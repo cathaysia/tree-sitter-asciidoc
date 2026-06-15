@@ -85,6 +85,7 @@ module.exports = grammar({
         $.index_term2,
         $.id_assignment,
         $.intrinsic_attributes_pair,
+        $.counter,
         $.attribute_reference,
         $.hard_wrap,
       ),
@@ -262,6 +263,21 @@ module.exports = grammar({
           'gt',
         ),
       ),
+    // Counter attribute references: `{counter:name}` and the silent
+    // `{counter2:name}` variant, optionally seeded with an initial value as in
+    // `{counter:name:5}` or `{counter:name:A}`.  The function name and its
+    // trailing colon are a single token, so a plain `{counter}` reference still
+    // falls through to `attribute_reference` below via longest match.
+    counter: $ =>
+      seq(
+        '{',
+        alias($._counter_function, $.counter_function),
+        $.attribute_name,
+        optional(seq(':', alias($._counter_initial, $.initial_value))),
+        '}',
+      ),
+    _counter_function: _ => token(/counter2?:/),
+    _counter_initial: _ => token(/[A-Za-z0-9]+/),
     // A user-defined attribute reference, e.g. `{productname}`.  The
     // intrinsic set above is defined first, so at an exact length tie a
     // reserved name like `{vbar}` keeps its dedicated node; a longer name
