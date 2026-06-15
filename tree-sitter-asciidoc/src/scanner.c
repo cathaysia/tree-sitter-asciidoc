@@ -180,6 +180,21 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
                     }
                     break;
                 }
+                case '#': {
+                    // Markdown-style ATX heading (compat syntax): a run of `#`
+                    // maps to the same section levels as `=` (`#` -> level 0,
+                    // `######` -> level 5), requiring a space before the title.
+                    consume('#', lexer, false, NULL, USIZE_MAX);
+                    lexer->mark_end(lexer);
+                    if(!scanner_is_matching_raw_block(s)) {
+                        usize level = TOKEN_TITLE_H0_MARKER - 1 + lexer->get_column(lexer);
+                        if(level <= TOKEN_TITLE_H5_MARKER && is_white_space(lexer->lookahead)) {
+                            lexer->result_symbol = level;
+                            return true;
+                        }
+                    }
+                    break;
+                }
                 case '*': {
                     usize counter = 0;
                     consume('*', lexer, false, &counter, USIZE_MAX);

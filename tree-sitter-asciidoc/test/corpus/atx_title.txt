@@ -1,0 +1,105 @@
+==================
+atx document title
+==================
+
+# Doc Title
+
+--------
+
+(document
+  (block_element
+    (document_title
+      (title_h0_marker)
+      (line))))
+
+==================
+atx section titles
+==================
+
+## Level 1
+
+### Level 2
+
+#### Level 3
+
+##### Level 4
+
+###### Level 5
+
+--------
+
+(document
+  (block_element
+    (section_block
+      (title1
+        (title_h1_marker)
+        (line))))
+  (block_element
+    (section_block
+      (title2
+        (title_h2_marker)
+        (line))))
+  (block_element
+    (section_block
+      (title3
+        (title_h3_marker)
+        (line))))
+  (block_element
+    (section_block
+      (title4
+        (title_h4_marker)
+        (line))))
+  (block_element
+    (section_block
+      (title5
+        (title_h5_marker)
+        (line)))))
+
+=============================
+atx heading followed by text
+=============================
+
+## Section Title
+
+Some text.
+
+--------
+
+(document
+  (block_element
+    (section_block
+      (title1
+        (title_h1_marker)
+        (line))))
+  (block_element
+    (section_block
+      (paragraph
+        (line)))))
+
+==================================
+hashes without a space stay text
+==================================
+
+#NoSpace#
+
+--------
+
+(document
+  (block_element
+    (section_block
+      (paragraph
+        (line)))))
+
+==================================
+too many hashes are not a heading
+==================================
+
+####### Seven
+
+--------
+
+(document
+  (block_element
+    (section_block
+      (paragraph
+        (line)))))
