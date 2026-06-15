@@ -40,7 +40,9 @@ and as necessary in the political world as storms in the physical."
     (section_block
       (element_attr
         (element_attr_marker)
-        (attr_value)
+        (positional_attr
+          (block_style))
+        (positional_attr)
         (element_attr_marker))
       (quoted_block
         (quoted_block_start_marker)

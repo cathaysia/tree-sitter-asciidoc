@@ -1,0 +1,131 @@
+==================
+style and language
+==================
+
+[source,ruby]
+x
+
+--------
+
+(document
+  (block_element
+    (section_block
+      (element_attr
+        (element_attr_marker)
+        (positional_attr
+          (block_style))
+        (positional_attr)
+        (element_attr_marker))
+      (paragraph
+        (line)))))
+
+==================
+id shorthand
+==================
+
+[#myid]
+x
+
+--------
+
+(document
+  (block_element
+    (section_block
+      (element_attr
+        (element_attr_marker)
+        (positional_attr
+          (id))
+        (element_attr_marker))
+      (paragraph
+        (line)))))
+
+==================
+roles and options
+==================
+
+[.role1.role2%header%footer]
+x
+
+--------
+
+(document
+  (block_element
+    (section_block
+      (element_attr
+        (element_attr_marker)
+        (positional_attr
+          (role)
+          (role)
+          (option)
+          (option))
+        (element_attr_marker))
+      (paragraph
+        (line)))))
+
+============================
+style with full shorthand
+============================
+
+[source#id.role%opt,ruby,cols="1,2"]
+x
+
+--------
+
+(document
+  (block_element
+    (section_block
+      (element_attr
+        (element_attr_marker)
+        (positional_attr
+          (block_style)
+          (id)
+          (role)
+          (option))
+        (positional_attr)
+        (named_attr
+          (attribute_name)
+          (attribute_value
+            (value)))
+        (element_attr_marker))
+      (paragraph
+        (line)))))
+
+==================
+multiple positional
+==================
+
+[quote,Twain,Letter]
+x
+
+--------
+
+(document
+  (block_element
+    (section_block
+      (element_attr
+        (element_attr_marker)
+        (positional_attr
+          (block_style))
+        (positional_attr)
+        (positional_attr)
+        (element_attr_marker))
+      (paragraph
+        (line)))))
+
+==================
+empty attribute list
+==================
+
+[]
+x
+
+--------
+
+(document
+  (block_element
+    (section_block
+      (element_attr
+        (element_attr_marker)
+        (element_attr_marker))
+      (paragraph
+        (line)))))

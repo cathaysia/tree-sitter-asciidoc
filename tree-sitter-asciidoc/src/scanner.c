@@ -409,7 +409,10 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
                 case '[': {
                     if(valid_symbols[TOKEN_ELEMENT_ATTR_MARKER]) {
                         lexer->advance(lexer, false);
-                        if(lexer->lookahead == '[' || lexer->lookahead == '#') {
+                        // `[[` is a block anchor, not an attribute list.  `[#`
+                        // is the id shorthand (`[#id]`) and is handled by the
+                        // grammar, so it must not be rejected here.
+                        if(lexer->lookahead == '[') {
                             return false;
                         }
                         lexer->mark_end(lexer);

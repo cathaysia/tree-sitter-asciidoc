@@ -102,8 +102,11 @@
 (document_attr
   (attr_name) @property)
 
-(element_attr
-  (attr_value) @attribute)
+(block_style) @type
+(positional_attr) @attribute
+(id) @label
+(role) @attribute
+(option) @attribute
 
 (block_title
   (block_title_marker) @punctuation.special) @attribute
@@ -146,41 +149,40 @@
 ((section_block
   (element_attr
     (element_attr_marker) @comment.note
-    (attr_value) @attribute @comment.note
+    (positional_attr (block_style) @_style @comment.note)
     (element_attr_marker) @comment.note)
   (delimited_block
     (delimited_block_start_marker) @comment.note
     (delimited_block_end_marker) @comment.note))
-  (#any-of? @attribute "NOTE" "TIP"))
+  (#any-of? @_style "NOTE" "TIP"))
 
 ((section_block
   (element_attr
     (element_attr_marker) @comment.warning
-    (attr_value) @attribute @comment.warning
+    (positional_attr (block_style) @_style @comment.warning)
     (element_attr_marker) @comment.warning)
   (delimited_block
     (delimited_block_start_marker) @comment.warning
     (delimited_block_end_marker) @comment.warning))
-  (#any-of? @attribute "CAUTION" "WARNING"))
+  (#any-of? @_style "CAUTION" "WARNING"))
 
 ((section_block
   (element_attr
     (element_attr_marker) @comment.error
-    (attr_value) @attribute @comment.error
+    (positional_attr (block_style) @_style @comment.error)
     (element_attr_marker) @comment.error)
   (delimited_block
     (delimited_block_start_marker) @comment.error
     (delimited_block_end_marker) @comment.error))
-  (#eq? @attribute "IMPORTANT"))
+  (#eq? @_style "IMPORTANT"))
 
-((element_attr
-  (element_attr_marker)
-  (attr_value) @_attr
-  (element_attr_marker))
+((section_block
+  (element_attr
+    (positional_attr
+      (block_style) @_style))
   (listing_block
-    (listing_block_body) @markup.raw.block)
-  (#not-lua-match? @_attr "^[^,]*,%s*(%w+)")
-  (#not-any-of? @_attr
+    (listing_block_body) @markup.raw.block))
+  (#not-any-of? @_style
     "a2s" "barcode" "blockdiag" "bpmn" "bytefield" "d2" "dbml" "diagrams" "ditaa" "dpic" "erd"
     "gnuplot" "graphviz" "lilypond" "meme" "mermaid" "msc" "nomnoml" "pikchr" "plantuml" "shaape"
     "smcat" "structurizr" "svgbob" "symbolator" "syntrax" "tikz" "umlet" "vega" "wavedrom"))

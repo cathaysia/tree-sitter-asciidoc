@@ -63,7 +63,7 @@ line of code <!--4-->
     (section_block
       (element_attr
         (element_attr_marker)
-        (attr_value)
+        (positional_attr)
         (element_attr_marker))
       (listing_block
         (listing_block_start_marker)

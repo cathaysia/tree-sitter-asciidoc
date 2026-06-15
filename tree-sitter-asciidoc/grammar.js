@@ -13,6 +13,8 @@ module.exports = grammar({
 
   extras: $ => [$._NEWLINE],
 
+  conflicts: $ => [[$._value_run], [$._value_run_eq]],
+
   rules: {
     document: $ => repeat($.block_element),
     ...lists.rules,
@@ -115,13 +117,61 @@ module.exports = grammar({
     escaped_line: $ =>
       repeat1(choice(/[^/\n]/, /\/[^*]/, /\\\r?\n/, seq($.hard_wrap))),
     hard_wrap: $ => ' +',
+    // A block attribute list, e.g. `[source#id.role%opt,ruby,cols="1,2"]`.
+    // The first entry is the positional "style" slot and may carry the id
+    // (`#`), role (`.`) and option (`%`) shorthand; later entries are plain
+    // positional values or `name=value` pairs.  Commas separate entries
+    // except inside a quoted value.
     element_attr: $ =>
       seq(
         $.element_attr_marker,
-        alias(token(repeat(escaped_ch(']', true))), $.attr_value),
+        optional($._WHITE_SPACE),
+        optional(seq($._lead_attr, optional($._WHITE_SPACE))),
+        repeat(
+          seq(',', optional($._WHITE_SPACE), optional(seq($._attr, optional($._WHITE_SPACE)))),
+        ),
         alias(']', $.element_attr_marker),
         $._NEWLINE,
       ),
+    _lead_attr: $ =>
+      choice($.named_attr, alias($._lead_positional, $.positional_attr)),
+    _attr: $ => choice($.named_attr, $.positional_attr),
+    _lead_positional: $ =>
+      choice(
+        seq(alias($._attr_word, $.block_style), repeat($._shorthand)),
+        repeat1($._shorthand),
+      ),
+    _shorthand: $ =>
+      choice(
+        seq('#', alias($._attr_word, $.id)),
+        seq('.', alias($._attr_word, $.role)),
+        seq('%', alias($._attr_word, $.option)),
+      ),
+    named_attr: $ =>
+      seq(
+        alias($._attr_word, $.attribute_name),
+        '=',
+        optional(alias($._named_value, $.attribute_value)),
+      ),
+    // A named value may be quoted (allowing commas inside) or bare.  A bare
+    // value, unlike a positional, may contain `=` (e.g. a URL query string).
+    _named_value: $ =>
+      choice(
+        seq('"', optional(alias(repeat(escaped_ch('"', true)), $.value)), '"'),
+        seq("'", optional(alias(repeat(escaped_ch("'", true)), $.value)), "'"),
+        alias($._value_run_eq, $.value),
+      ),
+    positional_attr: $ => $._value_run,
+    // A value never starts or ends with whitespace (the run after a comma is the
+    // separator, and a trailing run is consumed before `]`), but interior
+    // spaces are allowed, as in `quote,Monty Python`.
+    _value_run: $ =>
+      seq($._value_token, repeat(seq(optional($._WHITE_SPACE), $._value_token))),
+    _value_run_eq: $ =>
+      seq($._value_token_eq, repeat(seq(optional($._WHITE_SPACE), $._value_token_eq))),
+    _value_token: $ => choice($._attr_word, '#', '.', '%'),
+    _value_token_eq: $ => choice($._attr_word, '#', '.', '%', '='),
+    _attr_word: _ => token(/[^,=#.%\]"'\s]+/),
     block_title: $ => seq($.block_title_marker, $.line),
 
     delimited_block: $ =>
