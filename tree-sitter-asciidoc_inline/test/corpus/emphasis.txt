@@ -4,8 +4,8 @@ emphasis
 
 this is a *emphasis* or in this form**em\*phasis**.
 this is a _ltalic_ or in this form__l\_talic__is ok.
-this is a `ltalic` or in this form``lta\`lic``is ok.
-this is a #ltalic# or in this form##lta\#lic##is ok.
+this is a `italic` or in this form``lta\`lic``is ok.
+this is a #italic# or in this form##lta\#lic##is ok.
 
 this is a _`monospace` inside ltalic_ code.
 
@@ -40,7 +40,7 @@ this is a _`monospace` inside ltalic_ code.
   (inline_element
     (word))
   (inline_element
-    (ltalic))
+    (italic))
   (inline_element
     (word))
   (inline_element
@@ -52,7 +52,7 @@ this is a _`monospace` inside ltalic_ code.
   (inline_element
     (word))
   (inline_element
-    (ltalic))
+    (italic))
   (inline_element
     (word))
   (inline_element
@@ -115,7 +115,7 @@ this is a _`monospace` inside ltalic_ code.
   (inline_element
     (word))
   (inline_element
-    (ltalic
+    (italic
       (monospace)))
   (inline_element
     (word))

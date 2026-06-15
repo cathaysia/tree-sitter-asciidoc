@@ -142,7 +142,7 @@
           "named": true
         },
         {
-          "type": "ltalic",
+          "type": "italic",
           "named": true
         },
         {
@@ -317,7 +317,7 @@
           "named": true
         },
         {
-          "type": "ltalic",
+          "type": "italic",
           "named": true
         },
         {
@@ -406,6 +406,29 @@
     }
   },
   {
+    "type": "italic",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "emphasis",
+          "named": true
+        },
+        {
+          "type": "highlight",
+          "named": true
+        },
+        {
+          "type": "monospace",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "labled_uri",
     "named": true,
     "fields": {},
@@ -428,29 +451,6 @@
     "type": "link_url",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "ltalic",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "emphasis",
-          "named": true
-        },
-        {
-          "type": "highlight",
-          "named": true
-        },
-        {
-          "type": "monospace",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "macro_name",

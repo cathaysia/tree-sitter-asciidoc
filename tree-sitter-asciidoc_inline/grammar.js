@@ -73,7 +73,7 @@ module.exports = grammar({
         $.roled_text,
         $.typographic_quote,
         $.emphasis,
-        $.ltalic,
+        $.italic,
         $.monospace,
         $.highlight,
         $.superscript,
@@ -445,8 +445,8 @@ module.exports = grammar({
     role: _ => token(/[A-Za-z0-9_][A-Za-z0-9_-]*/),
 
     emphasis: $ =>
-      create_text_formatting('*', $._emphasis_begin, [$.ltalic, $.monospace, $.highlight]),
-    ltalic: $ =>
+      create_text_formatting('*', $._emphasis_begin, [$.italic, $.monospace, $.highlight]),
+    italic: $ =>
       create_text_formatting('_', $._italic_begin, [$.emphasis, $.monospace, $.highlight]),
     monospace: $ => create_text_formatting('`', $._monospace_begin, []),
     highlight: $ => create_text_formatting('#', $._highlight_begin, []),

@@ -54,7 +54,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "ltalic"
+          "name": "italic"
         },
         {
           "type": "SYMBOL",
@@ -2142,7 +2142,7 @@
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "ltalic"
+                    "name": "italic"
                   },
                   {
                     "type": "SYMBOL",
@@ -2190,7 +2190,7 @@
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "ltalic"
+                    "name": "italic"
                   },
                   {
                     "type": "SYMBOL",
@@ -2211,7 +2211,7 @@
         }
       ]
     },
-    "ltalic": {
+    "italic": {
       "type": "CHOICE",
       "members": [
         {
