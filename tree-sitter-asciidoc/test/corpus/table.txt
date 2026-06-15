@@ -60,7 +60,10 @@ let a = 10;
     (section_block
       (element_attr
         (element_attr_marker)
-        (attr_value)
+        (named_attr
+          (attribute_name)
+          (attribute_value
+            (value)))
         (element_attr_marker))
       (table_block
         (table_block_marker)
@@ -84,7 +87,8 @@ let a = 10;
         (line))
       (element_attr
         (element_attr_marker)
-        (attr_value)
+        (positional_attr
+          (option))
         (element_attr_marker))
       (table_block
         (table_block_marker)
@@ -101,7 +105,10 @@ let a = 10;
     (section_block
       (element_attr
         (element_attr_marker)
-        (attr_value)
+        (named_attr
+          (attribute_name)
+          (attribute_value
+            (value)))
         (element_attr_marker))
       (table_block
         (table_block_marker)
@@ -148,7 +155,7 @@ let a = 10;
           (section_block
             (element_attr
               (element_attr_marker)
-              (attr_value)
+              (positional_attr)
               (element_attr_marker))
             (listing_block
               (listing_block_start_marker)
@@ -186,7 +193,7 @@ let a = 10;
           (section_block
             (element_attr
               (element_attr_marker)
-              (attr_value)
+              (positional_attr)
               (element_attr_marker))
             (listing_block
               (listing_block_start_marker)
@@ -196,7 +203,7 @@ let a = 10;
           (section_block
             (element_attr
               (element_attr_marker)
-              (attr_value)
+              (positional_attr)
               (element_attr_marker))
             (listing_block
               (listing_block_start_marker)

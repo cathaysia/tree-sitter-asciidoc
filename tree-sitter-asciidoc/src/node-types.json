@@ -47,7 +47,17 @@
   {
     "type": "attribute_value",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "value",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "author",
@@ -545,11 +555,15 @@
       "required": true,
       "types": [
         {
-          "type": "attr_value",
+          "type": "element_attr_marker",
           "named": true
         },
         {
-          "type": "element_attr_marker",
+          "type": "named_attr",
+          "named": true
+        },
+        {
+          "type": "positional_attr",
           "named": true
         }
       ]
@@ -754,6 +768,25 @@
     "fields": {}
   },
   {
+    "type": "named_attr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute_name",
+          "named": true
+        },
+        {
+          "type": "attribute_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "ntable_block",
     "named": true,
     "fields": {},
@@ -916,6 +949,33 @@
         },
         {
           "type": "passthrough_block_marker",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "positional_attr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "block_style",
+          "named": true
+        },
+        {
+          "type": "id",
+          "named": true
+        },
+        {
+          "type": "option",
+          "named": true
+        },
+        {
+          "type": "role",
           "named": true
         }
       ]
@@ -1375,6 +1435,11 @@
     }
   },
   {
+    "type": "value",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": " ",
     "named": false
   },
@@ -1383,7 +1448,27 @@
     "named": false
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "#",
+    "named": false
+  },
+  {
+    "type": "%",
+    "named": false
+  },
+  {
+    "type": "'",
+    "named": false
+  },
+  {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": ".",
     "named": false
   },
   {
@@ -1420,6 +1505,14 @@
   },
   {
     "type": "\\!",
+    "named": false
+  },
+  {
+    "type": "\\\"",
+    "named": false
+  },
+  {
+    "type": "\\'",
     "named": false
   },
   {
@@ -1475,10 +1568,6 @@
     "named": true
   },
   {
-    "type": "attr_value",
-    "named": true
-  },
-  {
     "type": "block_comment_end_marker",
     "named": true
   },
@@ -1488,6 +1577,10 @@
   },
   {
     "type": "block_macro_name",
+    "named": true
+  },
+  {
+    "type": "block_style",
     "named": true
   },
   {
@@ -1551,6 +1644,10 @@
     "named": true
   },
   {
+    "type": "id",
+    "named": true
+  },
+  {
     "type": "ident_marker",
     "named": true
   },
@@ -1607,6 +1704,10 @@
     "named": true
   },
   {
+    "type": "option",
+    "named": true
+  },
+  {
     "type": "passthrough_block_marker",
     "named": true
   },
@@ -1624,6 +1725,10 @@
   },
   {
     "type": "quoted_paragraph_marker",
+    "named": true
+  },
+  {
+    "type": "role",
     "named": true
   },
   {
