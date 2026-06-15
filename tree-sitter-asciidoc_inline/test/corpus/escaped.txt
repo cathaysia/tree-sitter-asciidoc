@@ -3,10 +3,10 @@ escaped
 ====================
 
 this is a \*emphasis\* or in this form**em\*phasis**.
-this is a \`ltalic\` or in this form``lta\`lic``is ok.
-this is a \#ltalic\# or in this form\##lta\#lic\##is ok.
+this is a \`italic\` or in this form``lta\`lic``is ok.
+this is a \#italic\# or in this form\##lta\#lic\##is ok.
 
-this is a \_`monospace` inside ltalic\_ code.
+this is a \_`monospace` inside italic\_ code.
 
 -----
 
