@@ -286,6 +286,41 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
                     }
                     break;
                 }
+                case '`': {
+                    // Markdown-style fenced code block (compat): a line of
+                    // 3+ backticks, optionally followed by an info string
+                    // (language) on the opening fence.  It reuses the listing
+                    // block markers but is tracked with a dedicated stack kind
+                    // so a backtick fence never closes a `----` block of the
+                    // same length.
+                    usize counter = 0;
+                    consume('`', lexer, false, &counter, USIZE_MAX);
+                    if((valid_symbols[TOKEN_LISTING_BLOCK_START_MARKER] ||
+                        valid_symbols[TOKEN_LISTING_BLOCK_END_MARKER]) &&
+                       counter >= 3) {
+                        if(scanner_is_matching(s, BLOCK_KIND_FENCED, counter)) {
+                            // Closing fence: bare backticks only.
+                            if(is_newline(lexer->lookahead) || is_eof(lexer)) {
+                                lexer->mark_end(lexer);
+                                scanner_pop(s);
+                                lexer->result_symbol = TOKEN_LISTING_BLOCK_END_MARKER;
+                                return true;
+                            }
+                        } else if(!scanner_is_matching_raw_block(s)) {
+                            // Opening fence: pull the rest of the line (the
+                            // info string) into the marker so the body starts
+                            // on the next line.
+                            while(!is_newline(lexer->lookahead) && !is_eof(lexer)) {
+                                lexer->advance(lexer, false);
+                            }
+                            lexer->mark_end(lexer);
+                            scanner_push(s, BLOCK_KIND_FENCED, counter);
+                            lexer->result_symbol = TOKEN_LISTING_BLOCK_START_MARKER;
+                            return true;
+                        }
+                    }
+                    break;
+                }
                 case '.': {
                     consume('.', lexer, false, NULL, USIZE_MAX);
                     lexer->mark_end(lexer);
@@ -927,6 +962,7 @@ static inline void scanner_free(Scanner *self) {
 
 static inline bool scanner_is_matching_raw_block(Scanner *self) {
     return scanner_is_matching(self, BLOCK_KIND_LISTING, 0) ||
+           scanner_is_matching(self, BLOCK_KIND_FENCED, 0) ||
            scanner_is_matching(self, BLOCK_KIND_LITERAL, 0);
 }
 
