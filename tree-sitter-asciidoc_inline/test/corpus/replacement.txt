@@ -2,15 +2,39 @@
 replacement
 ===========
 
-(R)
-
 (C)
 
--&gt;
+(R)
+
+(TM)
+
+...
+
+`'
+
+->
+
+=>
+
+<-
+
+<=
 
 -----
 
 (inline
+  (inline_element
+    (replacement))
+  (inline_element
+    (replacement))
+  (inline_element
+    (replacement))
+  (inline_element
+    (replacement))
+  (inline_element
+    (replacement))
+  (inline_element
+    (replacement))
   (inline_element
     (replacement))
   (inline_element

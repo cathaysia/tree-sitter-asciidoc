@@ -953,19 +953,19 @@
           },
           {
             "type": "STRING",
-            "value": "-&gt;"
+            "value": "->"
           },
           {
             "type": "STRING",
-            "value": "=&gr;"
+            "value": "=>"
           },
           {
             "type": "STRING",
-            "value": "&lt;-"
+            "value": "<-"
           },
           {
             "type": "STRING",
-            "value": "&lt;="
+            "value": "<="
           }
         ]
       }
