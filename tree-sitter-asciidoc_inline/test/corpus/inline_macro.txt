@@ -12,7 +12,8 @@ this is kbd:{cpp}[F3] or kbd:[Ctrl+Shift+T] or kbd:[Ctrl+\]] or kbd:[Ctrl,T] or 
   (inline_element
     (inline_macro
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element)
   (inline_element
     (word))
@@ -21,31 +22,37 @@ this is kbd:{cpp}[F3] or kbd:[Ctrl+Shift+T] or kbd:[Ctrl+\]] or kbd:[Ctrl,T] or 
   (inline_element
     (inline_macro
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element
     (word))
   (inline_element
     (inline_macro
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element
     (word))
   (inline_element
     (inline_macro
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element
     (word))
   (inline_element
     (inline_macro
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr)
+        (positional_attr))))
   (inline_element
     (word))
   (inline_element
     (inline_macro
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element)
   (inline_element
     (word))
@@ -57,31 +64,37 @@ this is kbd:{cpp}[F3] or kbd:[Ctrl+Shift+T] or kbd:[Ctrl+\]] or kbd:[Ctrl,T] or 
       (target
         (attribute_reference
           (attribute_name)))
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element
     (word))
   (inline_element
     (inline_macro
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element
     (word))
   (inline_element
     (inline_macro
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element
     (word))
   (inline_element
     (inline_macro
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr)
+        (positional_attr))))
   (inline_element
     (word))
   (inline_element
     (inline_macro
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element))
 
 ==============
@@ -96,7 +109,9 @@ indexterm:[knight, "Arthur, King"]
   (inline_element
     (inline_macro
       (macro_name)
-      (attr))))
+      (attr
+        (positional_attr)
+        (positional_attr)))))
 
 ===================
 no space
@@ -113,4 +128,5 @@ xxxxfootnote:xxxx[aaaa]
     (footnote
       (macro_name)
       (target)
-      (attr))))
+      (attr
+        (positional_attr)))))

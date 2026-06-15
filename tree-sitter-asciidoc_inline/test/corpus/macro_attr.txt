@@ -1,0 +1,53 @@
+============================
+positional and named attrs
+============================
+
+image:f.png[Alt Text,200,role=external]
+
+--------
+
+(inline
+  (inline_element
+    (inline_macro
+      (macro_name)
+      (target)
+      (attr
+        (positional_attr)
+        (positional_attr)
+        (named_attr
+          (attribute_name)
+          (attribute_value))))))
+
+============================
+quoted value keeps comma
+============================
+
+indexterm:[knight,"Arthur, King"]
+
+--------
+
+(inline
+  (inline_element
+    (inline_macro
+      (macro_name)
+      (attr
+        (positional_attr)
+        (positional_attr)))))
+
+============================
+attribute reference in value
+============================
+
+link:x[See {pname}]
+
+--------
+
+(inline
+  (inline_element
+    (inline_macro
+      (macro_name)
+      (target)
+      (attr
+        (positional_attr
+          (attribute_reference
+            (attribute_name)))))))

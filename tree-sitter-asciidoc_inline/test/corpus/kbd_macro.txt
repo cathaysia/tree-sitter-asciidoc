@@ -14,29 +14,35 @@ this is kbd:[F3] or kbd:[Ctrl+Shift+T] or kbd:[Ctrl+\]] or kbd:[Ctrl,T] or btn:[
   (inline_element
     (inline_macro
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element
     (word))
   (inline_element
     (inline_macro
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element
     (word))
   (inline_element
     (inline_macro
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element
     (word))
   (inline_element
     (inline_macro
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr)
+        (positional_attr))))
   (inline_element
     (word))
   (inline_element
     (inline_macro
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element))

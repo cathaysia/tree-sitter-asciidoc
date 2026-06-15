@@ -15,7 +15,8 @@ menu:View[Page Style, No Style]
       (macro_name)
       (target)
       (attr
-        (replacement))))
+        (positional_attr
+          (replacement)))))
   (inline_element
     (inline_macro
       (macro_name)
@@ -24,9 +25,12 @@ menu:View[Page Style, No Style]
     (inline_macro
       (macro_name)
       (target)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element
     (inline_macro
       (macro_name)
       (target)
-      (attr))))
+      (attr
+        (positional_attr)
+        (positional_attr)))))

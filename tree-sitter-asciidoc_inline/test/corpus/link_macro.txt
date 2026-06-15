@@ -23,4 +23,5 @@ this is a link:vvv[] and mailto:bbb[ccc]
     (inline_macro
       (macro_name)
       (target)
-      (attr))))
+      (attr
+        (positional_attr)))))

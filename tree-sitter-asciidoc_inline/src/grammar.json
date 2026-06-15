@@ -676,44 +676,256 @@
       }
     },
     "attr": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "PATTERN",
-            "value": "[^\\]]"
-          },
-          {
-            "type": "STRING",
-            "value": "\\]"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "replacement"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "attribute_reference"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "autolink"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "escaped_sequence"
-          },
-          {
-            "type": "PREC_LEFT",
-            "value": -1,
-            "content": {
-              "type": "STRING",
-              "value": "\""
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_macro_attr"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_macro_attr"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "REPEAT1",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "_macro_attr"
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
+                  }
+                ]
+              }
             }
+          ]
+        }
+      ]
+    },
+    "_macro_attr": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "named_attr"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "positional_attr"
+        }
+      ]
+    },
+    "named_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "REPEAT1",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_pos_char"
+            }
+          },
+          "named": true,
+          "value": "attribute_name"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_named_value"
+              },
+              "named": true,
+              "value": "attribute_value"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "positional_attr": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_quoted_value"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_pos_char"
           }
-        ]
-      }
+        }
+      ]
+    },
+    "_named_value": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_quoted_value"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_val_char"
+          }
+        }
+      ]
+    },
+    "_quoted_value": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\""
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[^\"]"
+              },
+              {
+                "type": "STRING",
+                "value": "\\\""
+              },
+              {
+                "type": "SYMBOL",
+                "name": "replacement"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "attribute_reference"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "escaped_sequence"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "\""
+        }
+      ]
+    },
+    "_pos_char": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[^\\s,=\\]\"]"
+        },
+        {
+          "type": "STRING",
+          "value": "\\,"
+        },
+        {
+          "type": "STRING",
+          "value": "\\="
+        },
+        {
+          "type": "STRING",
+          "value": "\\]"
+        },
+        {
+          "type": "STRING",
+          "value": "\\\""
+        },
+        {
+          "type": "SYMBOL",
+          "name": "replacement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "attribute_reference"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "autolink"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "escaped_sequence"
+        }
+      ]
+    },
+    "_val_char": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[^\\s,\\]\"]"
+        },
+        {
+          "type": "STRING",
+          "value": "\\,"
+        },
+        {
+          "type": "STRING",
+          "value": "\\]"
+        },
+        {
+          "type": "STRING",
+          "value": "\\\""
+        },
+        {
+          "type": "SYMBOL",
+          "name": "replacement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "attribute_reference"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "autolink"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "escaped_sequence"
+        }
+      ]
     },
     "_footnotename": {
       "type": "CHOICE",

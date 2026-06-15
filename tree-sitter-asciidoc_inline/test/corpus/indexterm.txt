@@ -28,8 +28,13 @@ indexterm2:[Arthur, King]
   (inline_element
     (inline_macro
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr)
+        (positional_attr)
+        (positional_attr))))
   (inline_element
     (inline_macro
       (macro_name)
-      (attr))))
+      (attr
+        (positional_attr)
+        (positional_attr)))))

@@ -20,7 +20,8 @@ xref:id[reftext]
     (inline_macro
       (macro_name)
       (target)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element
     (xref
       (id)

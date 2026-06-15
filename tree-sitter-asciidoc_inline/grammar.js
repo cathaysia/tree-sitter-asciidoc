@@ -169,17 +169,65 @@ module.exports = grammar({
           $.macro_passthrough,
         ),
       ),
+    // A macro attribute list, e.g. `[Alt Text,200,role=external]`.  Entries
+    // are comma-separated positional values or `name=value` pairs; a quoted
+    // value may contain commas.  Values may embed the usual inline constructs
+    // (attribute references, replacements, autolinks, escapes).
     attr: $ =>
-      repeat1(
-        escaped_ch(
-          ']',
-          false,
-          $.replacement,
-          $.attribute_reference,
-          $.autolink,
-          $.escaped_sequence,
-          prec.left(-1, '"'),
+      choice(
+        $._macro_attr,
+        seq(optional($._macro_attr), repeat1(seq(',', optional($._macro_attr)))),
+      ),
+    _macro_attr: $ => choice($.named_attr, $.positional_attr),
+    named_attr: $ =>
+      seq(
+        alias(repeat1($._pos_char), $.attribute_name),
+        '=',
+        optional(alias($._named_value, $.attribute_value)),
+      ),
+    positional_attr: $ => choice($._quoted_value, repeat1($._pos_char)),
+    // A bare named value, unlike a positional, may contain `=` (e.g. a URL).
+    _named_value: $ => choice($._quoted_value, repeat1($._val_char)),
+    _quoted_value: $ =>
+      seq(
+        '"',
+        repeat(
+          escaped_ch(
+            '"',
+            false,
+            $.replacement,
+            $.attribute_reference,
+            $.escaped_sequence,
+          ),
         ),
+        '"',
+      ),
+    // Value characters exclude whitespace (skipped as an extra, so interior
+    // spaces survive in the node range) as well as the structural `,`/`]`/`"`.
+    // A positional also stops at `=` so that `name=value` reads as a named
+    // attribute; a named value may contain `=`.
+    _pos_char: $ =>
+      choice(
+        /[^\s,=\]"]/,
+        '\\,',
+        '\\=',
+        '\\]',
+        '\\"',
+        $.replacement,
+        $.attribute_reference,
+        $.autolink,
+        $.escaped_sequence,
+      ),
+    _val_char: $ =>
+      choice(
+        /[^\s,\]"]/,
+        '\\,',
+        '\\]',
+        '\\"',
+        $.replacement,
+        $.attribute_reference,
+        $.autolink,
+        $.escaped_sequence,
       ),
 
     _footnotename: $ => choice('footnote', 'footnoteref'),

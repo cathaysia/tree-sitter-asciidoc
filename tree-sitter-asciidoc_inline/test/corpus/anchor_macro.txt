@@ -34,4 +34,5 @@ this is a [[idname]] or [[idname,Reference Text]] or anchor:idname[] or anchor:i
     (inline_macro
       (macro_name)
       (target)
-      (attr))))
+      (attr
+        (positional_attr)))))

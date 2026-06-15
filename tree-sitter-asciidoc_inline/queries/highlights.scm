@@ -77,6 +77,10 @@
   (target)? @label
   (attr) @attribute)
 
+; The value of a named macro attribute (e.g. `window=_blank`).
+(named_attr
+  (attribute_value) @string)
+
 (term) @attribute
 
 (id_assignment) @label
