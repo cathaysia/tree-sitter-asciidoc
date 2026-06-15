@@ -129,7 +129,6 @@ module.exports = grammar({
         'erd',
         'gnuplot',
         'graphviz',
-        'graphviz',
         'lilypond',
         'meme',
         'mermaid',
@@ -411,6 +410,12 @@ module.exports = grammar({
             ),
             '+',
           ),
+        ),
+        // triple-plus: raw, no substitution at all (e.g. inline HTML)
+        seq(
+          token(prec(2, '+++')),
+          repeat(escaped_ch('+', true)),
+          token(prec(2, '+++')),
         ),
         // unconstrained
         seq(
