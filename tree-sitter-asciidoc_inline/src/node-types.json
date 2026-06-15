@@ -66,6 +66,29 @@
     }
   },
   {
+    "type": "counter",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute_name",
+          "named": true
+        },
+        {
+          "type": "counter_function",
+          "named": true
+        },
+        {
+          "type": "initial_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "emphasis",
     "named": true,
     "fields": {},
@@ -210,6 +233,10 @@
         },
         {
           "type": "autolink",
+          "named": true
+        },
+        {
+          "type": "counter",
           "named": true
         },
         {
@@ -990,6 +1017,10 @@
     "named": false
   },
   {
+    "type": "counter_function",
+    "named": true
+  },
+  {
     "type": "d2",
     "named": false
   },
@@ -1068,6 +1099,10 @@
   {
     "type": "indexterm2",
     "named": false
+  },
+  {
+    "type": "initial_value",
+    "named": true
   },
   {
     "type": "intrinsic_attributes",

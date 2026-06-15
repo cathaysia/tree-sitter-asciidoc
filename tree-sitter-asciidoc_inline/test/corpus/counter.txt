@@ -1,0 +1,70 @@
+=======
+counter
+=======
+
+{counter:mycounter}
+
+--------
+
+(inline
+  (inline_element
+    (counter
+      (counter_function)
+      (attribute_name))))
+
+==============
+counter silent
+==============
+
+{counter2:mycounter}
+
+--------
+
+(inline
+  (inline_element
+    (counter
+      (counter_function)
+      (attribute_name))))
+
+=====================
+counter numeric seed
+=====================
+
+{counter:mycounter:5}
+
+--------
+
+(inline
+  (inline_element
+    (counter
+      (counter_function)
+      (attribute_name)
+      (initial_value))))
+
+=========================
+counter character seed
+=========================
+
+{counter:mycounter:A}
+
+--------
+
+(inline
+  (inline_element
+    (counter
+      (counter_function)
+      (attribute_name)
+      (initial_value))))
+
+=================================
+plain reference named counter
+=================================
+
+{counter}
+
+--------
+
+(inline
+  (inline_element
+    (attribute_reference
+      (attribute_name))))

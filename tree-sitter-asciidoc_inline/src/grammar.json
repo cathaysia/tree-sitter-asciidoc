@@ -102,6 +102,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "counter"
+        },
+        {
+          "type": "SYMBOL",
           "name": "attribute_reference"
         },
         {
@@ -1113,6 +1117,72 @@
             "value": "gt"
           }
         ]
+      }
+    },
+    "counter": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_counter_function"
+          },
+          "named": true,
+          "value": "counter_function"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "attribute_name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ":"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_counter_initial"
+                  },
+                  "named": true,
+                  "value": "initial_value"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "_counter_function": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "counter2?:"
+      }
+    },
+    "_counter_initial": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[A-Za-z0-9]+"
       }
     },
     "attribute_reference": {
