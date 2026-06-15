@@ -30,30 +30,26 @@ atx section titles
 
 (document
   (block_element
-    (section_block
+    (section
       (title1
         (title_h1_marker)
-        (line))))
-  (block_element
-    (section_block
-      (title2
-        (title_h2_marker)
-        (line))))
-  (block_element
-    (section_block
-      (title3
-        (title_h3_marker)
-        (line))))
-  (block_element
-    (section_block
-      (title4
-        (title_h4_marker)
-        (line))))
-  (block_element
-    (section_block
-      (title5
-        (title_h5_marker)
-        (line)))))
+        (line))
+      (section
+        (title2
+          (title_h2_marker)
+          (line))
+        (section
+          (title3
+            (title_h3_marker)
+            (line))
+          (section
+            (title4
+              (title_h4_marker)
+              (line))
+            (section
+              (title5
+                (title_h5_marker)
+                (line)))))))))
 
 =============================
 atx heading followed by text
@@ -67,14 +63,13 @@ Some text.
 
 (document
   (block_element
-    (section_block
+    (section
       (title1
         (title_h1_marker)
-        (line))))
-  (block_element
-    (section_block
-      (paragraph
-        (line)))))
+        (line))
+      (section_block
+        (paragraph
+          (line))))))
 
 ==================================
 hashes without a space stay text
