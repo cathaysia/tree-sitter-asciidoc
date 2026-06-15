@@ -38,3 +38,19 @@ pass:quotes[text]
       (macro_name)
       (target)
       (attr))))
+
+====================
+triple plus
+====================
+
++++<b>raw</b>+++ and ++unconstrained++
+
+-----
+
+(inline
+  (inline_element
+    (passthrough))
+  (inline_element
+    (word))
+  (inline_element
+    (passthrough)))

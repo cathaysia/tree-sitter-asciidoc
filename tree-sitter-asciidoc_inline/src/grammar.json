@@ -514,10 +514,6 @@
         },
         {
           "type": "STRING",
-          "value": "graphviz"
-        },
-        {
-          "type": "STRING",
           "value": "lilypond"
         },
         {
@@ -1890,6 +1886,49 @@
               }
             ]
           }
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": 2,
+                "content": {
+                  "type": "STRING",
+                  "value": "+++"
+                }
+              }
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[^+\\r\\n]"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "\\+"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": 2,
+                "content": {
+                  "type": "STRING",
+                  "value": "+++"
+                }
+              }
+            }
+          ]
         },
         {
           "type": "SEQ",
