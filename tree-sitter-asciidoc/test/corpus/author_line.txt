@@ -162,11 +162,10 @@ The second author's last name is {lastname_2}.
         (document_attr_marker)
         (line))))
   (block_element
-    (section_block
+    (section
       (title1
         (title_h1_marker)
-        (line))))
-  (block_element
-    (section_block
-      (paragraph
-        (line)))))
+        (line))
+      (section_block
+        (paragraph
+          (line))))))

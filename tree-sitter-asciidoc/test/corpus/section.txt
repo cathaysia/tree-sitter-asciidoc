@@ -1,0 +1,70 @@
+==================
+nested sections
+==================
+
+== A
+
+para
+
+=== B
+
+sub
+
+== C
+
+last
+
+--------
+
+(document
+  (block_element
+    (section
+      (title1
+        (title_h1_marker)
+        (line))
+      (section_block
+        (paragraph
+          (line)))
+      (section
+        (title2
+          (title_h2_marker)
+          (line))
+        (section_block
+          (paragraph
+            (line))))))
+  (block_element
+    (section
+      (title1
+        (title_h1_marker)
+        (line))
+      (section_block
+        (paragraph
+          (line))))))
+
+=====================================
+illegal level skip still nests
+=====================================
+
+== First
+
+==== Skipped
+
+== Next
+
+--------
+
+(document
+  (block_element
+    (section
+      (title1
+        (title_h1_marker)
+        (line))
+      (section
+        (title3
+          (title_h3_marker)
+          (line)))))
+  (block_element
+    (section
+      (title1
+        (title_h1_marker)
+        (line)))))

@@ -149,6 +149,10 @@
           "named": true
         },
         {
+          "type": "section",
+          "named": true
+        },
+        {
           "type": "section_block",
           "named": true
         }
@@ -1083,6 +1087,53 @@
     "type": "revremark",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block_title",
+          "named": true
+        },
+        {
+          "type": "element_attr",
+          "named": true
+        },
+        {
+          "type": "section",
+          "named": true
+        },
+        {
+          "type": "section_block",
+          "named": true
+        },
+        {
+          "type": "title1",
+          "named": true
+        },
+        {
+          "type": "title2",
+          "named": true
+        },
+        {
+          "type": "title3",
+          "named": true
+        },
+        {
+          "type": "title4",
+          "named": true
+        },
+        {
+          "type": "title5",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "section_block",
