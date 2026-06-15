@@ -18,14 +18,16 @@ This is afootnote:[text], but notstem.
   (inline_element
     (footnote
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element
     (word))
   (inline_element
     (footnote
       (macro_name)
       (target)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element
     (word))
   (inline_element
@@ -37,13 +39,16 @@ This is afootnote:[text], but notstem.
   (inline_element
     (footnote
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr)
+        (positional_attr))))
   (inline_element
     (word))
   (inline_element
     (footnote
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element
     (word))
   (inline_element
@@ -53,7 +58,8 @@ This is afootnote:[text], but notstem.
   (inline_element
     (footnote
       (macro_name)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element)
   (inline_element
     (word))

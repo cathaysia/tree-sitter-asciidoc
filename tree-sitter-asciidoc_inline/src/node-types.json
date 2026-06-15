@@ -8,6 +8,25 @@
       "required": false,
       "types": [
         {
+          "type": "named_attr",
+          "named": true
+        },
+        {
+          "type": "positional_attr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "attribute_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
           "type": "attribute_reference",
           "named": true
         },
@@ -27,11 +46,6 @@
     }
   },
   {
-    "type": "attribute_name",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "attribute_reference",
     "named": true,
     "fields": {},
@@ -41,6 +55,33 @@
       "types": [
         {
           "type": "attribute_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "attribute_value",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attribute_reference",
+          "named": true
+        },
+        {
+          "type": "autolink",
+          "named": true
+        },
+        {
+          "type": "escaped_sequence",
+          "named": true
+        },
+        {
+          "type": "replacement",
           "named": true
         }
       ]
@@ -445,9 +486,55 @@
     "fields": {}
   },
   {
+    "type": "named_attr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute_name",
+          "named": true
+        },
+        {
+          "type": "attribute_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "passthrough",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "positional_attr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attribute_reference",
+          "named": true
+        },
+        {
+          "type": "autolink",
+          "named": true
+        },
+        {
+          "type": "escaped_sequence",
+          "named": true
+        },
+        {
+          "type": "replacement",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "reftext",
@@ -773,6 +860,10 @@
     "named": false
   },
   {
+    "type": "\\\"",
+    "named": false
+  },
+  {
     "type": "\\#",
     "named": false
   },
@@ -818,6 +909,10 @@
   },
   {
     "type": "\\<<",
+    "named": false
+  },
+  {
+    "type": "\\=",
     "named": false
   },
   {

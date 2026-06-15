@@ -77,5 +77,9 @@ image:{repo}/x.svg[alt,link="{repo}/a"]
         (attribute_reference
           (attribute_name)))
       (attr
-        (attribute_reference
-          (attribute_name))))))
+        (positional_attr)
+        (named_attr
+          (attribute_name)
+          (attribute_value
+            (attribute_reference
+              (attribute_name))))))))

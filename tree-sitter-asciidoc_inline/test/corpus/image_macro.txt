@@ -17,21 +17,24 @@ this is a image:filename.png[Alt Text] or image:http://example.com/images/filena
     (inline_macro
       (macro_name)
       (target)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element
     (word))
   (inline_element
     (inline_macro
       (macro_name)
       (target)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element
     (word))
   (inline_element
     (inline_macro
       (macro_name)
       (target)
-      (attr)))
+      (attr
+        (positional_attr))))
   (inline_element)
   (inline_element
     (word))
@@ -55,4 +58,5 @@ this is a image:filename.png[Alt Text] or image:http://example.com/images/filena
     (inline_macro
       (macro_name)
       (target)
-      (attr))))
+      (attr
+        (positional_attr)))))
