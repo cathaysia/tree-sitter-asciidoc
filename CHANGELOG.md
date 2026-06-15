@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.10.0](https://github.com/cathaysia/tree-sitter-asciidoc/compare/v0.9.0...v0.10.0) (2026-06-15)
+
+
+### Features
+
+* **inline:** parse attribute references in macro targets and attrs ([957a33d](https://github.com/cathaysia/tree-sitter-asciidoc/commit/957a33d9b17a7a95b81f81734cb92e90ea5e7324))
+* **inline:** parse counter attribute references ([dd0d426](https://github.com/cathaysia/tree-sitter-asciidoc/commit/dd0d4262fd0a7b2e99fd795a7f6b47190ab15eb2))
+* **inline:** parse typographic (curved) quotes ([68b1a5b](https://github.com/cathaysia/tree-sitter-asciidoc/commit/68b1a5b9bdb01dcd049c1252ea0c33a2063df72e))
+* **scanner:** include the admonition label in its token ([3060415](https://github.com/cathaysia/tree-sitter-asciidoc/commit/306041546fb508ca188747d8c498b948072d2e1c))
+* **scanner:** parse Markdown-style ATX headings ([963f5f0](https://github.com/cathaysia/tree-sitter-asciidoc/commit/963f5f0478d6b3a7d793483a26d8e5082fc18d74))
+* **scanner:** parse Markdown-style fenced code blocks ([0d9b1f1](https://github.com/cathaysia/tree-sitter-asciidoc/commit/0d9b1f11ddf7b4339f62a75ec15afb713a67ad21))
+
+
+### Bug Fixes
+
+* **inline:** match arrow replacements in source form ([2b3e261](https://github.com/cathaysia/tree-sitter-asciidoc/commit/2b3e261dac14c2ee1e646d4677cd861eaf05df68))
+
 ## [0.9.0](https://github.com/cathaysia/tree-sitter-asciidoc/compare/v0.8.0...v0.9.0) (2026-06-11)
 
 
