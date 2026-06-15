@@ -1,0 +1,74 @@
+==================
+fenced code block
+==================
+
+```
+code line
+```
+
+--------
+
+(document
+  (block_element
+    (section_block
+      (listing_block
+        (listing_block_start_marker)
+        (listing_block_body)
+        (listing_block_end_marker)))))
+
+================================
+fenced code block with language
+================================
+
+```ruby
+puts 1
+puts 2
+```
+
+--------
+
+(document
+  (block_element
+    (section_block
+      (listing_block
+        (listing_block_start_marker)
+        (listing_block_body)
+        (listing_block_end_marker)))))
+
+=====================================
+fenced code block with callouts
+=====================================
+
+```
+x <1>
+```
+<1> note
+
+--------
+
+(document
+  (block_element
+    (section_block
+      (listing_block
+        (listing_block_start_marker)
+        (listing_block_body
+          (callout_marker))
+        (listing_block_end_marker)
+        (callout_list
+          (callout_list_item
+            (callout_list_marker)
+            (line)))))))
+
+=====================================
+fewer than three backticks stay text
+=====================================
+
+``not a fence``
+
+--------
+
+(document
+  (block_element
+    (section_block
+      (paragraph
+        (line)))))
