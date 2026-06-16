@@ -1,7 +1,7 @@
 # tree-sitter-asciidoc
 
-![Crates.io Version](https://img.shields.io/crates/v/tree-sitter-asciidoc?label=tree-sitter-asciidoc(crates.io))
-![Crates.io Version](https://img.shields.io/crates/v/tree-sitter-asciidoc_inline?label=tree-sitter-asciidoc_inline(crates.io))
+[![tree-sitter-asciidoc on crates.io](https://img.shields.io/crates/v/tree-sitter-asciidoc?label=tree-sitter-asciidoc)](https://crates.io/crates/tree-sitter-asciidoc)
+[![tree-sitter-asciidoc-inline on crates.io](https://img.shields.io/crates/v/tree-sitter-asciidoc-inline?label=tree-sitter-asciidoc-inline)](https://crates.io/crates/tree-sitter-asciidoc-inline)
 
 A [tree-sitter](https://tree-sitter.github.io/tree-sitter/) grammar for
 [AsciiDoc](https://docs.asciidoctor.org/asciidoc/latest/), the markup language.
