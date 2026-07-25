@@ -37,18 +37,32 @@ pub const NODE_TYPES: &str = include_str!("../../src/node-types.json");
 
 // Uncomment these to include any queries that this grammar contains
 
-// pub const HIGHLIGHTS_QUERY: &str = include_str!("../../queries/highlights.scm");
-// pub const INJECTIONS_QUERY: &str = include_str!("../../queries/injections.scm");
+pub const HIGHLIGHTS_QUERY: &str = include_str!("../../queries/highlights.scm");
+pub const INJECTIONS_QUERY: &str = include_str!("../../queries/injections.scm");
 // pub const LOCALS_QUERY: &str = include_str!("../../queries/locals.scm");
 // pub const TAGS_QUERY: &str = include_str!("../../queries/tags.scm");
 
 #[cfg(test)]
 mod tests {
+    use tree_sitter::Query;
+
     #[test]
     fn test_can_load_grammar() {
         let mut parser = tree_sitter::Parser::new();
         parser
             .set_language(&super::language())
             .expect("Error loading asciidocInline grammar");
+    }
+
+    #[test]
+    fn test_highlights_query_compiles() {
+        Query::new(&super::language(), super::HIGHLIGHTS_QUERY)
+            .expect("highlights.scm should compile");
+    }
+
+    #[test]
+    fn test_injections_query_compiles() {
+        Query::new(&super::language(), super::INJECTIONS_QUERY)
+            .expect("injections.scm should compile");
     }
 }
