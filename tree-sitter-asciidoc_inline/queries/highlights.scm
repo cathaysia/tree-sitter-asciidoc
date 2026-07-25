@@ -33,11 +33,20 @@
 
 (replacement) @string.special
 
+(typographic_quote) @string.special
+
 (roled_text
   (role) @attribute)
 
 (attribute_reference
   (attribute_name) @constant)
+
+(intrinsic_attributes) @constant
+
+(counter
+  (counter_function) @keyword
+  (attribute_name) @constant
+  (initial_value)? @string)
 
 (xref
   (reftext) @markup.link @markup.link.url)
@@ -68,6 +77,10 @@
 (inline_macro
   (target)? @markup.link @markup.link.url
   (attr)? @label)
+
+(macro_passthrough
+  (target)? @label
+  (attr)? @markup.raw @nospell)
 
 (stem_macro
   (target)? @label

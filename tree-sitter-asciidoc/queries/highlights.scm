@@ -187,4 +187,6 @@
     "gnuplot" "graphviz" "lilypond" "meme" "mermaid" "msc" "nomnoml" "pikchr" "plantuml" "shaape"
     "smcat" "structurizr" "svgbob" "symbolator" "syntrax" "tikz" "umlet" "vega" "wavedrom"))
 
+(literal_block_body) @markup.raw.block
+
 (line) @spell

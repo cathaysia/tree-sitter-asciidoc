@@ -60,6 +60,37 @@ mod tests {
             .expect("highlights.scm should compile");
     }
 
+    #[test]
+    fn test_literal_block_body_is_highlighted_as_raw_block() {
+        let source = "....\nliteral text\n....\n";
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::language())
+            .expect("Error loading asciidoc grammar");
+        let tree = parser.parse(source, None).unwrap();
+
+        let query = Query::new(&super::language(), super::HIGHLIGHTS_QUERY)
+            .expect("highlights.scm should compile");
+        let raw_block_index = query
+            .capture_index_for_name("markup.raw.block")
+            .expect("markup.raw.block capture should exist");
+
+        let mut cursor = QueryCursor::new();
+        let mut matches = cursor.matches(&query, tree.root_node(), source.as_bytes());
+        let mut found_literal_body = false;
+        while let Some(m) = matches.next() {
+            for capture in m.captures {
+                if capture.index == raw_block_index && capture.node.kind() == "literal_block_body" {
+                    found_literal_body = true;
+                }
+            }
+        }
+        assert!(
+            found_literal_body,
+            "literal_block_body should be captured as markup.raw.block"
+        );
+    }
+
     // `queries/injections.scm` must resolve the injected language using only
     // predicates and properties that vanilla `tree_sitter::Query`/`QueryCursor`
     // evaluate (`#eq?`, `#match?`, `#any-of?`, `#set!`, ...). Neovim-only
