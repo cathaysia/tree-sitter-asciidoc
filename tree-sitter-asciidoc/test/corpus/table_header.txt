@@ -1,0 +1,100 @@
+=======================
+table with an implicit header row
+=======================
+
+|===
+| Join | Type | Why
+
+| apb
+| INNER
+| Every activity part has one base row.
+|===
+
+---
+
+(document
+  (block_element
+    (section_block
+      (table_block
+        (table_block_marker)
+        (table_header_row
+          (table_cell
+            (table_cell_content))
+          (table_cell
+            (table_cell_content))
+          (table_cell
+            (table_cell_content)))
+        (table_cell
+          (table_cell_content))
+        (table_cell
+          (table_cell_content))
+        (table_cell
+          (table_cell_content))
+        (table_block_marker)))))
+
+=======================
+table without a blank line has no header row
+=======================
+
+|===
+| a | b
+| c | d
+|===
+
+---
+
+(document
+  (block_element
+    (section_block
+      (table_block
+        (table_block_marker)
+        (table_cell
+          (table_cell_content))
+        (table_cell
+          (table_cell_content))
+        (table_cell
+          (table_cell_content))
+        (table_cell
+          (table_cell_content))
+        (table_block_marker)))))
+
+=======================
+header row keeps cell specifiers
+=======================
+
+[%header,cols="2,1"]
+|===
+h| Join >s| Why
+
+| a
+| b
+|===
+
+---
+
+(document
+  (block_element
+    (section_block
+      (element_attr
+        (element_attr_marker)
+        (positional_attr
+          (option))
+        (named_attr
+          (attribute_name)
+          (attribute_value
+            (value)))
+        (element_attr_marker))
+      (table_block
+        (table_block_marker)
+        (table_header_row
+          (table_cell
+            (table_cell_attr)
+            (table_cell_content))
+          (table_cell
+            (table_cell_attr)
+            (table_cell_content)))
+        (table_cell
+          (table_cell_content))
+        (table_cell
+          (table_cell_content))
+        (table_block_marker)))))

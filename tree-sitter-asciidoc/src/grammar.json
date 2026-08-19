@@ -991,6 +991,18 @@
             "name": "table_block_marker"
           },
           {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "table_header_row"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
             "type": "REPEAT",
             "content": {
               "type": "CHOICE",
@@ -1123,6 +1135,46 @@
           {
             "type": "STRING",
             "value": "\\|"
+          }
+        ]
+      }
+    },
+    "table_header_row": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_table_header_start"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "table_cell"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_table_header_row_end"
+        }
+      ]
+    },
+    "_table_header_row_end": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "\\r?\\n"
+          },
+          {
+            "type": "PATTERN",
+            "value": "[ \\t]*"
+          },
+          {
+            "type": "PATTERN",
+            "value": "\\r?\\n"
           }
         ]
       }
@@ -3407,6 +3459,10 @@
     {
       "type": "SYMBOL",
       "name": "description_marker"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_table_header_start"
     }
   ],
   "inline": [],

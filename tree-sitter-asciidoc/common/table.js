@@ -39,6 +39,7 @@ exports.rules = {
     prec.left(
       seq(
         $.table_block_marker,
+        optional($.table_header_row),
         repeat(choice($.table_cell, $.ntable_block)),
         $.table_block_marker,
       ),
@@ -61,6 +62,18 @@ exports.rules = {
       ),
     ),
   table_cell_content: $ => repeat1(choice(/[^|]/, '\\|')),
+
+  // AsciiDoc promotes a table's first line to a header row when a blank line follows it,
+  // which is also the layout `[%header]` and `options="header"` tables are written in.
+  // `_table_header_start` is a zero-width token the scanner emits only in that case; the
+  // attribute list itself sits outside `table_block` and is not visible from here.
+  // Settling the question before any cell is read keeps header and body cells out of one
+  // parse state, so the two can end their content differently.
+  table_header_row: $ =>
+    seq($._table_header_start, repeat1($.table_cell), $._table_header_row_end),
+  // Matched as one token so that it outruns the single character a cell's content would
+  // otherwise take the first newline as.
+  _table_header_row_end: _ => token(seq(/\r?\n/, /[ \t]*/, /\r?\n/)),
 
   ntable_block: $ =>
     prec.left(

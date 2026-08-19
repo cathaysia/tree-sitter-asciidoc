@@ -55,6 +55,16 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
         }
     }
 
+    // Whether the table opened with a header row was settled while its `|===` was scanned,
+    // so this only has to hand the answer over. Nothing is consumed either way, which is
+    // what lets the rest of the scanner run untouched when there is no header row.
+    if(valid_symbols[TOKEN_TABLE_HEADER_START] && s->header_pending) {
+        s->header_pending = false;
+        lexer->mark_end(lexer);
+        lexer->result_symbol = TOKEN_TABLE_HEADER_START;
+        return true;
+    }
+
     usize start_pos = lexer->get_column(lexer);
 
     if(valid_symbols[TOKEN_BLOCK_COMMENT_END_MARKER]) {
@@ -500,6 +510,7 @@ bool tree_sitter_asciidoc_external_scanner_scan(void *payload, TSLexer *lexer, c
                                 lexer->mark_end(lexer);
                                 lexer->result_symbol = TOKEN_TABLE_BLOCK_MARKER;
                                 scanner_push(s, BLOCK_KIND_TABLE, counter);
+                                s->header_pending = scan_opens_with_header_row(lexer);
                                 return true;
                             }
                         }
@@ -791,6 +802,59 @@ static inline bool is_newline(i32 ch) {
     return ch == '\r' || ch == '\n';
 }
 
+/// Consume one line ending, if there is one.
+static inline bool skip_line_ending(TSLexer *lexer) {
+    if(lexer->lookahead != '\r' && lexer->lookahead != '\n') {
+        return false;
+    }
+    if(lexer->lookahead == '\r') {
+        lexer->advance(lexer, false);
+    }
+    if(lexer->lookahead == '\n') {
+        lexer->advance(lexer, false);
+    }
+    return true;
+}
+
+/// AsciiDoc promotes a table's first line to its header row when a blank line follows it.
+///
+/// Called with the lexer sitting on the line ending of an opening `|===`, whose token has
+/// already been marked, so everything read here is lookahead and widens nothing.
+static inline bool scan_opens_with_header_row(TSLexer *lexer) {
+    if(!skip_line_ending(lexer)) {
+        return false;
+    }
+
+    // The line has to be cells, not the delimiter closing an empty table, which a blank
+    // line may equally well follow.
+    bool closes_the_table = lexer->lookahead == '|';
+    usize delimiter_run = 0;
+
+    bool first_line_has_content = false;
+    while(!is_eof(lexer) && !is_newline(lexer->lookahead)) {
+        first_line_has_content = true;
+        if(closes_the_table && !is_white_space(lexer->lookahead)) {
+            if(lexer->lookahead == '=' && delimiter_run < USIZE_MAX) {
+                ++delimiter_run;
+            } else if(delimiter_run > 0) {
+                closes_the_table = false;
+            }
+        }
+        lexer->advance(lexer, false);
+    }
+    if(!first_line_has_content || (closes_the_table && delimiter_run >= 3)) {
+        return false;
+    }
+    if(!skip_line_ending(lexer)) {
+        return false;
+    }
+
+    while(is_white_space(lexer->lookahead)) {
+        lexer->advance(lexer, false);
+    }
+    return is_newline(lexer->lookahead);
+}
+
 static inline bool is_eof(TSLexer *lexer) {
     return lexer->eof(lexer);
 }
@@ -911,6 +975,7 @@ static inline Result scanner_serialize(Scanner const *self, QuickBuffer *qb) {
 
     ret &= quick_buffer_write_usize(qb, self->len);
     ret &= quick_buffer_extend_bytes(qb, self->buffer, sizeof(Node) * self->len);
+    ret &= quick_buffer_write_usize(qb, self->header_pending ? 1 : 0);
 
     return ret;
 }
@@ -926,6 +991,10 @@ static inline Result scanner_deserialize(Scanner *self, QuickBuffer *qb) {
     }
     self->len = len;
     ret &= quick_buffer_read_bytes(qb, self->buffer, len * sizeof(Node));
+
+    usize header_pending = 0;
+    ret &= quick_buffer_read_usize(qb, &header_pending);
+    self->header_pending = header_pending != 0;
 
     return ret;
 }

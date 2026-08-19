@@ -24,6 +24,10 @@ typedef struct Scanner {
     usize capacity;
     usize len;
     Node *buffer;
+    /// Set while an opening `|===` is being scanned, when the line after it is followed by
+    /// a blank one and the table therefore opens with a header row. Read back on the very
+    /// next token, so nothing can come between the two.
+    bool header_pending;
 } Scanner;
 
 static inline void scanner_init(Scanner *self);

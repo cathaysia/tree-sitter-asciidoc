@@ -1288,6 +1288,10 @@
         {
           "type": "table_cell",
           "named": true
+        },
+        {
+          "type": "table_header_row",
+          "named": true
         }
       ]
     }
@@ -1323,6 +1327,21 @@
     "type": "table_cell_content",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "table_header_row",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "table_cell",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "target",

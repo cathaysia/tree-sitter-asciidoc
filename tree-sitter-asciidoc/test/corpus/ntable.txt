@@ -37,10 +37,11 @@ Nesting Tables
         (element_attr_marker))
       (table_block
         (table_block_marker)
-        (table_cell
-          (table_cell_content))
-        (table_cell
-          (table_cell_content))
+        (table_header_row
+          (table_cell
+            (table_cell_content))
+          (table_cell
+            (table_cell_content)))
         (table_cell
           (table_cell_content))
         (table_cell
