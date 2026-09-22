@@ -1097,11 +1097,19 @@
       "required": true,
       "types": [
         {
+          "type": "block_comment",
+          "named": true
+        },
+        {
           "type": "block_title",
           "named": true
         },
         {
           "type": "element_attr",
+          "named": true
+        },
+        {
+          "type": "line_comment",
           "named": true
         },
         {
@@ -1148,6 +1156,10 @@
           "named": true
         },
         {
+          "type": "block_comment",
+          "named": true
+        },
+        {
           "type": "block_macro",
           "named": true
         },
@@ -1181,6 +1193,10 @@
         },
         {
           "type": "ident_block",
+          "named": true
+        },
+        {
+          "type": "line_comment",
           "named": true
         },
         {

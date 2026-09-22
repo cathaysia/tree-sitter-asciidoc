@@ -68,3 +68,41 @@ illegal level skip still nests
       (title1
         (title_h1_marker)
         (line)))))
+
+====================================
+comments do not interrupt sections
+====================================
+
+== First
+
+// A line comment before a nested section.
+=== Nested
+
+////
+A block comment in section content.
+////
+
+content
+
+--------
+
+(document
+  (block_element
+    (section
+      (title1
+        (title_h1_marker)
+        (line))
+      (line_comment
+        (line_comment_marker)
+        (body))
+      (section
+        (title2
+          (title_h2_marker)
+          (line))
+        (block_comment
+          (block_comment_start_marker)
+          (body)
+          (block_comment_end_marker))
+        (section_block
+          (paragraph
+            (line)))))))

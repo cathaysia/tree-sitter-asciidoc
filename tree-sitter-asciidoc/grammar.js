@@ -48,6 +48,7 @@ module.exports = grammar({
           $.title1,
           repeat(
             choice(
+              $._section_comment,
               alias($._doc_block, $.section_block),
               alias($._section2, $.section),
               alias($._section3, $.section),
@@ -64,6 +65,7 @@ module.exports = grammar({
           $.title2,
           repeat(
             choice(
+              $._section_comment,
               alias($._doc_block, $.section_block),
               alias($._section3, $.section),
               alias($._section4, $.section),
@@ -79,6 +81,7 @@ module.exports = grammar({
           $.title3,
           repeat(
             choice(
+              $._section_comment,
               alias($._doc_block, $.section_block),
               alias($._section4, $.section),
               alias($._section5, $.section),
@@ -92,7 +95,11 @@ module.exports = grammar({
           repeat(choice($.element_attr, $.block_title)),
           $.title4,
           repeat(
-            choice(alias($._doc_block, $.section_block), alias($._section5, $.section)),
+            choice(
+              $._section_comment,
+              alias($._doc_block, $.section_block),
+              alias($._section5, $.section),
+            ),
           ),
         ),
       ),
@@ -101,9 +108,11 @@ module.exports = grammar({
         seq(
           repeat(choice($.element_attr, $.block_title)),
           $.title5,
-          repeat(alias($._doc_block, $.section_block)),
+          repeat(choice($._section_comment, alias($._doc_block, $.section_block))),
         ),
       ),
+
+    _section_comment: $ => choice($.line_comment, $.block_comment),
 
     // A document-level content block (no section heading).
     _doc_block: $ =>
@@ -111,7 +120,8 @@ module.exports = grammar({
 
     // Container blocks (delimited/open/sidebar/quote/table cells) keep the flat
     // `section_block`, which may still hold a (discrete) heading.
-    section_block: $ => choice($._section_block_para, $._section_block),
+    section_block: $ =>
+      choice($._section_block_para, $._section_block, $._section_comment),
     _section_block_para: $ =>
       seq(repeat(choice($.element_attr, $.block_title)), $.paragraph),
     _section_block: $ =>
