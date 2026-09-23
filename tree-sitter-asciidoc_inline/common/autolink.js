@@ -18,7 +18,7 @@ exports.rules = {
       prec.right(anySep1($._uri_segment, '.')),
     ),
   // biome-ignore lint/complexity/noUselessEscapeInRegex: xxx
-  _uri_segment: $ => /[^\.\s\[\"]+/,
+  _uri_segment: $ => /[^\.\s\[\]\"]+/,
 
   email: $ =>
     // biome-ignore lint/suspicious/noControlCharactersInRegex: xxx

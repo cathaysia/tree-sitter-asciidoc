@@ -4359,7 +4359,8 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead != 0 &&
           lookahead != '"' &&
           lookahead != '.' &&
-          lookahead != '[') ADVANCE(252);
+          lookahead != '[' &&
+          lookahead != ']') ADVANCE(252);
       END_STATE();
     case 224:
       if (('0' <= lookahead && lookahead <= '9') ||
@@ -4743,7 +4744,8 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != ' ' &&
           lookahead != '"' &&
           lookahead != '.' &&
-          lookahead != '[') ADVANCE(252);
+          lookahead != '[' &&
+          lookahead != ']') ADVANCE(252);
       END_STATE();
     case 253:
       ACCEPT_TOKEN(sym_email);

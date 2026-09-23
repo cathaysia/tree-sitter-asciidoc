@@ -66,3 +66,27 @@ This is afootnote:[text], but notstem.
   (inline_element
     (word))
   (inline_element))
+
+====================
+footnote containing a URL
+====================
+
+footnote:[https://example.com/source] after
+
+-----
+
+(inline
+  (inline_element
+    (footnote
+      (macro_name)
+      (attr
+        (positional_attr
+          (autolink
+            (uri
+              (link_url)))))))
+  (inline_element
+    (word))
+  (inline_element
+    (word))
+  (inline_element
+    (word)))
