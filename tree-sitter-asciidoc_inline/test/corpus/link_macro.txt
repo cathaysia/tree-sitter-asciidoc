@@ -25,3 +25,25 @@ this is a link:vvv[] and mailto:bbb[ccc]
       (target)
       (attr
         (positional_attr)))))
+
+=========================
+empty target followed by text
+=========================
+
+link:[https://example.com/resources/]Research backs
+
+-----
+
+(inline
+  (inline_element
+    (inline_macro
+      (macro_name)
+      (attr
+        (positional_attr
+          (autolink
+            (uri
+              (link_url)))))))
+  (inline_element
+    (word))
+  (inline_element
+    (word)))
