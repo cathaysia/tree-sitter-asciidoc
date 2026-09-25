@@ -43,10 +43,6 @@ These do not depend on the line-tracking work:
   ([replacements](LIMITATIONS.md#a-few-inline-replacements-are-missing)). The em
   dash is contextual (between word characters) and must not collide with the
   open-block `--` marker, so it needs care.
-- **Grammar scope metadata.** Both `tree-sitter.json` files declare
-  `"scope": "source.j2"` (a copy-paste leftover). They should be
-  `source.asciidoc` and `source.asciidoc_inline`, and the duplicate
-  `file-types` entries cleaned up.
 - **Discrete headings and block options.** Now that block attribute lists are
   parsed into structure, `[discrete]`, `[%collapsible]`, and similar could be
   recognized semantically rather than left as generic style/option nodes.

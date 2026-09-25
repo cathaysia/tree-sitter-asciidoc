@@ -3,10 +3,11 @@
     {
       "name": "asciidoc",
       "camelcase": "asciidoc",
-      "scope": "source.j2",
+      "scope": "source.asciidoc",
       "path": ".",
       "file-types": [
-        "asciidoc",
+        "adoc",
+        "asc",
         "asciidoc"
       ],
       "highlights": "queries/highlights.scm"
