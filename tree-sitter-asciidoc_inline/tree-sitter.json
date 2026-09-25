@@ -3,10 +3,9 @@
     {
       "name": "asciidoc_inline",
       "camelcase": "asciidoc_inline",
-      "scope": "source.j2",
+      "scope": "source.asciidoc_inline",
       "path": ".",
       "file-types": [
-        "asciidoc_inline",
         "asciidoc_inline"
       ],
       "highlights": "queries/highlights.scm"
