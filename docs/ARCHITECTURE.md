@@ -44,7 +44,7 @@ document (block grammar)
 `tree-sitter-asciidoc/queries/injections.scm` tells the host to parse certain
 block-grammar nodes with the inline grammar:
 
-- `paragraph` and `line` content become `asciidoc_inline`
+- `line` content becomes `asciidoc_inline` (including lines inside paragraphs)
 - `table_cell` content becomes `asciidoc_inline`
 - a block macro `target` becomes `asciidoc_inline`
 - source/diagram code blocks inject the detected language (see below)
