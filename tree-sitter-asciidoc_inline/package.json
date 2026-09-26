@@ -2,7 +2,7 @@
   "name": "tree-sitter-asciidoc_inline",
   "version": "0.9.0",
   "description": "asciidoc_inline grammar for tree-sitter",
-  "repository": "github:cathaysia/tree-sitter-asciidoc_inline",
+  "repository": "github:cathaysia/tree-sitter-asciidoc",
   "license": "Apache-2.0",
   "author": "Loongtao Zhang <loongtao.zhang@outlook.com>",
   "main": "bindings/node",
@@ -27,7 +27,7 @@
     "tree-sitter": "^0.25.0"
   },
   "peerDependenciesMeta": {
-    "tree_sitter": {
+    "tree-sitter": {
       "optional": true
     }
   },
