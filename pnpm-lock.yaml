@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      tree-sitter:
+        specifier: ^0.25.0
+        version: 0.25.1
       tree-sitter-cli:
         specifier: ^0.25.10
         version: 0.25.10
@@ -21,8 +24,8 @@ importers:
         specifier: ^4.8.4
         version: 4.8.4
       tree-sitter:
-        specifier: ^0.21.0
-        version: 0.21.1
+        specifier: ^0.25.0
+        version: 0.25.1
       tree-sitter-cli:
         specifier: ^0.25.10
         version: 0.25.10
@@ -40,8 +43,8 @@ importers:
         specifier: ^4.8.4
         version: 4.8.4
       tree-sitter:
-        specifier: ^0.21.0
-        version: 0.21.1
+        specifier: ^0.25.0
+        version: 0.25.1
     devDependencies:
       prebuildify:
         specifier: ^6.0.1
@@ -88,6 +91,10 @@ packages:
 
   node-addon-api@8.3.1:
     resolution: {integrity: sha512-lytcDEdxKjGJPTLEfW4mYMigRezMlyJY8W4wxJK8zE533Jlb8L8dRuObJFWg2P+AuOIxoCgKF+2Oq4d4Zd0OUA==}
+    engines: {node: ^18 || ^20 || >= 21}
+
+  node-addon-api@8.9.2:
+    resolution: {integrity: sha512-VijLXbi3UACN69I0JVXJsX4tjACjNoQDgv2gTF6sx2wWEi8tkSg2eX8p5gSIFi8z2+DL3oHmY6OyKce38SDolg==}
     engines: {node: ^18 || ^20 || >= 21}
 
   node-gyp-build@4.8.4:
@@ -139,8 +146,8 @@ packages:
     engines: {node: '>=12.0.0'}
     hasBin: true
 
-  tree-sitter@0.21.1:
-    resolution: {integrity: sha512-7dxoA6kYvtgWw80265MyqJlkRl4yawIjO7S5MigytjELkX43fV2WsAXzsNfO7sBpPPCF5Gp0+XzHk0DwLCq3xQ==}
+  tree-sitter@0.25.1:
+    resolution: {integrity: sha512-mrcEdkYtHfrK1A6fs3O6FxkBo0Qig5XUXqHhxUOQu0bmPo00QF4XaSx4edpazdHwxnSCjlGKGgIqWdaN4dvTLA==}
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
@@ -184,6 +191,8 @@ snapshots:
       semver: 7.7.1
 
   node-addon-api@8.3.1: {}
+
+  node-addon-api@8.9.2: {}
 
   node-gyp-build@4.8.4: {}
 
@@ -242,9 +251,9 @@ snapshots:
 
   tree-sitter-cli@0.25.10: {}
 
-  tree-sitter@0.21.1:
+  tree-sitter@0.25.1:
     dependencies:
-      node-addon-api: 8.3.1
+      node-addon-api: 8.9.2
       node-gyp-build: 4.8.4
 
   util-deprecate@1.0.2: {}
