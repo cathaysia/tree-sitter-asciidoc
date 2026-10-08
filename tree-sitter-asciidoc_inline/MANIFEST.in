@@ -1,0 +1,3 @@
+include README.md
+recursive-include queries *.scm
+recursive-include src *.h

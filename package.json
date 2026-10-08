@@ -15,11 +15,12 @@
     "generate": "pnpm generate_asciidoc && pnpm generate_asciidoc_inline",
     "generate_asciidoc": "cd tree-sitter-asciidoc && pnpm generate",
     "generate_asciidoc_inline": "cd tree-sitter-asciidoc_inline && pnpm generate",
-    "test": "pnpm test_asciidoc && pnpm test_asciidoc_inline",
+    "test": "pnpm test_asciidoc && pnpm test_asciidoc_inline && node test/node-bindings.js",
     "test_asciidoc": "cd tree-sitter-asciidoc && pnpm test",
     "test_asciidoc_inline": "cd tree-sitter-asciidoc_inline && pnpm test"
   },
   "devDependencies": {
+    "tree-sitter": "^0.25.0",
     "tree-sitter-cli": "^0.25.10"
   }
 }
