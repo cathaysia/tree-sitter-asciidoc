@@ -19,12 +19,13 @@
 ((section_block
   (element_attr
     (positional_attr
-      (block_style))
+      (block_style) @_source)
     (positional_attr) @injection.language)
   (listing_block
     (listing_block_start_marker)
     (listing_block_body) @injection.content
-    (listing_block_end_marker))))
+    (listing_block_end_marker)))
+  (#eq? @_source "source"))
 
 ; Diagram listing: `[mermaid]` - the language is the style itself.
 ((section_block
@@ -44,9 +45,10 @@
 ((section_block
   (element_attr
     (positional_attr
-      (block_style))
+      (block_style) @_source)
     (positional_attr) @injection.language)
   (paragraph) @injection.content)
+  (#eq? @_source "source")
   (#set! injection.include-children))
 
 ; latexmath passthrough block, mapped onto the latex grammar.
