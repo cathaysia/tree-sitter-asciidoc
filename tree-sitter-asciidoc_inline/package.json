@@ -17,7 +17,7 @@
     "install": "node-gyp-build",
     "prebuildify": "prebuildify --napi --strip",
     "generate": "pnpm exec tree-sitter generate",
-    "test": "pnpm generate && tree-sitter test"
+    "test": "pnpm generate && tree-sitter test && sh test/injections.sh"
   },
   "dependencies": {
     "node-addon-api": "^8.3.0",
