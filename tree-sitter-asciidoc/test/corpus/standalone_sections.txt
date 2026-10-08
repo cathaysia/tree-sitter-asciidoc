@@ -1,0 +1,201 @@
+====================================================
+standalone level 2 section with id, body and nested xref
+====================================================
+
+[#company-characteristics]
+=== Company characteristics impacting your role
+
+A company.
+
+==== Age
+
+In <<project-planning>> we talk.
+
+--------
+
+(document
+  (block_element
+    (section
+      (element_attr
+        (element_attr_marker)
+        (positional_attr
+          (id))
+        (element_attr_marker))
+      (title2
+        (title_h2_marker)
+        (line))
+      (section_block
+        (paragraph
+          (line)))
+      (section
+        (title3
+          (title_h3_marker)
+          (line))
+        (section_block
+          (paragraph
+            (line)))))))
+
+====================================================
+standalone level 3 section with id, body and xref
+====================================================
+
+[#age]
+==== Age
+
+A company.
+
+In <<project-planning>> we talk.
+
+--------
+
+(document
+  (block_element
+    (section
+      (element_attr
+        (element_attr_marker)
+        (positional_attr
+          (id))
+        (element_attr_marker))
+      (title3
+        (title_h3_marker)
+        (line))
+      (section_block
+        (paragraph
+          (line)))
+      (section_block
+        (paragraph
+          (line))))))
+
+====================================================
+standalone level 4 section with id, body and xref
+====================================================
+
+[#growth]
+===== Growth
+
+A company.
+
+In <<project-planning>> we talk.
+
+--------
+
+(document
+  (block_element
+    (section
+      (element_attr
+        (element_attr_marker)
+        (positional_attr
+          (id))
+        (element_attr_marker))
+      (title4
+        (title_h4_marker)
+        (line))
+      (section_block
+        (paragraph
+          (line)))
+      (section_block
+        (paragraph
+          (line))))))
+
+====================================================
+standalone level 5 section with id, body and xref
+====================================================
+
+[#planning]
+====== Planning
+
+A company.
+
+In <<project-planning>> we talk.
+
+--------
+
+(document
+  (block_element
+    (section
+      (element_attr
+        (element_attr_marker)
+        (positional_attr
+          (id))
+        (element_attr_marker))
+      (title5
+        (title_h5_marker)
+        (line))
+      (section_block
+        (paragraph
+          (line)))
+      (section_block
+        (paragraph
+          (line))))))
+
+====================================================
+standalone sections nest and close at sibling or higher levels
+====================================================
+
+==== First
+
+===== Child
+
+====== Grandchild
+
+===== Child sibling
+
+==== Second
+
+====== Skipped level
+
+=== Higher
+
+==== Nested again
+
+== Chapter
+
+=== Chapter child
+
+--------
+
+(document
+  (block_element
+    (section
+      (title3
+        (title_h3_marker)
+        (line))
+      (section
+        (title4
+          (title_h4_marker)
+          (line))
+        (section
+          (title5
+            (title_h5_marker)
+            (line))))
+      (section
+        (title4
+          (title_h4_marker)
+          (line)))))
+  (block_element
+    (section
+      (title3
+        (title_h3_marker)
+        (line))
+      (section
+        (title5
+          (title_h5_marker)
+          (line)))))
+  (block_element
+    (section
+      (title2
+        (title_h2_marker)
+        (line))
+      (section
+        (title3
+          (title_h3_marker)
+          (line)))))
+  (block_element
+    (section
+      (title1
+        (title_h1_marker)
+        (line))
+      (section
+        (title2
+          (title_h2_marker)
+          (line))))))

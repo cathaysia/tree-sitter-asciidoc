@@ -27,6 +27,10 @@ module.exports = grammar({
             $.document_title,
             $.document_attr,
             alias($._section1, $.section),
+            alias($._section2, $.section),
+            alias($._section3, $.section),
+            alias($._section4, $.section),
+            alias($._section5, $.section),
             alias($._doc_block, $.section_block),
             $.line_comment,
             $.block_comment,
@@ -34,10 +38,10 @@ module.exports = grammar({
         ),
       ),
 
-    // Document-level sections nest by heading level: a level-1 section (`==`)
-    // contains its content plus any deeper sections, and each level closes
-    // when a heading of the same or higher level appears.  The heading node
-    // (`title1`..`title5`) is kept as-is inside the wrapping `section`.
+    // Documents may start at any section level, including standalone include
+    // files. Sections nest by heading level: each contains its content plus
+    // deeper sections and closes at a heading of the same or higher level.
+    // The heading node (`title1`..`title5`) is kept inside the wrapping `section`.
     // A section body allows content blocks plus any *deeper* section, so an
     // illegal level skip (e.g. `==` straight to `====`) still nests instead of
     // erroring; the innermost open section greedily claims a deeper heading.

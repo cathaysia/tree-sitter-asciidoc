@@ -1265,6 +1265,42 @@
                 "type": "ALIAS",
                 "content": {
                   "type": "SYMBOL",
+                  "name": "_section2"
+                },
+                "named": true,
+                "value": "section"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_section3"
+                },
+                "named": true,
+                "value": "section"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_section4"
+                },
+                "named": true,
+                "value": "section"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_section5"
+                },
+                "named": true,
+                "value": "section"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
                   "name": "_doc_block"
                 },
                 "named": true,
