@@ -41,7 +41,9 @@ exports.rules = {
       $.document_attr_marker,
       alias(repeat1(escaped_ch(':', true)), $.attr_name),
       alias(':', $.document_attr_marker),
-      optional(seq(token.immediate(' '), alias($.escaped_line, $.line))),
+      // The value may be absent after the separating space (`:sourceFile: `),
+      // so the line itself is optional too.
+      optional(seq(token.immediate(' '), optional(alias($.escaped_line, $.line)))),
       $._block_end,
     ),
 };

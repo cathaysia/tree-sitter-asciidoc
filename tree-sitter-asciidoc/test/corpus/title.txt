@@ -104,3 +104,34 @@ more value
         (title3
           (title_h3_marker)
           (line))))))
+
+==========================================
+document attribute values: globs and empty
+==========================================
+
+= T
+:cmd: -p src/**/*.kt
+:empty: 
+
+text
+
+-----
+
+(document
+  (block_element
+    (document_title
+      (title_h0_marker)
+      (line)
+      (document_attr
+        (document_attr_marker)
+        (attr_name)
+        (document_attr_marker)
+        (line))
+      (document_attr
+        (document_attr_marker)
+        (attr_name)
+        (document_attr_marker))))
+  (block_element
+    (section_block
+      (paragraph
+        (line)))))

@@ -209,8 +209,11 @@ module.exports = grammar({
     attribute_name: $ => repeat1(escaped_ch('=')),
     attribute_value: $ => repeat1(escaped_ch(']')),
 
+    // A `/` may be followed by anything: the value of a document attribute is
+    // opaque text (paths, globs such as `src/**/*.kt`, URLs).  Requiring a
+    // non-`*` after the slash made `/*` unmatchable and errored the whole header.
     escaped_line: $ =>
-      repeat1(choice(/[^/\n]/, /\/[^*]/, /\\\r?\n/, seq($.hard_wrap))),
+      repeat1(choice(/[^/\n]/, /\//, /\\\r?\n/, seq($.hard_wrap))),
     hard_wrap: $ => ' +',
     // A block attribute list, e.g. `[source#id.role%opt,ruby,cols="1,2"]`.
     // The first entry is the positional "style" slot and may carry the id
