@@ -55,3 +55,19 @@ a lone * star
   (inline_element)
   (inline_element
     (word)))
+
+==========================================
+word-internal delimiters stay inside a span
+==========================================
+
+_"COMP1010_TUT01_2025_S1"_ and *a_b_c*
+
+-----
+
+(inline
+  (inline_element
+    (italic))
+  (inline_element
+    (word))
+  (inline_element
+    (emphasis)))

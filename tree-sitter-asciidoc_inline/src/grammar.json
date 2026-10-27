@@ -2133,24 +2133,36 @@
                 "type": "CHOICE",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "[^*\\r\\n]"
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "PATTERN",
+                        "value": "[^*\\r\\n]"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "\\*"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "italic"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "monospace"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "highlight"
+                      }
+                    ]
                   },
                   {
-                    "type": "STRING",
-                    "value": "\\*"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "italic"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "monospace"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "highlight"
+                    "type": "TOKEN",
+                    "content": {
+                      "type": "PATTERN",
+                      "value": "\\*[A-Za-z0-9]"
+                    }
                   }
                 ]
               }
@@ -2227,24 +2239,36 @@
                 "type": "CHOICE",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "[^_\\r\\n]"
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "PATTERN",
+                        "value": "[^_\\r\\n]"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "\\_"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "emphasis"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "monospace"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "highlight"
+                      }
+                    ]
                   },
                   {
-                    "type": "STRING",
-                    "value": "\\_"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "emphasis"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "monospace"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "highlight"
+                    "type": "TOKEN",
+                    "content": {
+                      "type": "PATTERN",
+                      "value": "\\_[A-Za-z0-9]"
+                    }
                   }
                 ]
               }
@@ -2321,12 +2345,24 @@
                 "type": "CHOICE",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "[^`\\r\\n]"
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "PATTERN",
+                        "value": "[^`\\r\\n]"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "\\`"
+                      }
+                    ]
                   },
                   {
-                    "type": "STRING",
-                    "value": "\\`"
+                    "type": "TOKEN",
+                    "content": {
+                      "type": "PATTERN",
+                      "value": "\\`[A-Za-z0-9]"
+                    }
                   }
                 ]
               }
@@ -2391,12 +2427,24 @@
                 "type": "CHOICE",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "[^#\\r\\n]"
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "PATTERN",
+                        "value": "[^#\\r\\n]"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "\\#"
+                      }
+                    ]
                   },
                   {
-                    "type": "STRING",
-                    "value": "\\#"
+                    "type": "TOKEN",
+                    "content": {
+                      "type": "PATTERN",
+                      "value": "\\#[A-Za-z0-9]"
+                    }
                   }
                 ]
               }
