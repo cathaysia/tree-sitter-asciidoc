@@ -33,3 +33,73 @@ https://www.abcdefg.com
     (section_block
       (paragraph
         (line)))))
+
+======================================================
+block attributes carry across a comment to their block
+======================================================
+
+[NOTE]
+// c
+The note.
+
+-----
+
+(document
+  (block_element
+    (section_block
+      (element_attr
+        (element_attr_marker)
+        (positional_attr
+          (block_style))
+        (element_attr_marker))
+      (line_comment
+        (line_comment_marker)
+        (body))
+      (paragraph
+        (line)))))
+
+=============================================================
+block title and attributes carry across comments in a section
+=============================================================
+
+== S
+
+.Title
+// c
+[source,java]
+////
+b
+////
+----
+x
+----
+
+-----
+
+(document
+  (block_element
+    (section
+      (title1
+        (title_h1_marker)
+        (line))
+      (section_block
+        (block_title
+          (block_title_marker)
+          (line))
+        (line_comment
+          (line_comment_marker)
+          (body))
+        (element_attr
+          (element_attr_marker)
+          (positional_attr
+            (block_style))
+          (positional_attr)
+          (element_attr_marker))
+        (block_comment
+          (block_comment_start_marker)
+          (body)
+          (block_comment_end_marker))
+        (listing_block
+          (listing_block_start_marker)
+          (listing_block_body)
+          (listing_block_end_marker))))))
