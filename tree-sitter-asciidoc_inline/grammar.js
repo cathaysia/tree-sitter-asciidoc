@@ -497,7 +497,22 @@ function create_text_formatting(ch, begin, args) {
   return choice(
     // Constrained: the opening delimiter is supplied by the external
     // scanner (BEGIN), which only fires when the span actually closes.
-    seq(begin, repeat(escaped_ch(ch, true, ...args)), ch),
+    //
+    // A delimiter followed by a word character cannot close a constrained
+    // span, so it belongs to the content: `_"COMP1010_TUT01"_` is one span,
+    // not two.  The scanner already skips such delimiters when it looks
+    // ahead for the close; without the same allowance here the content
+    // could not hold a delimiter at all and the span bound to the first one.
+    seq(
+      begin,
+      repeat(
+        choice(
+          escaped_ch(ch, true, ...args),
+          token(new RegExp('\\' + ch + '[A-Za-z0-9]')),
+        ),
+      ),
+      ch,
+    ),
     // Unconstrained: a literal double delimiter.
     seq(
       token(prec(1, ch + ch)),
