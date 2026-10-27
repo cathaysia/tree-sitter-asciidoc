@@ -663,13 +663,21 @@
                   }
                 },
                 {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "escaped_line"
-                  },
-                  "named": true,
-                  "value": "line"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "ALIAS",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "escaped_line"
+                      },
+                      "named": true,
+                      "value": "line"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
                 }
               ]
             },
@@ -2176,7 +2184,7 @@
           },
           {
             "type": "PATTERN",
-            "value": "\\/[^*]"
+            "value": "\\/"
           },
           {
             "type": "PATTERN",
